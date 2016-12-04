@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2833B1491DF4A0E3005F05F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1481DF4A0E3005F05F2 /* Assets.xcassets */; };
+		2833B1501DF4A0E4005F05F2 /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2833B14F1DF4A0E4005F05F2 /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2833B1551DF4A0E4005F05F2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2833B1541DF4A0E4005F05F2 /* Messages.framework */; };
+		2833B1591DF4A0E4005F05F2 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2833B1581DF4A0E4005F05F2 /* MessagesViewController.m */; };
+		2833B15C1DF4A0E4005F05F2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2833B15A1DF4A0E4005F05F2 /* MainInterface.storyboard */; };
+		2833B15E1DF4A0E4005F05F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2833B15D1DF4A0E4005F05F2 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2833B1511DF4A0E4005F05F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2833B13F1DF4A0E3005F05F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2833B14E1DF4A0E4005F05F2;
+			remoteInfo = MessagesExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2833B1651DF4A0E4005F05F2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2833B1501DF4A0E4005F05F2 /* MessagesExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2833B1451DF4A0E3005F05F2 /* Fluffcorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluffcorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2833B1481DF4A0E3005F05F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2833B14A1DF4A0E3005F05F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2833B14F1DF4A0E4005F05F2 /* MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MessagesExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2833B1541DF4A0E4005F05F2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		2833B1571DF4A0E4005F05F2 /* MessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		2833B1581DF4A0E4005F05F2 /* MessagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
+		2833B15B1DF4A0E4005F05F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		2833B15D1DF4A0E4005F05F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2833B15F1DF4A0E4005F05F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2833B14C1DF4A0E4005F05F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2833B1551DF4A0E4005F05F2 /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2833B13E1DF4A0E3005F05F2 = {
+			isa = PBXGroup;
+			children = (
+				2833B1471DF4A0E3005F05F2 /* Fluffcorn */,
+				2833B1561DF4A0E4005F05F2 /* MessagesExtension */,
+				2833B1531DF4A0E4005F05F2 /* Frameworks */,
+				2833B1461DF4A0E3005F05F2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2833B1461DF4A0E3005F05F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2833B1451DF4A0E3005F05F2 /* Fluffcorn.app */,
+				2833B14F1DF4A0E4005F05F2 /* MessagesExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2833B1471DF4A0E3005F05F2 /* Fluffcorn */ = {
+			isa = PBXGroup;
+			children = (
+				2833B1481DF4A0E3005F05F2 /* Assets.xcassets */,
+				2833B14A1DF4A0E3005F05F2 /* Info.plist */,
+			);
+			path = Fluffcorn;
+			sourceTree = "<group>";
+		};
+		2833B1531DF4A0E4005F05F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2833B1541DF4A0E4005F05F2 /* Messages.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2833B1561DF4A0E4005F05F2 /* MessagesExtension */ = {
+			isa = PBXGroup;
+			children = (
+				2833B1571DF4A0E4005F05F2 /* MessagesViewController.h */,
+				2833B1581DF4A0E4005F05F2 /* MessagesViewController.m */,
+				2833B15A1DF4A0E4005F05F2 /* MainInterface.storyboard */,
+				2833B15D1DF4A0E4005F05F2 /* Assets.xcassets */,
+				2833B15F1DF4A0E4005F05F2 /* Info.plist */,
+			);
+			path = MessagesExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2833B1441DF4A0E3005F05F2 /* Fluffcorn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2833B1661DF4A0E4005F05F2 /* Build configuration list for PBXNativeTarget "Fluffcorn" */;
+			buildPhases = (
+				2833B1431DF4A0E3005F05F2 /* Resources */,
+				2833B1651DF4A0E4005F05F2 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2833B1521DF4A0E4005F05F2 /* PBXTargetDependency */,
+			);
+			name = Fluffcorn;
+			productName = Fluffcorn;
+			productReference = 2833B1451DF4A0E3005F05F2 /* Fluffcorn.app */;
+			productType = "com.apple.product-type.application.messages";
+		};
+		2833B14E1DF4A0E4005F05F2 /* MessagesExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2833B1621DF4A0E4005F05F2 /* Build configuration list for PBXNativeTarget "MessagesExtension" */;
+			buildPhases = (
+				2833B14B1DF4A0E4005F05F2 /* Sources */,
+				2833B14C1DF4A0E4005F05F2 /* Frameworks */,
+				2833B14D1DF4A0E4005F05F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MessagesExtension;
+			productName = MessagesExtension;
+			productReference = 2833B14F1DF4A0E4005F05F2 /* MessagesExtension.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2833B13F1DF4A0E3005F05F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Anson Liu";
+				TargetAttributes = {
+					2833B1441DF4A0E3005F05F2 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 3E2UWZ76C2;
+						ProvisioningStyle = Automatic;
+					};
+					2833B14E1DF4A0E4005F05F2 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 3E2UWZ76C2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2833B1421DF4A0E3005F05F2 /* Build configuration list for PBXProject "Fluffcorn" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2833B13E1DF4A0E3005F05F2;
+			productRefGroup = 2833B1461DF4A0E3005F05F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2833B1441DF4A0E3005F05F2 /* Fluffcorn */,
+				2833B14E1DF4A0E4005F05F2 /* MessagesExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2833B1431DF4A0E3005F05F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2833B1491DF4A0E3005F05F2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2833B14D1DF4A0E4005F05F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2833B15E1DF4A0E4005F05F2 /* Assets.xcassets in Resources */,
+				2833B15C1DF4A0E4005F05F2 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2833B14B1DF4A0E4005F05F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2833B1591DF4A0E4005F05F2 /* MessagesViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2833B1521DF4A0E4005F05F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2833B14E1DF4A0E4005F05F2 /* MessagesExtension */;
+			targetProxy = 2833B1511DF4A0E4005F05F2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2833B15A1DF4A0E4005F05F2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2833B15B1DF4A0E4005F05F2 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2833B1601DF4A0E4005F05F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2833B1611DF4A0E4005F05F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2833B1631DF4A0E4005F05F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				INFOPLIST_FILE = MessagesExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.Fluffcorn.MessagesExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2833B1641DF4A0E4005F05F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				INFOPLIST_FILE = MessagesExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.Fluffcorn.MessagesExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		2833B1671DF4A0E4005F05F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				INFOPLIST_FILE = Fluffcorn/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.Fluffcorn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2833B1681DF4A0E4005F05F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				INFOPLIST_FILE = Fluffcorn/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.Fluffcorn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2833B1421DF4A0E3005F05F2 /* Build configuration list for PBXProject "Fluffcorn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2833B1601DF4A0E4005F05F2 /* Debug */,
+				2833B1611DF4A0E4005F05F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2833B1621DF4A0E4005F05F2 /* Build configuration list for PBXNativeTarget "MessagesExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2833B1631DF4A0E4005F05F2 /* Debug */,
+				2833B1641DF4A0E4005F05F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2833B1661DF4A0E4005F05F2 /* Build configuration list for PBXNativeTarget "Fluffcorn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2833B1671DF4A0E4005F05F2 /* Debug */,
+				2833B1681DF4A0E4005F05F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2833B13F1DF4A0E3005F05F2 /* Project object */;
+}
