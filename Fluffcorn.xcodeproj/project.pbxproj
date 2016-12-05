@@ -547,6 +547,7 @@
 				2833B1641DF4A0E4005F05F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2833B1661DF4A0E4005F05F2 /* Build configuration list for PBXNativeTarget "Fluffcorn" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +556,7 @@
 				2833B1681DF4A0E4005F05F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

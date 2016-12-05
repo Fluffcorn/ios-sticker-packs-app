@@ -55,7 +55,7 @@
     UIView *browserView = _browserViewController.view;
     NSDictionary *bindings = NSDictionaryOfVariableBindings(topGuide, bottomGuide, _segmentedControl, browserView);
 
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide][_segmentedControl(==20)]-1-[browserView]-[bottomGuide]" options:0 metrics:nil views:bindings]];
+    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-[_segmentedControl(==20)]-1-[browserView][bottomGuide]" options:0 metrics:nil views:bindings]];
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_segmentedControl]-|" options:0 metrics:nil views:bindings]];
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[browserView]|" options:0 metrics:nil views:bindings]];
     [self.view addConstraints:messageViewConstraints];
