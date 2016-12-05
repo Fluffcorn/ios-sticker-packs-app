@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
    
     _segmentedControl = [[UISegmentedControl alloc] init];
+    [_segmentedControl setBackgroundColor:[UIColor whiteColor]];
     [_segmentedControl addTarget:self
                          action:@selector(segmentSwitch:)
                forControlEvents:UIControlEventValueChanged];
@@ -40,10 +41,12 @@
     if (_segmentedControl.numberOfSegments > 0)
         _segmentedControl.selectedSegmentIndex = 0;
     
+    
+    
+    [self.view addSubview:_browserViewController.view];
     [self.view addSubview:_segmentedControl];
     [self addChildViewController:_browserViewController];
     [_browserViewController didMoveToParentViewController:self];
-    [self.view addSubview:_browserViewController.view];
     
     _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
     _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
@@ -55,12 +58,14 @@
     UIView *browserView = _browserViewController.view;
     NSDictionary *bindings = NSDictionaryOfVariableBindings(topGuide, bottomGuide, _segmentedControl, browserView);
 
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-[_segmentedControl(==20)]-1-[browserView][bottomGuide]" options:0 metrics:nil views:bindings]];
+    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-[_segmentedControl(==20)]" options:0 metrics:nil views:bindings]];
+    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[browserView]|" options:0 metrics:nil views:bindings]];
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_segmentedControl]-|" options:0 metrics:nil views:bindings]];
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[browserView]|" options:0 metrics:nil views:bindings]];
     [self.view addConstraints:messageViewConstraints];
     
-
+    _browserViewController.stickerBrowserView.contentInset = UIEdgeInsetsMake(_segmentedControl.frame.size.height+20, 0, 0, 0);
+    
     [_browserViewController loadStickers];
     [_browserViewController.stickerBrowserView reloadData];
 }
