@@ -478,7 +478,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.llamacorn.StickerPackExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -493,7 +493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.llamacorn.StickerPackExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -508,7 +508,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = Fluffcorn/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.llamacorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,7 +521,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = Fluffcorn/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.llamacorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
