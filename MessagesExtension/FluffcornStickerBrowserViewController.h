@@ -10,10 +10,11 @@
 
 @interface FluffcornStickerBrowserViewController : MSStickerBrowserViewController
 
-- (instancetype)initWithStickerSize:(MSStickerSize)stickerSize withView:(UIView *)view;
+@property (nonatomic) NSString *currentPack;
 
-- (void)loadStickers;
+- (instancetype)initWithStickerSize:(MSStickerSize)stickerSize withPackInfo:(NSDictionary *)packInfo;
 
+- (void)loadStickersInPack:(NSString *)packName;
 - (void)loadStickerPackAtIndex:(NSInteger)index;
 
 @end

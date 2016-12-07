@@ -106,6 +106,7 @@
 		2833B1BC1DF5079D005F05F2 /* fc_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_10.png; sourceTree = "<group>"; };
 		2833B1BD1DF5079D005F05F2 /* fc_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_11.png; sourceTree = "<group>"; };
 		2833B1BE1DF5079D005F05F2 /* fc_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_12.png; sourceTree = "<group>"; };
+		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +160,7 @@
 		2833B1561DF4A0E4005F05F2 /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
+				28F618671DF7C1160052E4A2 /* Constants.h */,
 				2833B1571DF4A0E4005F05F2 /* MessagesViewController.h */,
 				2833B1581DF4A0E4005F05F2 /* MessagesViewController.m */,
 				2833B1691DF4A277005F05F2 /* FluffcornStickerBrowserViewController.h */,

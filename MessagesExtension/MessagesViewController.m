@@ -10,8 +10,11 @@
 #import "StickerPackInfo.h"
 #import "FluffcornStickerBrowserViewController.h"
 
+#import "Constants.h"
+
 @interface MessagesViewController ()
 
+@property (nonatomic) NSDictionary *packInfo;
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UISegmentedControl *segmentedControl;
 @property (nonatomic) FluffcornStickerBrowserViewController *browserViewController;
@@ -21,35 +24,31 @@
 @implementation MessagesViewController
 
 - (void)viewDidLoad {
-   
+    _packInfo = [StickerPackInfo loadPackInfo];
+    
     _segmentedControl = [[UISegmentedControl alloc] init];
     [_segmentedControl setBackgroundColor:[UIColor whiteColor]];
     [_segmentedControl addTarget:self
-                         action:@selector(segmentSwitch:)
-               forControlEvents:UIControlEventValueChanged];
-    
-    _browserViewController = [[FluffcornStickerBrowserViewController alloc] initWithStickerSize:MSStickerSizeRegular];
-
-    NSDictionary *packInfo = [StickerPackInfo loadPackInfo];
-    if (packInfo) {
-        NSArray<NSString *> *packOrder = [packInfo objectForKey:@"packOrder"];
+                          action:@selector(segmentSwitch:)
+                forControlEvents:UIControlEventValueChanged];
+    if (_packInfo) {
+        NSArray<NSString *> *packOrder = [_packInfo objectForKey:kPackOrderKey];
         for (NSString *pack in packOrder) {
             [_segmentedControl insertSegmentWithTitle:pack atIndex:_segmentedControl.numberOfSegments animated:YES];
         }
     }
-    
     if (_segmentedControl.numberOfSegments > 0)
         _segmentedControl.selectedSegmentIndex = 0;
     
+    _browserViewController = [[FluffcornStickerBrowserViewController alloc] initWithStickerSize:MSStickerSizeRegular withPackInfo:_packInfo];
     
+    _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
+    _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:_browserViewController.view];
     [self.view addSubview:_segmentedControl];
     [self addChildViewController:_browserViewController];
     [_browserViewController didMoveToParentViewController:self];
-    
-    _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
-    _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
     
     id topGuide = [self topLayoutGuide];
     id bottomGuide = [self bottomLayoutGuide];
@@ -64,10 +63,36 @@
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[browserView]|" options:0 metrics:nil views:bindings]];
     [self.view addConstraints:messageViewConstraints];
     
-    _browserViewController.stickerBrowserView.contentInset = UIEdgeInsetsMake(_segmentedControl.frame.size.height+20, 0, 0, 0);
+    _browserViewController.stickerBrowserView.contentInset = UIEdgeInsetsMake(_segmentedControl.frame.size.height+25, 0, 0, 0);
     
-    [_browserViewController loadStickers];
-    [_browserViewController.stickerBrowserView reloadData];
+    UISwipeGestureRecognizer *swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
+    [swipeUpRecognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
+    [_browserViewController.stickerBrowserView addGestureRecognizer:swipeUpRecognizer];
+    swipeUpRecognizer.delegate = self;
+    
+    UISwipeGestureRecognizer *swipeDownRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
+    [swipeDownRecognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
+    [_browserViewController.stickerBrowserView addGestureRecognizer:swipeDownRecognizer];
+    swipeDownRecognizer.delegate = self;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+- (void)handleSwipeUp:(UISwipeGestureRecognizer *)gestureRecognizer {
+    NSLog(@"swipe up");
+    if (self.presentationStyle == MSMessagesAppPresentationStyleCompact)
+        [UIView animateWithDuration:0.2 animations:^() {
+            _segmentedControl.alpha = 0.0f;
+        }];
+}
+
+- (void)handleSwipeDown:(UISwipeGestureRecognizer *)gestureRecognizer {
+    NSLog(@"swipe down");
+    [UIView animateWithDuration:0.7 animations:^() {
+        _segmentedControl.alpha = 1.0f;
+    }];
 }
 
 - (IBAction)segmentSwitch:(UISegmentedControl *)sender {
@@ -76,5 +101,61 @@
     [_browserViewController loadStickerPackAtIndex:selectedSegment];
     [_browserViewController.stickerBrowserView reloadData];
 }
+
+- (void)willBecomeActiveWithConversation:(MSConversation *)conversation {
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{kLastSelectedCategory:@""}];
+    
+    NSString *lastSelectedCategory = [[NSUserDefaults standardUserDefaults] stringForKey:kLastSelectedCategory];
+    if (lastSelectedCategory.length > 0) {
+        [_browserViewController loadStickersInPack:lastSelectedCategory];
+        [_segmentedControl setSelectedSegmentIndex:[((NSArray<NSString *> *)[_packInfo objectForKey:kPackOrderKey]) indexOfObject:lastSelectedCategory]];
+    } else if (((NSArray<NSString *> *)[_packInfo objectForKey:kPackOrderKey]).count > 0) {
+        [_browserViewController loadStickerPackAtIndex:0];
+    } else {
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:@"No stickers setup."
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *dismiss = [UIAlertAction
+                                  actionWithTitle:@"Dismiss"
+                                  style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * action)
+                                  {
+                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                      
+                                  }];
+        [alert addAction:dismiss];
+        [self presentViewController:alert animated:YES completion:nil];
+
+    }
+        
+    
+    [_browserViewController.stickerBrowserView reloadData];
+}
+
+- (void)willResignActiveWithConversation:(MSConversation *)conversation {
+    //[self saveSelectedCategory];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self saveSelectedCategory];
+}
+
+- (void)saveSelectedCategory {
+    if (_browserViewController.currentPack) {
+        [[NSUserDefaults standardUserDefaults] setObject:_browserViewController.currentPack forKey:kLastSelectedCategory];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+-(void)willTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
+    if (presentationStyle == MSMessagesAppPresentationStyleExpanded) {
+        [UIView animateWithDuration:0.2 animations:^() {
+            _segmentedControl.alpha = 1.0f;
+        }];
+    }
+}
+
 
 @end

@@ -8,6 +8,6 @@
 
 #import <Messages/Messages.h>
 
-@interface MessagesViewController : MSMessagesAppViewController
+@interface MessagesViewController : MSMessagesAppViewController <UIGestureRecognizerDelegate>
 
 @end

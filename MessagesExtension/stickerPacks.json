@@ -7,79 +7,79 @@
         "Original": {
             "order": [{
                       "filename": "fc_1",
-                      "accessbility": "Sparkle"
+                      "description": "Sparkle"
                       }, {
                       "filename": "fc_2",
-                      "accessbility": "Eating"
+                      "description": "Eating"
                       }, {
                       "filename": "fc_3",
-                      "accessbility": "Sad"
+                      "description": "Sad"
                       }, {
                       "filename": "fc_4",
-                      "accessbility": "OMG"
+                      "description": "OMG"
                       }, {
                       "filename": "fc_5",
-                      "accessbility": "Love"
+                      "description": "Love"
                       }, {
                       "filename": "fc_6",
-                      "accessbility": "OK"
+                      "description": "OK"
                       }, {
                       "filename": "fc_7",
-                      "accessbility": "What?"
+                      "description": "What?"
                       }, {
                       "filename": "fc_8",
-                      "accessbility": "Thank you"
+                      "description": "Thank you"
                       }, {
                       "filename": "fc_9",
-                      "accessbility": "Typing"
+                      "description": "Typing"
                       }, {
                       "filename": "fc_10",
-                      "accessbility": "Angry 🔥"
+                      "description": "Angry 🔥"
                       }, {
                       "filename": "fc_11",
-                      "accessbility": "Sleeping"
+                      "description": "Sleeping"
                       }, {
                       "filename": "fc_12",
-                      "accessbility": "Poot 💨"
+                      "description": "Poot 💨"
                       }]
         },
         "Holiday": {
             "order": [{
                       "filename": "tg_1",
-                      "accessbility": "Playing in leaves"
+                      "description": "Playing in leaves"
                       }, {
                       "filename": "tg_2",
-                      "accessbility": "Pilgrims"
+                      "description": "Pilgrims"
                       }, {
                       "filename": "tg_3",
-                      "accessbility": "Delicious"
+                      "description": "Delicious"
                       }, {
                       "filename": "tg_4",
-                      "accessbility": "Pie"
+                      "description": "Pie"
                       }, {
                       "filename": "tg_5",
-                      "accessbility": "I'm thankful for you. ❤️"
+                      "description": "I'm thankful for you. ❤️"
                       }, {
                       "filename": "tg_6",
-                      "accessbility": "Cornucopia"
+                      "description": "Cornucopia"
                       }, {
                       "filename": "wt_1",
-                      "accessbility": "Reindeer"
+                      "description": "Reindeer"
                       }, {
                       "filename": "wt_2",
-                      "accessbility": "Tasting Snowflakes"
+                      "description": "Tasting Snowflakes"
                       }, {
                       "filename": "wt_3",
-                      "accessbility": "Warm scarf"
+                      "description": "Warm scarf"
                       }, {
                       "filename": "wt_4",
-                      "accessbility": "Wrapped in Christmas lights"
+                      "description": "Wrapped in Christmas lights"
                       }, {
                       "filename": "wt_5",
-                      "accessbility": "Hot Cocoa"
+                      "description": "Hot Cocoa"
                       }, {
                       "filename": "wt_6",
-                      "accessbility": "Celebrate New Years 2017 🎉"
+                      "description": "Celebrate New Years 2017 🎉"
                       }]
         }
     }

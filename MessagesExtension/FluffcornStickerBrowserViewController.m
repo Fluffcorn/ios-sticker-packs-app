@@ -9,20 +9,22 @@
 #import "FluffcornStickerBrowserViewController.h"
 #import "StickerPackInfo.h"
 
+#import "Constants.h"
+
 @interface FluffcornStickerBrowserViewController ()
 
-@property (nonatomic) NSMutableArray<MSSticker *> *stickers;
 @property (nonatomic) NSDictionary *packInfo;
+@property (nonatomic) NSMutableArray<MSSticker *> *stickers;
 
 @end
 
 @implementation FluffcornStickerBrowserViewController
 
-- (instancetype)initWithStickerSize:(MSStickerSize)stickerSize withView:(UIView *)view {
+- (instancetype)initWithStickerSize:(MSStickerSize)stickerSize withPackInfo:(NSDictionary *)packInfo {
     self = [super initWithStickerSize:stickerSize];
     if (!self)
         return nil;
-    self.view = view;
+    _packInfo = packInfo;
     return self;
 }
 
@@ -34,17 +36,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)loadStickers {
-    _packInfo = [StickerPackInfo loadPackInfo];
-    
-    if (_packInfo){
-        [self loadStickersInPack:[_packInfo objectForKey:@"packOrder"][0]];
-        
-    }
-    
-    self.view.backgroundColor = [UIColor redColor];
 }
 
 - (void)loadStickersInPack:(NSString *)packName {
@@ -63,13 +54,60 @@
     
     _stickers = [[NSMutableArray alloc] init];
 
-    NSDictionary *allPacks = [_packInfo objectForKey:@"allPacks"];
+    NSDictionary *allPacks = [_packInfo objectForKey:kAllPacksKey];
     NSDictionary *targetPack = [allPacks objectForKey:packName];
+    
+    if (!targetPack) {
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:@"Sticker pack unavailable."
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *dismiss = [UIAlertAction
+                                  actionWithTitle:@"Dismiss"
+                                  style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * action)
+                                  {
+                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                      
+                                  }];
+        [alert addAction:dismiss];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     
     NSArray<NSDictionary *> *stickerOrder = [targetPack objectForKey:@"order"];
     
     for (NSDictionary *sticker in stickerOrder)
-        [self createSticker:[sticker valueForKey:@"filename"] fromPack:packName localizedDescription:[sticker valueForKey:@"accessibility"]];
+        [self createSticker:[sticker valueForKey:kFilenameKey] fromPack:packName localizedDescription:[sticker valueForKey:kDescriptionKey]];
+    
+    _currentPack = packName;
+}
+
+- (void)loadStickerPackAtIndex:(NSInteger)index {
+    NSArray<NSString *> *packOrder = [_packInfo objectForKey:kPackOrderKey];
+    
+    if (index < packOrder.count) {
+        [self loadStickersInPack:[_packInfo objectForKey:kPackOrderKey][index]];
+    } else {
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:@"Sticker pack unavailable."
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *dismiss = [UIAlertAction
+                                  actionWithTitle:@"Dismiss"
+                                  style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * action)
+                                  {
+                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                      
+                                  }];
+        [alert addAction:dismiss];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
 }
 
 - (void)createSticker:(NSString *)asset fromPack:(NSString *)packName localizedDescription:(NSString *)localizedDescription {
@@ -93,31 +131,6 @@
         [_stickers addObject:sticker];
  
     NSLog(@"processed %@", stickerURL);
-}
-
-- (void)loadStickerPackAtIndex:(NSInteger)index {
-    NSArray<NSString *> *packOrder = [_packInfo objectForKey:@"packOrder"];
-    
-    if (index < packOrder.count) {
-        [self loadStickersInPack:[_packInfo objectForKey:@"packOrder"][index]];
-    } else {
-        UIAlertController *alert = [UIAlertController
-                                      alertControllerWithTitle:@"Sticker pack unavailable."
-                                      message:nil
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *dismiss = [UIAlertAction
-                                    actionWithTitle:@"Dismiss"
-                                    style:UIAlertActionStyleDefault
-                                    handler:^(UIAlertAction * action)
-                             {
-                                 [alert dismissViewControllerAnimated:YES completion:nil];
-                                 
-                             }];
-        [alert addAction:dismiss];
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-        
 }
 
 - (NSInteger)numberOfStickersInStickerBrowserView:(MSStickerBrowserView *)stickerBrowserView {
