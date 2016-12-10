@@ -40,6 +40,7 @@
 		2833B1C81DF5079D005F05F2 /* fc_10.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BC1DF5079D005F05F2 /* fc_10.png */; };
 		2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BD1DF5079D005F05F2 /* fc_11.png */; };
 		2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BE1DF5079D005F05F2 /* fc_12.png */; };
+		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		2833B1BC1DF5079D005F05F2 /* fc_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_10.png; sourceTree = "<group>"; };
 		2833B1BD1DF5079D005F05F2 /* fc_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_11.png; sourceTree = "<group>"; };
 		2833B1BE1DF5079D005F05F2 /* fc_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_12.png; sourceTree = "<group>"; };
+		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +173,7 @@
 				2833B15D1DF4A0E4005F05F2 /* Assets.xcassets */,
 				2833B15F1DF4A0E4005F05F2 /* Info.plist */,
 				2833B1781DF4AC8F005F05F2 /* stickerPacks.json */,
+				28C8E0E31DFB93C200769784 /* newPacks.json */,
 				2833B1AF1DF50588005F05F2 /* Original */,
 				2833B1B21DF505DA005F05F2 /* Holiday */,
 			);
@@ -346,6 +349,7 @@
 				2833B1C51DF5079D005F05F2 /* fc_7.png in Resources */,
 				2833B1C71DF5079D005F05F2 /* fc_9.png in Resources */,
 				2833B15C1DF4A0E4005F05F2 /* MainInterface.storyboard in Resources */,
+				28C8E0E41DFB93C200769784 /* newPacks.json in Resources */,
 				2833B1901DF4AE7F005F05F2 /* wt_5.png in Resources */,
 				2833B18D1DF4AE7F005F05F2 /* wt_2.png in Resources */,
 			);
