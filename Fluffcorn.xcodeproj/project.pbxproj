@@ -41,6 +41,7 @@
 		2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BD1DF5079D005F05F2 /* fc_11.png */; };
 		2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BE1DF5079D005F05F2 /* fc_12.png */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
+		AEBA45581DFBD12000102A4A /* anim_test.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA45571DFBD12000102A4A /* anim_test.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		2833B1BE1DF5079D005F05F2 /* fc_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_12.png; sourceTree = "<group>"; };
 		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		AEBA45571DFBD12000102A4A /* anim_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = anim_test.png; path = ../../Documents/0fluffcorn_sticks/anim_test.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 		2833B1B21DF505DA005F05F2 /* Holiday */ = {
 			isa = PBXGroup;
 			children = (
+				AEBA45571DFBD12000102A4A /* anim_test.png */,
 				2833B1B01DF505A0005F05F2 /* Thanksgiving */,
 				2833B1B11DF505AA005F05F2 /* Winter */,
 			);
@@ -337,6 +340,7 @@
 				2833B1881DF4AE7F005F05F2 /* tg_3.png in Resources */,
 				2833B18C1DF4AE7F005F05F2 /* wt_1.png in Resources */,
 				2833B1791DF4AC8F005F05F2 /* stickerPacks.json in Resources */,
+				AEBA45581DFBD12000102A4A /* anim_test.png in Resources */,
 				2833B18F1DF4AE7F005F05F2 /* wt_4.png in Resources */,
 				2833B1C21DF5079D005F05F2 /* fc_4.png in Resources */,
 				2833B18E1DF4AE7F005F05F2 /* wt_3.png in Resources */,
