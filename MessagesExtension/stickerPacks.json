@@ -72,18 +72,14 @@
                       "filename": "wt_3",
                       "description": "Warm scarf"
                       }, {
-                      "filename": "wt_4",
-                      "description": "Wrapped in Christmas lights"
+                      "filename": "wt_4_anim",
+                      "description": "Wrapped in blinking Christmas lights"
                       }, {
                       "filename": "wt_5",
                       "description": "Hot Cocoa"
                       }, {
                       "filename": "wt_6",
                       "description": "Celebrate New Years 2017 🎉"
-                      }, {
-                      "filename": "anim_test1",
-                      "description": "Blinking Christmas Lights"
-                
                       }]
         }
     }

@@ -7,12 +7,12 @@
 //
 
 #import "MessagesViewController.h"
-#import "StickerPackInfo.h"
-#import "FluffcornStickerBrowserViewController.h"
 
 #import "Constants.h"
 
-#import "CustomBadge.h"
+#import "StickerPackInfo.h"
+#import "FluffcornStickerBrowserViewController.h"
+#import "FeedbackTextFieldDelegate.h"
 
 @interface MessagesViewController ()
 
@@ -21,6 +21,9 @@
 @property (nonatomic) UISegmentedControl *segmentedControl;
 @property (nonatomic) FluffcornStickerBrowserViewController *browserViewController;
 @property (nonatomic) UIButton *infoButton;
+
+@property (nonatomic) FeedbackTextFieldDelegate *feedbackTextFieldDelegate;
+@property (nonatomic) UIAlertController *sendingAlertController;
 
 @end
 
@@ -70,19 +73,26 @@
 
 - (IBAction)infoButtonTapped:(id)sender {
     UIAlertController *infoAlert = [UIAlertController
-                                alertControllerWithTitle:@"No stickers setup."
-                                message:nil
+                                alertControllerWithTitle:[NSString stringWithFormat:@"Fluffcorn v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
+                                message:@"Drawn by Alisha Liu\nDeveloped by Anson Liu\n\nThis iMessage sticker app is open source!\nCheck out our code at Github.com/fluffcorn.\n\nVisit us at Fluffcorn.com."
                                 preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *websiteAction = [UIAlertAction
-                              actionWithTitle:@"Dismiss"
+    UIAlertAction *sendFeedbackAction = [UIAlertAction
+                              actionWithTitle:@"Idea and Suggestion Box"
                               style:UIAlertActionStyleDefault
                               handler:^(UIAlertAction * action)
                               {
-                                  [infoAlert dismissViewControllerAnimated:YES completion:nil];
+                                  [self displayFeedbackAlert];
                                   
                               }];
-    [infoAlert addAction:websiteAction];
+    
+    UIAlertAction *dismissAction = [UIAlertAction
+                                         actionWithTitle:@"Dismiss"
+                                         style:UIAlertActionStyleCancel
+                                         handler:nil];
+    
+    [infoAlert addAction:sendFeedbackAction];
+    [infoAlert addAction:dismissAction];
     [self presentViewController:infoAlert animated:YES completion:nil];
 
 }
@@ -111,6 +121,89 @@
     [UIView animateWithDuration:0.7 animations:^() {
         _infoButton.alpha = 1.0f;
     }];
+}
+
+- (void)displayFeedbackAlert {
+    UIAlertController *feedbackAlert = [UIAlertController
+                                    alertControllerWithTitle:@"Ideas and Suggestion Box"
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *sendAction = [UIAlertAction
+                                         actionWithTitle:@"Send"
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * action)
+                                         {
+                                             //NSURLSession version of
+                                             //http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c
+                                             
+                                             //initialize url that is going to be fetched.
+                                             NSURL *url = [NSURL URLWithString:@"https://docs.google.com/forms/d/e/1FAIpQLSe9ONAbDW-HbaYqtAAl3iBtDThtddFHM5sXCpRequrxi2esmg/formResponse"];
+                                             
+                                             //initialize a request from url
+                                             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
+                                             
+                                             //set http method
+                                             [request setHTTPMethod:@"POST"];
+                                             //initialize a post data
+                                             NSString *postData = [NSString stringWithFormat:@"entry.262066721=%@", feedbackAlert.textFields.firstObject.text];
+                                             //set request content type we MUST set this value.
+                                             
+                                             [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+                                             
+                                             //set post data of request
+                                             [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
+                                             
+                                             //initialize a connection from request
+                                             NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
+                                             
+                                             _sendingAlertController = [UIAlertController
+                                                                        alertControllerWithTitle:@"Sending"
+                                                                        message:nil
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                                             [self presentViewController:_sendingAlertController animated:YES completion:nil];
+                                             
+                                             NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                 [_sendingAlertController dismissViewControllerAnimated:YES completion:^() {
+                                                     UIAlertController *sentAlert = [UIAlertController
+                                                                                     alertControllerWithTitle:error ? @"Unable to send. Please try later." : @"Sent successfully!"
+                                                                                     message:error ? error.localizedDescription : nil
+                                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                                                     [sentAlert addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil]];
+                                                     [self presentViewController:sentAlert animated:YES completion:nil];
+                                                 }];
+                                             }];
+                                             
+                                             [uploadTask resume];
+                                             
+                                            
+
+                                         }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                 actionWithTitle:@"Cancel"
+                                 style:UIAlertActionStyleCancel
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [feedbackAlert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    
+    [feedbackAlert addTextFieldWithConfigurationHandler:^(UITextField *textfield) {
+        _feedbackTextFieldDelegate = [[FeedbackTextFieldDelegate alloc] init];
+        _feedbackTextFieldDelegate.createAction = sendAction;
+        textfield.delegate = _feedbackTextFieldDelegate;
+        textfield.placeholder = @"Your suggestion here.";
+        textfield.autocorrectionType = UITextAutocorrectionTypeDefault;
+        textfield.autocapitalizationType = UITextAutocapitalizationTypeWords;
+        textfield.keyboardAppearance = UIKeyboardAppearanceAlert;
+        sendAction.enabled = NO;
+    }];
+    
+    [feedbackAlert addAction:sendAction];
+    [feedbackAlert addAction:cancelAction];
+    
+    [self presentViewController:feedbackAlert animated:YES completion:nil];
+
 }
 
 #pragma mark - Read/Save last selected category
@@ -255,15 +348,6 @@
      [_browserViewController.stickerBrowserView addGestureRecognizer:swipeDownRecognizer];
      swipeDownRecognizer.delegate = self;
      */
-    
-    CustomBadge *newBadge = [CustomBadge customBadgeWithString:@"0" withScale:1];
-    void (^addBadge)(UIView *) = ^void(UIView *targetView) {
-        newBadge.frame = CGRectMake(targetView.frame.size.width-newBadge.frame.size.width/2, newBadge.frame.size.height/2*-1, newBadge.frame.size.width, newBadge.frame.size.height);
-        [targetView addSubview:newBadge];
-        newBadge.translatesAutoresizingMaskIntoConstraints = NO;
-    };
-    addBadge(_segmentedControl);
-    
 }
 
 @end
