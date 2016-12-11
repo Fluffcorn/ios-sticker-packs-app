@@ -41,6 +41,8 @@
 		2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BD1DF5079D005F05F2 /* fc_11.png */; };
 		2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BE1DF5079D005F05F2 /* fc_12.png */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
+		28C8E0ED1DFC773E00769784 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C8E0EC1DFC773E00769784 /* CustomBadge.m */; };
+		28C8E0F01DFC774700769784 /* BadgeStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C8E0EF1DFC774700769784 /* BadgeStyle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,10 @@
 		2833B1BD1DF5079D005F05F2 /* fc_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_11.png; sourceTree = "<group>"; };
 		2833B1BE1DF5079D005F05F2 /* fc_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_12.png; sourceTree = "<group>"; };
 		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
+		28C8E0EB1DFC773E00769784 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
+		28C8E0EC1DFC773E00769784 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
+		28C8E0EE1DFC774700769784 /* BadgeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeStyle.h; sourceTree = "<group>"; };
+		28C8E0EF1DFC774700769784 /* BadgeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeStyle.m; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +175,10 @@
 				2833B16A1DF4A277005F05F2 /* FluffcornStickerBrowserViewController.m */,
 				2833B1941DF4C0E0005F05F2 /* StickerPackInfo.h */,
 				2833B1951DF4C0E0005F05F2 /* StickerPackInfo.m */,
+				28C8E0EB1DFC773E00769784 /* CustomBadge.h */,
+				28C8E0EC1DFC773E00769784 /* CustomBadge.m */,
+				28C8E0EE1DFC774700769784 /* BadgeStyle.h */,
+				28C8E0EF1DFC774700769784 /* BadgeStyle.m */,
 				2833B15A1DF4A0E4005F05F2 /* MainInterface.storyboard */,
 				2833B15D1DF4A0E4005F05F2 /* Assets.xcassets */,
 				2833B15F1DF4A0E4005F05F2 /* Info.plist */,
@@ -364,7 +374,9 @@
 			files = (
 				2833B1961DF4C0E0005F05F2 /* StickerPackInfo.m in Sources */,
 				2833B1591DF4A0E4005F05F2 /* MessagesViewController.m in Sources */,
+				28C8E0ED1DFC773E00769784 /* CustomBadge.m in Sources */,
 				2833B16B1DF4A277005F05F2 /* FluffcornStickerBrowserViewController.m in Sources */,
+				28C8E0F01DFC774700769784 /* BadgeStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
