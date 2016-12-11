@@ -1,5 +1,6 @@
-***ios-sticker-packs-app*** a customizable sticker iMessage App with tabbed category switcher.
+***ios-sticker-packs-app*** 
 ===================
+###A customizable sticker iMessage App with tabbed category switcher.
 
 ![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)
 
