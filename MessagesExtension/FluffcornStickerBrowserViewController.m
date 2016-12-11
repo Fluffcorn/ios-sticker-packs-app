@@ -79,7 +79,7 @@
     NSArray<NSDictionary *> *stickerOrder = [targetPack objectForKey:@"order"];
     
     for (NSDictionary *sticker in stickerOrder)
-        [self createSticker:[sticker valueForKey:kFilenameKey] fromPack:packName localizedDescription:[sticker valueForKey:kDescriptionKey]];
+        [self createSticker:[sticker valueForKey:kFilenameKey] fromPack:packName localizedDescription:[sticker valueForKey:kDescriptionKey] animated:[sticker valueForKey:kAnimatedKey]];
     
     _currentPack = packName;
 }
@@ -110,12 +110,17 @@
     
 }
 
-- (void)createSticker:(NSString *)asset fromPack:(NSString *)packName localizedDescription:(NSString *)localizedDescription {
+- (void)createSticker:(NSString *)asset fromPack:(NSString *)packName localizedDescription:(NSString *)localizedDescription animated:(BOOL)animated {
     /*
     NSString *stickerPath = [[NSBundle mainBundle] pathForResource:asset ofType:@"png" inDirectory:[NSString stringWithFormat:@"%@.stickerpack",packName]];
      */
+    NSString *extension = [NSString string];
+    if (animated) {
+        extension = @"apng";
+    } else
+        extension = @"png";
     
-    NSString *stickerPath = [[NSBundle mainBundle] pathForResource:asset ofType:@"png"];
+    NSString *stickerPath = [[NSBundle mainBundle] pathForResource:asset ofType:extension];
     
     if (!stickerPath)
         NSLog(@"Couldn't create the sticker path for %@", asset);

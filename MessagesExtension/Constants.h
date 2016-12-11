@@ -16,6 +16,7 @@
 #define kPackOrderKey @"packOrder"
 #define kFilenameKey @"filename"
 #define kDescriptionKey @"description"
+#define kAnimatedKey @"animated"
 
 #define Constants_h
 
