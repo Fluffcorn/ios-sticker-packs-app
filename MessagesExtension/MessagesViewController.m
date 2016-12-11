@@ -72,9 +72,14 @@
 }
 
 - (IBAction)infoButtonTapped:(id)sender {
+    NSError *error;
+    NSString *aboutText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error];
+    NSString *creditText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"openSourceCredit" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error];
+
+    
     UIAlertController *infoAlert = [UIAlertController
                                 alertControllerWithTitle:[NSString stringWithFormat:@"Fluffcorn v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
-                                message:@"Drawn by Alisha Liu\nDeveloped by Anson Liu\n\nThis iMessage sticker app is open source!\nCheck out our code at Github.com/fluffcorn.\n\nVisit us at Fluffcorn.com."
+                                    message:error ? error.localizedDescription : [NSString stringWithFormat:@"%@\n\n%@", aboutText, creditText]
                                 preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *sendFeedbackAction = [UIAlertAction
@@ -134,50 +139,7 @@
                                          style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction * action)
                                          {
-                                             //NSURLSession version of
-                                             //http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c
-                                             
-                                             //initialize url that is going to be fetched.
-                                             NSURL *url = [NSURL URLWithString:@"https://docs.google.com/forms/d/e/1FAIpQLSe9ONAbDW-HbaYqtAAl3iBtDThtddFHM5sXCpRequrxi2esmg/formResponse"];
-                                             
-                                             //initialize a request from url
-                                             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
-                                             
-                                             //set http method
-                                             [request setHTTPMethod:@"POST"];
-                                             //initialize a post data
-                                             NSString *postData = [NSString stringWithFormat:@"entry.262066721=%@", feedbackAlert.textFields.firstObject.text];
-                                             //set request content type we MUST set this value.
-                                             
-                                             [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-                                             
-                                             //set post data of request
-                                             [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
-                                             
-                                             //initialize a connection from request
-                                             NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
-                                             
-                                             _sendingAlertController = [UIAlertController
-                                                                        alertControllerWithTitle:@"Sending"
-                                                                        message:nil
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                                             [self presentViewController:_sendingAlertController animated:YES completion:nil];
-                                             
-                                             NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                 [_sendingAlertController dismissViewControllerAnimated:YES completion:^() {
-                                                     UIAlertController *sentAlert = [UIAlertController
-                                                                                     alertControllerWithTitle:error ? @"Unable to send. Please try later." : @"Sent successfully!"
-                                                                                     message:error ? error.localizedDescription : nil
-                                                                                     preferredStyle:UIAlertControllerStyleAlert];
-                                                     [sentAlert addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil]];
-                                                     [self presentViewController:sentAlert animated:YES completion:nil];
-                                                 }];
-                                             }];
-                                             
-                                             [uploadTask resume];
-                                             
-                                            
-
+                                             [self sendFeedbackAction:feedbackAlert.textFields.firstObject.text];
                                          }];
     
     UIAlertAction *cancelAction = [UIAlertAction
@@ -203,7 +165,50 @@
     [feedbackAlert addAction:cancelAction];
     
     [self presentViewController:feedbackAlert animated:YES completion:nil];
+}
 
+- (void)sendFeedbackAction:(NSString *)feedback {
+    //NSURLSession version of
+    //http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c
+    
+    //initialize url that is going to be fetched.
+    NSURL *url = [NSURL URLWithString:@"https://docs.google.com/forms/d/e/1FAIpQLSe9ONAbDW-HbaYqtAAl3iBtDThtddFHM5sXCpRequrxi2esmg/formResponse"];
+    
+    //initialize a request from url
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
+    
+    //set http method
+    [request setHTTPMethod:@"POST"];
+    //initialize a post data
+    NSString *postData = [NSString stringWithFormat:@"entry.262066721=%@", feedback];
+    //set request content type we MUST set this value.
+    
+    [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    //set post data of request
+    [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //initialize a connection from request
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
+    
+    _sendingAlertController = [UIAlertController
+                               alertControllerWithTitle:@"Sending"
+                               message:nil
+                               preferredStyle:UIAlertControllerStyleAlert];
+    [self presentViewController:_sendingAlertController animated:YES completion:nil];
+    
+    NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [_sendingAlertController dismissViewControllerAnimated:YES completion:^() {
+            UIAlertController *sentAlert = [UIAlertController
+                                            alertControllerWithTitle:error ? @"Unable to send. Please try later." : @"Sent successfully!"
+                                            message:error ? error.localizedDescription : nil
+                                            preferredStyle:UIAlertControllerStyleAlert];
+            [sentAlert addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:sentAlert animated:YES completion:nil];
+        }];
+    }];
+    
+    [uploadTask resume];
 }
 
 #pragma mark - Read/Save last selected category
