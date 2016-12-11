@@ -41,7 +41,7 @@
 		2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BD1DF5079D005F05F2 /* fc_11.png */; };
 		2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BE1DF5079D005F05F2 /* fc_12.png */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
-		AEBA455E1DFCEC0600102A4A /* anim_test.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA455D1DFCEC0600102A4A /* anim_test.png */; };
+		AEBA45601DFCFC9400102A4A /* anim_test1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA455F1DFCFC9400102A4A /* anim_test1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +110,7 @@
 		2833B1BE1DF5079D005F05F2 /* fc_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_12.png; sourceTree = "<group>"; };
 		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		AEBA455D1DFCEC0600102A4A /* anim_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anim_test.png; sourceTree = "<group>"; };
+		AEBA455F1DFCFC9400102A4A /* anim_test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anim_test1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,7 +217,7 @@
 		2833B1B11DF505AA005F05F2 /* Winter */ = {
 			isa = PBXGroup;
 			children = (
-				AEBA455D1DFCEC0600102A4A /* anim_test.png */,
+				AEBA455F1DFCFC9400102A4A /* anim_test1.png */,
 				2833B1801DF4AE7F005F05F2 /* wt_1.png */,
 				2833B1811DF4AE7F005F05F2 /* wt_2.png */,
 				2833B1821DF4AE7F005F05F2 /* wt_3.png */,
@@ -338,9 +338,9 @@
 				2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */,
 				2833B1C41DF5079D005F05F2 /* fc_6.png in Resources */,
 				2833B1881DF4AE7F005F05F2 /* tg_3.png in Resources */,
+				AEBA45601DFCFC9400102A4A /* anim_test1.png in Resources */,
 				2833B18C1DF4AE7F005F05F2 /* wt_1.png in Resources */,
 				2833B1791DF4AC8F005F05F2 /* stickerPacks.json in Resources */,
-				AEBA455E1DFCEC0600102A4A /* anim_test.png in Resources */,
 				2833B18F1DF4AE7F005F05F2 /* wt_4.png in Resources */,
 				2833B1C21DF5079D005F05F2 /* fc_4.png in Resources */,
 				2833B18E1DF4AE7F005F05F2 /* wt_3.png in Resources */,
