@@ -12,12 +12,15 @@
 
 #import "Constants.h"
 
+#import "CustomBadge.h"
+
 @interface MessagesViewController ()
 
 @property (nonatomic) NSDictionary *packInfo;
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UISegmentedControl *segmentedControl;
 @property (nonatomic) FluffcornStickerBrowserViewController *browserViewController;
+@property (nonatomic) UIButton *infoButton;
 
 @end
 
@@ -56,13 +59,32 @@
     }
 }
 
-#pragma mark - Segmented category button action method
+#pragma mark - UI action methods
 
 - (IBAction)segmentSwitch:(UISegmentedControl *)sender {
     NSInteger selectedSegment = sender.selectedSegmentIndex;
     
     [_browserViewController loadStickerPackAtIndex:selectedSegment];
     [_browserViewController.stickerBrowserView reloadData];
+}
+
+- (IBAction)infoButtonTapped:(id)sender {
+    UIAlertController *infoAlert = [UIAlertController
+                                alertControllerWithTitle:@"No stickers setup."
+                                message:nil
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *websiteAction = [UIAlertAction
+                              actionWithTitle:@"Dismiss"
+                              style:UIAlertActionStyleDefault
+                              handler:^(UIAlertAction * action)
+                              {
+                                  [infoAlert dismissViewControllerAnimated:YES completion:nil];
+                                  
+                              }];
+    [infoAlert addAction:websiteAction];
+    [self presentViewController:infoAlert animated:YES completion:nil];
+
 }
 
 #pragma mark - UI display
@@ -76,6 +98,18 @@
 - (void)showSegmentedControl {
     [UIView animateWithDuration:0.7 animations:^() {
         _segmentedControl.alpha = 1.0f;
+    }];
+}
+
+- (void)hideInfoButton {
+    [UIView animateWithDuration:0.2 animations:^() {
+        _infoButton.alpha = 0.0f;
+    }];
+}
+
+- (void)showInfoButton {
+    [UIView animateWithDuration:0.7 animations:^() {
+        _infoButton.alpha = 1.0f;
     }];
 }
 
@@ -101,9 +135,10 @@
 
 -(void)willTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
     if (presentationStyle == MSMessagesAppPresentationStyleExpanded) {
-        [UIView animateWithDuration:0.2 animations:^() {
-            _segmentedControl.alpha = 1.0f;
-        }];
+        [self showSegmentedControl];
+        [self showInfoButton];
+    } else {
+        [self hideInfoButton];
     }
 }
 
@@ -122,7 +157,7 @@
         
         UIAlertAction *dismiss = [UIAlertAction
                                   actionWithTitle:@"Dismiss"
-                                  style:UIAlertActionStyleDefault
+                                  style:UIAlertActionStyleCancel
                                   handler:^(UIAlertAction * action)
                                   {
                                       [alert dismissViewControllerAnimated:YES completion:nil];
@@ -170,11 +205,19 @@
     //Alloc sticker browser view controller
     _browserViewController = [[FluffcornStickerBrowserViewController alloc] initWithStickerSize:MSStickerSizeRegular withPackInfo:_packInfo];
     
+    //Alloc and hide info button
+    _infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    _infoButton.alpha = 0.0f;
+    [_infoButton addTarget:self action:@selector(infoButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Remove auto resizing masks
     _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
     _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    _infoButton.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:_browserViewController.view];
     [self.view addSubview:_segmentedControl];
+    [self.view addSubview:_infoButton];
     [self addChildViewController:_browserViewController];
     [_browserViewController didMoveToParentViewController:self];
     
@@ -183,12 +226,14 @@
     NSMutableArray *messageViewConstraints = [[NSMutableArray alloc] init];
     //@{@"topGuide": topGuide, @"bottomGuide": bottomGuide, @"segment": _segmentedControl, @"browser": _browserViewController.view};
     UIView *browserView = _browserViewController.view;
-    NSDictionary *bindings = NSDictionaryOfVariableBindings(topGuide, bottomGuide, _segmentedControl, browserView);
+    NSDictionary *bindings = NSDictionaryOfVariableBindings(topGuide, bottomGuide, _segmentedControl, browserView, _infoButton);
     
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-[_segmentedControl(==20)]" options:0 metrics:nil views:bindings]];
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[browserView]|" options:0 metrics:nil views:bindings]];
+    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_infoButton]-[bottomGuide]" options:0 metrics:nil views:bindings]];
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_segmentedControl]-|" options:0 metrics:nil views:bindings]];
     [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[browserView]|" options:0 metrics:nil views:bindings]];
+    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_infoButton]-|" options:0 metrics:nil views:bindings]];
     [self.view addConstraints:messageViewConstraints];
     
     _browserViewController.stickerBrowserView.contentInset = UIEdgeInsetsMake(_segmentedControl.frame.size.height+25, 0, 0, 0);
@@ -210,6 +255,15 @@
      [_browserViewController.stickerBrowserView addGestureRecognizer:swipeDownRecognizer];
      swipeDownRecognizer.delegate = self;
      */
+    
+    CustomBadge *newBadge = [CustomBadge customBadgeWithString:@"0" withScale:1];
+    void (^addBadge)(UIView *) = ^void(UIView *targetView) {
+        newBadge.frame = CGRectMake(targetView.frame.size.width-newBadge.frame.size.width/2, newBadge.frame.size.height/2*-1, newBadge.frame.size.width, newBadge.frame.size.height);
+        [targetView addSubview:newBadge];
+        newBadge.translatesAutoresizingMaskIntoConstraints = NO;
+    };
+    addBadge(_segmentedControl);
+    
 }
 
 @end
