@@ -41,7 +41,7 @@
 		2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BD1DF5079D005F05F2 /* fc_11.png */; };
 		2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BE1DF5079D005F05F2 /* fc_12.png */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
-		AEBA45621DFCFCEE00102A4A /* anim_test1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA45611DFCFCEE00102A4A /* anim_test1.png */; };
+		AEBA45641DFCFD8E00102A4A /* anim_test1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA45631DFCFD8E00102A4A /* anim_test1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +114,7 @@
 		28C8E0EE1DFC774700769784 /* BadgeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeStyle.h; sourceTree = "<group>"; };
 		28C8E0EF1DFC774700769784 /* BadgeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeStyle.m; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		AEBA45611DFCFCEE00102A4A /* anim_test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anim_test1.png; sourceTree = "<group>"; };
+		AEBA45631DFCFD8E00102A4A /* anim_test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anim_test1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +225,7 @@
 		2833B1B11DF505AA005F05F2 /* Winter */ = {
 			isa = PBXGroup;
 			children = (
-				AEBA45611DFCFCEE00102A4A /* anim_test1.png */,
+				AEBA45631DFCFD8E00102A4A /* anim_test1.png */,
 				2833B1801DF4AE7F005F05F2 /* wt_1.png */,
 				2833B1811DF4AE7F005F05F2 /* wt_2.png */,
 				2833B1821DF4AE7F005F05F2 /* wt_3.png */,
@@ -346,7 +346,7 @@
 				2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */,
 				2833B1C41DF5079D005F05F2 /* fc_6.png in Resources */,
 				2833B1881DF4AE7F005F05F2 /* tg_3.png in Resources */,
-				AEBA45621DFCFCEE00102A4A /* anim_test1.png in Resources */,
+				AEBA45641DFCFD8E00102A4A /* anim_test1.png in Resources */,
 				2833B18C1DF4AE7F005F05F2 /* wt_1.png in Resources */,
 				2833B1791DF4AC8F005F05F2 /* stickerPacks.json in Resources */,
 				2833B18F1DF4AE7F005F05F2 /* wt_4.png in Resources */,
@@ -376,9 +376,7 @@
 			files = (
 				2833B1961DF4C0E0005F05F2 /* StickerPackInfo.m in Sources */,
 				2833B1591DF4A0E4005F05F2 /* MessagesViewController.m in Sources */,
-				28C8E0ED1DFC773E00769784 /* CustomBadge.m in Sources */,
 				2833B16B1DF4A277005F05F2 /* FluffcornStickerBrowserViewController.m in Sources */,
-				28C8E0F01DFC774700769784 /* BadgeStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
