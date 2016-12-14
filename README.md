@@ -2,9 +2,9 @@
 ===================
 ###A customizable sticker iMessage App with tabbed category switcher.
 
-![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)
+[![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 
-This is the repository for **Fluffcorn stickers**, an iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [here](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages).
+This is the repository for **Fluffcorn stickers**, an iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages).
 
 - Notable features
   - Customizable tabbed category switcher.
