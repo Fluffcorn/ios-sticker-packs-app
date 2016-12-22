@@ -9,8 +9,9 @@
 #ifndef Constants_h
 
 //Developer customization
-#define kStickerSizeSliderVisibility NO
+#define kStickerSizeSliderVisibility YES
 #define kDefaultStickerSize ((int)1)
+#define kFeedbackAction YES
 
 //NSUserDefaults keys
 #define kLastSelectedCategoryKey @"lastSelectedCategory"

@@ -126,7 +126,10 @@
                                          style:UIAlertActionStyleCancel
                                          handler:nil];
     
-    [infoAlert addAction:sendFeedbackAction];
+    //If developer has enabled feedback
+    if (kFeedbackAction)
+        [infoAlert addAction:sendFeedbackAction];
+    
     [infoAlert addAction:dismissAction];
     [self presentViewController:infoAlert animated:YES completion:nil];
 
@@ -430,12 +433,12 @@
     
     //Alloc and hide info button
     _infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    _infoButton.alpha = 0.0f;
+    _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
     [_infoButton addTarget:self action:@selector(infoButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     //Alloc slider and set min/max values and actions
     _sizeSlider = [[UISlider alloc] init];
-    _sizeSlider.alpha = 0.0f;
+    _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
     _sizeSlider.minimumValue = 0;
     _sizeSlider.maximumValue = 2;
     _sizeSlider.value = savedStickerSize;

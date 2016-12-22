@@ -1,20 +1,22 @@
-***ios-sticker-packs-app*** 
+**ios-sticker-packs-app**
 ===================
-###A customizable sticker iMessage App with tabbed category switcher.
+###A customizable sticker iMessage App with tabbed category switcher and sticker size slider.
 
-[![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
-
-This is the repository for **Fluffcorn stickers**, an iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages).
+[![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 
 - Notable features
   - Customizable tabbed category switcher.
   - User adjustable sticker size slider.
-  - User feedback submission. (Using Google Forms)
+     - Adjustable default sticker size.
+  - User feedback submission.
+     - Pre-setup with Google Sheets as storage.
+
+This code is used in **Fluffcorn stickers**, a iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages). 
 
 How to use for your own stickers
 -------------
 1. Clone or download ***ios-sticker-packs-app***.
-2. Delete all resources in `Art Assets` in Xcode. See [Removing Existing Art Assets](#removing-existing-art-assets.
+2. Delete all resources in `Art Assets` in Xcode. See [Removing Existing Art Assets](#removing-existing-art-assets).
 3. Add your own sticker images to the project.
 4. Edit `stickerPacks.json` to include your own stickers. See [How to edit `stickerPacks.json`](#how-to-use-for-your-own-stickers).
 5. Set default sticker size. See [Configuring Default Sticker Size](#configuring-default-sticker-size).
@@ -42,13 +44,13 @@ Each pack is a dictionary with a `order` key which is an array containing a dict
 
 ####Configuring Sticker Size Slider Visibility
 
-- **If you want to sticker size slider to be visible**, set `kStickerSizeSliderVisibility` in `Constants.h` to `YES`.
-- **If you want to sticker size slider to NOT be visible**, set `kStickerSizeSliderVisibility` in `Constants.h` to `NO`.
+- **If you want the sticker size slider to be visible**, set `kStickerSizeSliderVisibility` in `Constants.h` to `YES`.
+- **If you want the sticker size slider to NOT be visible**, set `kStickerSizeSliderVisibility` in `Constants.h` to `NO`.
 
 ####Configuring Feedback Submission
 
-- **If you want Feedback submission**, follow [this post](http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c) and edit `sendFeedbackAction:` in `MessagesViewController.h` with the appropriate values for your Google Form.
-- **If you do NOT want Feedback submission**, comment out `[infoAlert addAction:sendFeedbackAction];` in `MessagesViewController.h` by inserting `//` at the beginning of the line.
+- **If you want Feedback submission**, set `kFeedbackAction` in `Constants.h` to `YES`.  Follow [this post](http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c) and edit `sendFeedbackAction:` in `MessagesViewController.h` with the appropriate values for your Google Form.
+- **If you do NOT want Feedback submission**, set `kFeedbackAction` in `Constants.h` to `NO`. 
 
 
 ####Using APNG stickers
@@ -61,16 +63,18 @@ There are some non-obvious steps to using animated PNG (APNG) stickers in a iMes
 
 ####Removing Existing Art Assets
 
-When using ***ios-sticker-packs-app*** for your own iMessage sticker app, remove all resources in the `Art Assets` file group in the Xcode Navigator to get rid of the Fluffcorn art assets and provide your own art. 
+When using **ios-sticker-packs-app** for your own iMessage sticker app, remove all resources in the `Art Assets` file group in the Xcode Navigator to get rid of the Fluffcorn art assets and provide your own art. 
 
 ####Settings.bundle
 
 Standalone iMessage apps do not currently seem to appear in the Settings app. `Settings.bundle` is included if you would like a Settings menu in an iOS app.
 
-License
+License and Contributing
 -------------
 All art assets in this repository (any images including PNG and APNG) are © 2016 Alisha Liu under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. [![Creative Commons License](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png "Creative Commons License")](http://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 Everything else (the code and text assets) in this repository is made available under MIT License. 
 
 *Visible attribution to ios-sticker-packs-app by Anson Liu, Alisha Liu required if used publicly or commercially.*
+
+Feature requests, issues, and contributions welcome!
