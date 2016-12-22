@@ -8,15 +8,24 @@
 
 #ifndef Constants_h
 
-#define kLastSelectedCategory @"lastSelectedCategory"
-#define kVersionPopoverKey @"versionPopover"
+//Developer customization
+#define kStickerSizeSliderVisibility NO
+#define kDefaultStickerSize ((int)1)
 
+//NSUserDefaults keys
+#define kLastSelectedCategoryKey @"lastSelectedCategory"
+//#define kVersionPopoverKey @"versionPopover"
+
+//Settings Bundle keys
+#define kStickerSizeSliderVisibilityPreferenceKey @"stickerSizeSliderVisibilityPreference"
+#define kStickerSizeSliderPreferenceKey @"stickerSizeSliderPreference"
+
+//Sticker pack info keys
 #define kStickerPackInfoFile @"stickerPacks.json"
 #define kAllPacksKey @"allPacks"
 #define kPackOrderKey @"packOrder"
 #define kFilenameKey @"filename"
 #define kDescriptionKey @"description"
-#define kAnimatedKey @"animated"
 
 #define Constants_h
 

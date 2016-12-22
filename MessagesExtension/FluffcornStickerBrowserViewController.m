@@ -117,7 +117,7 @@
     NSString *extension = @"png";
     
     NSString *stickerPath = [[NSBundle mainBundle] pathForResource:asset ofType:extension];
-    NSLog(@"%@", stickerPath);
+    //NSLog(@"%@", stickerPath);
     
     if (!stickerPath)
         NSLog(@"Couldn't create the sticker path for %@", asset);
@@ -132,7 +132,7 @@
     else
         [_stickers addObject:sticker];
  
-    NSLog(@"processed %@", stickerURL);
+    //NSLog(@"processed %@", stickerURL);
 }
 
 - (NSInteger)numberOfStickersInStickerBrowserView:(MSStickerBrowserView *)stickerBrowserView {
@@ -143,14 +143,8 @@
     return [_stickers objectAtIndex:index];
 }
 
-/*
-#pragma mark - Navigation
+- (void)setNewStickerSize:(MSStickerSize)stickerSize {
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 @end

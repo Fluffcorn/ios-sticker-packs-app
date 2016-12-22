@@ -17,4 +17,6 @@
 - (void)loadStickersInPack:(NSString *)packName;
 - (void)loadStickerPackAtIndex:(NSInteger)index;
 
+- (void)setNewStickerSize:(MSStickerSize)stickerSize;
+
 @end
