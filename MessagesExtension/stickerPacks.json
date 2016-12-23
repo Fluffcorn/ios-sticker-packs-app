@@ -45,16 +45,10 @@
         },
         "Holiday": {
             "order": [{
-                      "filename": "wta_1!",
-                      "description": "Scarf Blowing in the Wind"
-                      }, {
                       "filename": "wt_3",
                       "description": "Reindeer"
                       }, {
-                      "filename": "wta_2!",
-                      "description": "Tasting Snowflakes"
-                      }, {
-                      "filename": "wta_4!",
+                      "filename": "wt_4_anim.png",
                       "description": "Wrapped in blinking Christmas lights"
                       }, {
                       "filename": "wt_5",

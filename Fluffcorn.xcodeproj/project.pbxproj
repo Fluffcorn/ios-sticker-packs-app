@@ -42,14 +42,11 @@
 		2833B1C81DF5079D005F05F2 /* fc_10.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BC1DF5079D005F05F2 /* fc_10.png */; };
 		2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BD1DF5079D005F05F2 /* fc_11.png */; };
 		2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BE1DF5079D005F05F2 /* fc_12.png */; };
-		28AE8DD21DFD0BE2002CB4A3 /* wt_4_anim.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD11DFD0BE2002CB4A3 /* wt_4_anim.png */; };
 		28AE8DD51DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE8DD41DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m */; };
 		28AE8DD81DFDA422002CB4A3 /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD71DFDA422002CB4A3 /* about.txt */; };
 		28AE8DDA1DFDA4E7002CB4A3 /* openSourceCredit.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
-		AEE8C9B61E05199000015235 /* wta_2!.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE8C9B41E05199000015235 /* wta_2!.png */; };
-		AEE8C9B71E05199000015235 /* wta_4!.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE8C9B51E05199000015235 /* wta_4!.png */; };
-		AEE8C9B91E052F7A00015235 /* wta_1!.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE8C9B81E052F7A00015235 /* wta_1!.png */; };
+		AE907E021E0DD4CD00AB9B33 /* wt_4_anim.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA3CFE31E0DB76A00EF1D46 /* wt_4_anim.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +113,6 @@
 		2833B1BC1DF5079D005F05F2 /* fc_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_10.png; sourceTree = "<group>"; };
 		2833B1BD1DF5079D005F05F2 /* fc_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_11.png; sourceTree = "<group>"; };
 		2833B1BE1DF5079D005F05F2 /* fc_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_12.png; sourceTree = "<group>"; };
-		28AE8DD11DFD0BE2002CB4A3 /* wt_4_anim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wt_4_anim.png; sourceTree = "<group>"; };
 		28AE8DD31DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackTextFieldDelegate.h; sourceTree = "<group>"; };
 		28AE8DD41DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackTextFieldDelegate.m; sourceTree = "<group>"; };
 		28AE8DD71DFDA422002CB4A3 /* about.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
@@ -127,9 +123,7 @@
 		28C8E0EE1DFC774700769784 /* BadgeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeStyle.h; sourceTree = "<group>"; };
 		28C8E0EF1DFC774700769784 /* BadgeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeStyle.m; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		AEE8C9B41E05199000015235 /* wta_2!.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wta_2!.png"; sourceTree = "<group>"; };
-		AEE8C9B51E05199000015235 /* wta_4!.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wta_4!.png"; sourceTree = "<group>"; };
-		AEE8C9B81E052F7A00015235 /* wta_1!.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wta_1!.png"; sourceTree = "<group>"; };
+		AEA3CFE31E0DB76A00EF1D46 /* wt_4_anim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wt_4_anim.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,14 +237,11 @@
 		2833B1B11DF505AA005F05F2 /* Winter */ = {
 			isa = PBXGroup;
 			children = (
-				AEE8C9B81E052F7A00015235 /* wta_1!.png */,
-				AEE8C9B41E05199000015235 /* wta_2!.png */,
-				AEE8C9B51E05199000015235 /* wta_4!.png */,
+				AEA3CFE31E0DB76A00EF1D46 /* wt_4_anim.png */,
 				2833B1801DF4AE7F005F05F2 /* wt_1.png */,
 				2833B1811DF4AE7F005F05F2 /* wt_2.png */,
 				2833B1821DF4AE7F005F05F2 /* wt_3.png */,
 				2833B1831DF4AE7F005F05F2 /* wt_4.png */,
-				28AE8DD11DFD0BE2002CB4A3 /* wt_4_anim.png */,
 				2833B1841DF4AE7F005F05F2 /* wt_5.png */,
 				2833B1851DF4AE7F005F05F2 /* wt_6.png */,
 			);
@@ -318,7 +309,7 @@
 		2833B13F1DF4A0E3005F05F2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Anson Liu";
 				TargetAttributes = {
 					2833B1441DF4A0E3005F05F2 = {
@@ -376,9 +367,9 @@
 				2833B1BF1DF5079D005F05F2 /* fc_1.png in Resources */,
 				2833B1871DF4AE7F005F05F2 /* tg_2.png in Resources */,
 				2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */,
+				AE907E021E0DD4CD00AB9B33 /* wt_4_anim.png in Resources */,
 				2833B1C41DF5079D005F05F2 /* fc_6.png in Resources */,
 				2833B1881DF4AE7F005F05F2 /* tg_3.png in Resources */,
-				28AE8DD21DFD0BE2002CB4A3 /* wt_4_anim.png in Resources */,
 				2833B18C1DF4AE7F005F05F2 /* wt_1.png in Resources */,
 				2833B1791DF4AC8F005F05F2 /* stickerPacks.json in Resources */,
 				2833B18F1DF4AE7F005F05F2 /* wt_4.png in Resources */,
@@ -387,15 +378,12 @@
 				2833B1C81DF5079D005F05F2 /* fc_10.png in Resources */,
 				2833B1861DF4AE7F005F05F2 /* tg_1.png in Resources */,
 				2833B1911DF4AE7F005F05F2 /* wt_6.png in Resources */,
-				AEE8C9B71E05199000015235 /* wta_4!.png in Resources */,
 				2833B1C31DF5079D005F05F2 /* fc_5.png in Resources */,
 				2833B1C61DF5079D005F05F2 /* fc_8.png in Resources */,
 				2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */,
 				2833B1C51DF5079D005F05F2 /* fc_7.png in Resources */,
 				2833B1C71DF5079D005F05F2 /* fc_9.png in Resources */,
-				AEE8C9B61E05199000015235 /* wta_2!.png in Resources */,
 				2833B15C1DF4A0E4005F05F2 /* MainInterface.storyboard in Resources */,
-				AEE8C9B91E052F7A00015235 /* wta_1!.png in Resources */,
 				28C8E0E41DFB93C200769784 /* newPacks.json in Resources */,
 				2833B1901DF4AE7F005F05F2 /* wt_5.png in Resources */,
 				2833B18D1DF4AE7F005F05F2 /* wt_2.png in Resources */,
@@ -458,6 +446,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -505,6 +494,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
