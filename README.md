@@ -10,6 +10,7 @@
      - Adjustable default sticker size.
   - User feedback submission.
      - Pre-setup with Google Sheets as storage.
+  - Persistence for last selected category and adjusted sticker size.
 
 This code is used in **Fluffcorn stickers**, a iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages). 
 

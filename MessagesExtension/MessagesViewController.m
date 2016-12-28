@@ -152,6 +152,10 @@
     
     [self setupStickerBrowserView];
     
+    //Set browserViewController to currently selected segment
+    [_browserViewController loadStickerPackAtIndex:_segmentedControl.selectedSegmentIndex];
+    [_browserViewController.stickerBrowserView reloadData];
+    
     //Save last selected sticker size to disk
     [self saveStickerSize];
 }
@@ -190,7 +194,7 @@
 
 }
 
-- (void)setupStickerBrowserView {
+- (void)loadLastSelectedCategoryToBrowserAndSegment {
     NSString *lastSelectedCategory = [self readLastSelectedCategory];
     if (lastSelectedCategory.length > 0) {
         [_browserViewController loadStickersInPack:lastSelectedCategory];
@@ -215,11 +219,13 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }
+    [_browserViewController.stickerBrowserView reloadData];
+}
+
+- (void)setupStickerBrowserView {
     
     //Multiply top inset by two when reapplying constraints due to new browserStickerView added to view. Autolayout places new browserViewController view too far up on reapplication of constraints.
     _browserViewController.stickerBrowserView.contentInset = UIEdgeInsetsMake(_segmentedControl.frame.size.height * (_constraintsReapplied ? 2 : 1), 0, 0, 0);
-    
-    [_browserViewController.stickerBrowserView reloadData];
 }
 
 - (void)hideSegmentedControl {
@@ -389,6 +395,7 @@
 
 - (void)willBecomeActiveWithConversation:(MSConversation *)conversation {
     [self setupStickerBrowserView];
+    [self loadLastSelectedCategoryToBrowserAndSegment];
 }
 
 
