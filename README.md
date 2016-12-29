@@ -10,7 +10,9 @@
      - Adjustable default sticker size.
   - User feedback submission.
      - Pre-setup with Google Sheets as storage.
-  - Persistence for last selected category and adjusted sticker size.
+  - Persistence for:
+     - Last selected category
+     - Adjusted sticker size
 
 This code is used in **Fluffcorn stickers**, a iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages). 
 
@@ -78,4 +80,4 @@ Everything else (the code and text assets) in this repository is made available 
 
 *Visible attribution to ios-sticker-packs-app by Anson Liu, Alisha Liu required if used publicly or commercially.*
 
-Feature requests, issues, and contributions welcome!
+Issues, feature requests, and contributions welcome!
