@@ -46,7 +46,9 @@
 		28AE8DD81DFDA422002CB4A3 /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD71DFDA422002CB4A3 /* about.txt */; };
 		28AE8DDA1DFDA4E7002CB4A3 /* openSourceCredit.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
-		AE907E021E0DD4CD00AB9B33 /* wt_4_anim.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA3CFE31E0DB76A00EF1D46 /* wt_4_anim.png */; };
+		AE907E091E0DD86300AB9B33 /* wt_4_anim.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA3CFE31E0DB76A00EF1D46 /* wt_4_anim.png */; };
+		AE907E0C1E0DDC6600AB9B33 /* wta_1_anim_opt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE907E0A1E0DDC6600AB9B33 /* wta_1_anim_opt.png */; };
+		AE907E0D1E0DDC6600AB9B33 /* wta_2_anim_opt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE907E0B1E0DDC6600AB9B33 /* wta_2_anim_opt.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		28C8E0EE1DFC774700769784 /* BadgeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeStyle.h; sourceTree = "<group>"; };
 		28C8E0EF1DFC774700769784 /* BadgeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeStyle.m; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		AE907E0A1E0DDC6600AB9B33 /* wta_1_anim_opt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wta_1_anim_opt.png; sourceTree = "<group>"; };
+		AE907E0B1E0DDC6600AB9B33 /* wta_2_anim_opt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wta_2_anim_opt.png; sourceTree = "<group>"; };
 		AEA3CFE31E0DB76A00EF1D46 /* wt_4_anim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wt_4_anim.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,10 +241,12 @@
 		2833B1B11DF505AA005F05F2 /* Winter */ = {
 			isa = PBXGroup;
 			children = (
-				AEA3CFE31E0DB76A00EF1D46 /* wt_4_anim.png */,
+				AE907E0A1E0DDC6600AB9B33 /* wta_1_anim_opt.png */,
+				AE907E0B1E0DDC6600AB9B33 /* wta_2_anim_opt.png */,
 				2833B1801DF4AE7F005F05F2 /* wt_1.png */,
 				2833B1811DF4AE7F005F05F2 /* wt_2.png */,
 				2833B1821DF4AE7F005F05F2 /* wt_3.png */,
+				AEA3CFE31E0DB76A00EF1D46 /* wt_4_anim.png */,
 				2833B1831DF4AE7F005F05F2 /* wt_4.png */,
 				2833B1841DF4AE7F005F05F2 /* wt_5.png */,
 				2833B1851DF4AE7F005F05F2 /* wt_6.png */,
@@ -319,7 +325,7 @@
 					};
 					2833B14E1DF4A0E4005F05F2 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 3E2UWZ76C2;
+						DevelopmentTeam = VV45364L3K;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -367,7 +373,6 @@
 				2833B1BF1DF5079D005F05F2 /* fc_1.png in Resources */,
 				2833B1871DF4AE7F005F05F2 /* tg_2.png in Resources */,
 				2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */,
-				AE907E021E0DD4CD00AB9B33 /* wt_4_anim.png in Resources */,
 				2833B1C41DF5079D005F05F2 /* fc_6.png in Resources */,
 				2833B1881DF4AE7F005F05F2 /* tg_3.png in Resources */,
 				2833B18C1DF4AE7F005F05F2 /* wt_1.png in Resources */,
@@ -380,9 +385,12 @@
 				2833B1911DF4AE7F005F05F2 /* wt_6.png in Resources */,
 				2833B1C31DF5079D005F05F2 /* fc_5.png in Resources */,
 				2833B1C61DF5079D005F05F2 /* fc_8.png in Resources */,
+				AE907E0C1E0DDC6600AB9B33 /* wta_1_anim_opt.png in Resources */,
 				2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */,
+				AE907E0D1E0DDC6600AB9B33 /* wta_2_anim_opt.png in Resources */,
 				2833B1C51DF5079D005F05F2 /* fc_7.png in Resources */,
 				2833B1C71DF5079D005F05F2 /* fc_9.png in Resources */,
+				AE907E091E0DD86300AB9B33 /* wt_4_anim.png in Resources */,
 				2833B15C1DF4A0E4005F05F2 /* MainInterface.storyboard in Resources */,
 				28C8E0E41DFB93C200769784 /* newPacks.json in Resources */,
 				2833B1901DF4AE7F005F05F2 /* wt_5.png in Resources */,
@@ -522,7 +530,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				DEVELOPMENT_TEAM = VV45364L3K;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -537,7 +545,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				DEVELOPMENT_TEAM = VV45364L3K;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

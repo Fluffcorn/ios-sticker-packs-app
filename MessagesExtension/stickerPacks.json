@@ -45,11 +45,17 @@
         },
         "Holiday": {
             "order": [{
+                      "filename": "wta_1_anim_opt",
+                      "description": "Scarf Blowing in the Wind"
+                      }, {
+                      "filename": "wta_2_anim_opt",
+                      "description": "Tasting the Snowflakes"
+                      }, {
                       "filename": "wt_3",
                       "description": "Reindeer"
                       }, {
-                      "filename": "wt_4_anim.png",
-                      "description": "Wrapped in blinking Christmas lights"
+                      "filename": "wt_4_anim",
+                      "description": "Celebrate New Years 2017 🎉"
                       }, {
                       "filename": "wt_5",
                       "description": "Hot Cocoa"
@@ -58,7 +64,7 @@
                       "description": "Celebrate New Years 2017 🎉"
                       }, {
                       "filename": "tg_1",
-                      "description": "Playing in leaves"
+                      "description": "Playing in Leaves"
                       }, {
                       "filename": "tg_2",
                       "description": "Pilgrims"
