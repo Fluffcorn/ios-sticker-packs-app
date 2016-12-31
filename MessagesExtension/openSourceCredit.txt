@@ -1,2 +1,2 @@
-This iMessage sticker app is open source (github.com/fluffcorn).
+Want customizable categories, sticker size slider, and suggestion box for your app? This iMessage sticker app is open source (github.com/fluffcorn).
 Check out our code!

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		282126DB1DFD04490007E243 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C8E0EC1DFC773E00769784 /* CustomBadge.m */; };
-		282126DC1DFD044C0007E243 /* BadgeStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C8E0EF1DFC774700769784 /* BadgeStyle.m */; };
 		2833B1491DF4A0E3005F05F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1481DF4A0E3005F05F2 /* Assets.xcassets */; };
 		2833B1501DF4A0E4005F05F2 /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2833B14F1DF4A0E4005F05F2 /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2833B1551DF4A0E4005F05F2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2833B1541DF4A0E4005F05F2 /* Messages.framework */; };
@@ -120,10 +118,7 @@
 		28AE8DD71DFDA422002CB4A3 /* about.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
 		28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = openSourceCredit.txt; sourceTree = "<group>"; };
 		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
-		28C8E0EB1DFC773E00769784 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
-		28C8E0EC1DFC773E00769784 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
-		28C8E0EE1DFC774700769784 /* BadgeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeStyle.h; sourceTree = "<group>"; };
-		28C8E0EF1DFC774700769784 /* BadgeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeStyle.m; sourceTree = "<group>"; };
+		28F115CF1E088BED00C62F8E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AE907E0A1E0DDC6600AB9B33 /* wta_1_anim_opt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wta_1_anim_opt.png; sourceTree = "<group>"; };
 		AE907E0B1E0DDC6600AB9B33 /* wta_2_anim_opt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wta_2_anim_opt.png; sourceTree = "<group>"; };
@@ -188,10 +183,6 @@
 				2833B16A1DF4A277005F05F2 /* FluffcornStickerBrowserViewController.m */,
 				2833B1941DF4C0E0005F05F2 /* StickerPackInfo.h */,
 				2833B1951DF4C0E0005F05F2 /* StickerPackInfo.m */,
-				28C8E0EB1DFC773E00769784 /* CustomBadge.h */,
-				28C8E0EC1DFC773E00769784 /* CustomBadge.m */,
-				28C8E0EE1DFC774700769784 /* BadgeStyle.h */,
-				28C8E0EF1DFC774700769784 /* BadgeStyle.m */,
 				28AE8DD31DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.h */,
 				28AE8DD41DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m */,
 				2833B15A1DF4A0E4005F05F2 /* MainInterface.storyboard */,
@@ -202,6 +193,7 @@
 				28AE8DD71DFDA422002CB4A3 /* about.txt */,
 				28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */,
 				28AE8DD61DFD8CCE002CB4A3 /* Art Assets */,
+				28F115CF1E088BED00C62F8E /* Settings.bundle */,
 			);
 			path = MessagesExtension;
 			sourceTree = "<group>";
@@ -408,9 +400,7 @@
 				2833B1961DF4C0E0005F05F2 /* StickerPackInfo.m in Sources */,
 				2833B1591DF4A0E4005F05F2 /* MessagesViewController.m in Sources */,
 				28AE8DD51DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m in Sources */,
-				282126DB1DFD04490007E243 /* CustomBadge.m in Sources */,
 				2833B16B1DF4A277005F05F2 /* FluffcornStickerBrowserViewController.m in Sources */,
-				282126DC1DFD044C0007E243 /* BadgeStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
