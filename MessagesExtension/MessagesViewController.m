@@ -400,7 +400,7 @@
 
 
 - (void)willResignActiveWithConversation:(MSConversation *)conversation {
-    //Similar to viewWillDisappear
+    //Called less frequently than viewWillDisappear, called after the user has switched a few apps away
     //[self saveSelectedCategory];
 }
 
@@ -486,6 +486,13 @@
      [_browserViewController.stickerBrowserView addGestureRecognizer:swipeDownRecognizer];
      swipeDownRecognizer.delegate = self;
      */
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    //iOS currently returns the wrong presentationStyle when switching from another expanded app to fluffcorn
+    _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
+    _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
+
 }
 
 @end

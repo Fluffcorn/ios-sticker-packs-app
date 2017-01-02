@@ -317,7 +317,7 @@
 					};
 					2833B14E1DF4A0E4005F05F2 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = VV45364L3K;
+						DevelopmentTeam = 3E2UWZ76C2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -520,7 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				DEVELOPMENT_TEAM = VV45364L3K;
+				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -535,7 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				DEVELOPMENT_TEAM = VV45364L3K;
+				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
