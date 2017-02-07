@@ -45,6 +45,15 @@
         },
         "Holiday": {
             "order": [{
+                      "filename": "vd_1",
+                      "description": "Holding a rose."
+                      },{
+                      "filename": "vd_2",
+                      "description": "I ❤️ U. Kissing."
+                      },{
+                      "filename": "vd_3",
+                      "description": "Riding in a heart shaped balloon together."
+                      },{
                       "filename": "wta_1_anim_opt",
                       "description": "Scarf Blowing in the Wind"
                       }, {
