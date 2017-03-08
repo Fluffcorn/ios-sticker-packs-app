@@ -50,6 +50,9 @@
 		AEB9ADE01E4AEA310094EC46 /* vd_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB9ADDD1E4AEA310094EC46 /* vd_1.png */; };
 		AEB9ADE11E4AEA310094EC46 /* vd_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB9ADDE1E4AEA310094EC46 /* vd_2.png */; };
 		AEB9ADE21E4AEA310094EC46 /* vd_3.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB9ADDF1E4AEA310094EC46 /* vd_3.png */; };
+		AEDC17161E6EC4080058C844 /* sp_0.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDC17151E6EC4080058C844 /* sp_0.png */; };
+		AEDC17181E6EC41E0058C844 /* sp_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDC17171E6EC41E0058C844 /* sp_2.png */; };
+		AEDC171A1E6EC4230058C844 /* sp_3.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDC17191E6EC4230058C844 /* sp_3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +132,9 @@
 		AEB9ADDD1E4AEA310094EC46 /* vd_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vd_1.png; sourceTree = "<group>"; };
 		AEB9ADDE1E4AEA310094EC46 /* vd_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vd_2.png; sourceTree = "<group>"; };
 		AEB9ADDF1E4AEA310094EC46 /* vd_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vd_3.png; sourceTree = "<group>"; };
+		AEDC17151E6EC4080058C844 /* sp_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp_0.png; sourceTree = "<group>"; };
+		AEDC17171E6EC41E0058C844 /* sp_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp_2.png; sourceTree = "<group>"; };
+		AEDC17191E6EC4230058C844 /* sp_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp_3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +271,7 @@
 		2833B1B21DF505DA005F05F2 /* Holiday */ = {
 			isa = PBXGroup;
 			children = (
+				AEDC171B1E6EC4260058C844 /* St. Patrick's */,
 				282E775B1E494F8D001D60B3 /* Valentines */,
 				2833B1B01DF505A0005F05F2 /* Thanksgiving */,
 				2833B1B11DF505AA005F05F2 /* Winter */,
@@ -279,6 +286,16 @@
 				2833B1B21DF505DA005F05F2 /* Holiday */,
 			);
 			name = "Art Assets";
+			sourceTree = "<group>";
+		};
+		AEDC171B1E6EC4260058C844 /* St. Patrick's */ = {
+			isa = PBXGroup;
+			children = (
+				AEDC17151E6EC4080058C844 /* sp_0.png */,
+				AEDC17171E6EC41E0058C844 /* sp_2.png */,
+				AEDC17191E6EC4230058C844 /* sp_3.png */,
+			);
+			name = "St. Patrick's";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +409,7 @@
 				2833B18F1DF4AE7F005F05F2 /* wt_4.png in Resources */,
 				2833B1C21DF5079D005F05F2 /* fc_4.png in Resources */,
 				2833B18E1DF4AE7F005F05F2 /* wt_3.png in Resources */,
+				AEDC17161E6EC4080058C844 /* sp_0.png in Resources */,
 				2833B1C81DF5079D005F05F2 /* fc_10.png in Resources */,
 				AEB9ADE11E4AEA310094EC46 /* vd_2.png in Resources */,
 				2833B1861DF4AE7F005F05F2 /* tg_1.png in Resources */,
@@ -401,12 +419,14 @@
 				AE907E0C1E0DDC6600AB9B33 /* wta_1_anim_opt.png in Resources */,
 				2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */,
 				AE907E0D1E0DDC6600AB9B33 /* wta_2_anim_opt.png in Resources */,
+				AEDC17181E6EC41E0058C844 /* sp_2.png in Resources */,
 				2833B1C51DF5079D005F05F2 /* fc_7.png in Resources */,
 				2833B1C71DF5079D005F05F2 /* fc_9.png in Resources */,
 				2833B15C1DF4A0E4005F05F2 /* MainInterface.storyboard in Resources */,
 				28C8E0E41DFB93C200769784 /* newPacks.json in Resources */,
 				2833B1901DF4AE7F005F05F2 /* wt_5.png in Resources */,
 				2833B18D1DF4AE7F005F05F2 /* wt_2.png in Resources */,
+				AEDC171A1E6EC4230058C844 /* sp_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
