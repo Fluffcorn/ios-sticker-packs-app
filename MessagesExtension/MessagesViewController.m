@@ -108,7 +108,7 @@
 
     
     UIAlertController *infoAlert = [UIAlertController
-                                alertControllerWithTitle:[NSString stringWithFormat:@"Fluffcorn v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
+                                alertControllerWithTitle:[NSString stringWithFormat:@"%@ v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
                                     message:error ? error.localizedDescription : [NSString stringWithFormat:@"%@\n\n%@", aboutText, creditText]
                                 preferredStyle:UIAlertControllerStyleAlert];
     
@@ -470,14 +470,21 @@
     //Apply constraints for autolayout
     [self applyPermanentConstraints];
     
-    UISwipeGestureRecognizer *swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
-    [swipeUpRecognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
-    [_browserViewController.stickerBrowserView addGestureRecognizer:swipeUpRecognizer];
-    swipeUpRecognizer.delegate = self;
+    //Only show the segmented control if number of categories is > 1
+    if (_segmentedControl.numberOfSegments > 1) {
+        UISwipeGestureRecognizer *swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
+        [swipeUpRecognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
+        [_browserViewController.stickerBrowserView addGestureRecognizer:swipeUpRecognizer];
+        swipeUpRecognizer.delegate = self;
+        
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+        [_browserViewController.stickerBrowserView addGestureRecognizer:panRecognizer];
+        panRecognizer.delegate = self;
+    } else {
+        _segmentedControl.hidden = YES;
+    }
     
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    [_browserViewController.stickerBrowserView addGestureRecognizer:panRecognizer];
-    panRecognizer.delegate = self;
+    
     
     /*
      //Replaced by UIPanGestureRecognizer because we need to detect the second movement if user scrolls down and then up in one continuous movement.
