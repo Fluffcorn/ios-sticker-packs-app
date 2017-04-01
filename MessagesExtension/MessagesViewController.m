@@ -14,6 +14,10 @@
 #import "FluffcornStickerBrowserViewController.h"
 #import "FeedbackTextFieldDelegate.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+#import <Answers/Answers.h>
+
 @interface MessagesViewController ()
 
 @property (nonatomic) NSArray<NSLayoutConstraint *> *permanentConstraints;
@@ -406,6 +410,29 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self saveSelectedCategory];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super initWithCoder:decoder];
+    if (!self) {
+        return nil;
+    }
+    
+ 
+    //Crashlytics, comment out if you do not use Crashlytics
+    NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
+    NSStringEncoding usedEncoding;
+    NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
+    
+    // The string that results from reading the bundle resource contains a trailing
+    // newline character, which we must remove now because Fabric/Crashlytics
+    // can't handle extraneous whitespace.
+    NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
+    
+    [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
+    
+    return self;
 }
 
 - (void)viewDidLoad {

@@ -43,6 +43,10 @@
 		28AE8DD51DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE8DD41DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m */; };
 		28AE8DD81DFDA422002CB4A3 /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD71DFDA422002CB4A3 /* about.txt */; };
 		28AE8DDA1DFDA4E7002CB4A3 /* openSourceCredit.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */; };
+		28B850181E8F625B004EA556 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850171E8F625B004EA556 /* Crashlytics.framework */; };
+		28B8501A1E8F6261004EA556 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850191E8F6261004EA556 /* Fabric.framework */; };
+		28B8501E1E8F6537004EA556 /* fabric.apikey in Resources */ = {isa = PBXBuildFile; fileRef = 28B8501C1E8F6537004EA556 /* fabric.apikey */; };
+		28B850221E8F6632004EA556 /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850211E8F6632004EA556 /* Answers.framework */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
 		AE513BCB1E70D24F005FE8F1 /* sp_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE513BCA1E70D24F005FE8F1 /* sp_1.png */; };
 		AE907E0C1E0DDC6600AB9B33 /* wta_1_anim_opt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE907E0A1E0DDC6600AB9B33 /* wta_1_anim_opt.png */; };
@@ -123,6 +127,11 @@
 		28AE8DD41DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackTextFieldDelegate.m; sourceTree = "<group>"; };
 		28AE8DD71DFDA422002CB4A3 /* about.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
 		28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = openSourceCredit.txt; sourceTree = "<group>"; };
+		28B850171E8F625B004EA556 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		28B850191E8F6261004EA556 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		28B8501C1E8F6537004EA556 /* fabric.apikey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fabric.apikey; sourceTree = "<group>"; };
+		28B8501D1E8F6537004EA556 /* fabric.buildsecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fabric.buildsecret; sourceTree = "<group>"; };
+		28B850211E8F6632004EA556 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
 		28F115CF1E088BED00C62F8E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -142,7 +151,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B850221E8F6632004EA556 /* Answers.framework in Frameworks */,
+				28B850181E8F625B004EA556 /* Crashlytics.framework in Frameworks */,
 				2833B1551DF4A0E4005F05F2 /* Messages.framework in Frameworks */,
+				28B8501A1E8F6261004EA556 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +174,9 @@
 		2833B13E1DF4A0E3005F05F2 = {
 			isa = PBXGroup;
 			children = (
+				28B850211E8F6632004EA556 /* Answers.framework */,
+				28B850191E8F6261004EA556 /* Fabric.framework */,
+				28B850171E8F625B004EA556 /* Crashlytics.framework */,
 				2833B1471DF4A0E3005F05F2 /* Fluffcorn */,
 				2833B1561DF4A0E4005F05F2 /* MessagesExtension */,
 				2833B1531DF4A0E4005F05F2 /* Frameworks */,
@@ -210,6 +225,8 @@
 				2833B15A1DF4A0E4005F05F2 /* MainInterface.storyboard */,
 				2833B15D1DF4A0E4005F05F2 /* Assets.xcassets */,
 				2833B15F1DF4A0E4005F05F2 /* Info.plist */,
+				28B8501C1E8F6537004EA556 /* fabric.apikey */,
+				28B8501D1E8F6537004EA556 /* fabric.buildsecret */,
 				2833B1781DF4AC8F005F05F2 /* stickerPacks.json */,
 				28C8E0E31DFB93C200769784 /* newPacks.json */,
 				28AE8DD71DFDA422002CB4A3 /* about.txt */,
@@ -307,6 +324,7 @@
 			buildPhases = (
 				2833B1431DF4A0E3005F05F2 /* Resources */,
 				2833B1651DF4A0E4005F05F2 /* Embed App Extensions */,
+				28B8501B1E8F6273004EA556 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -325,6 +343,7 @@
 				2833B14B1DF4A0E4005F05F2 /* Sources */,
 				2833B14C1DF4A0E4005F05F2 /* Frameworks */,
 				2833B14D1DF4A0E4005F05F2 /* Resources */,
+				28B850201E8F65A7004EA556 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -425,12 +444,42 @@
 				2833B15C1DF4A0E4005F05F2 /* MainInterface.storyboard in Resources */,
 				28C8E0E41DFB93C200769784 /* newPacks.json in Resources */,
 				2833B1901DF4AE7F005F05F2 /* wt_5.png in Resources */,
+				28B8501E1E8F6537004EA556 /* fabric.apikey in Resources */,
 				2833B18D1DF4AE7F005F05F2 /* wt_2.png in Resources */,
 				AEDC171A1E6EC4230058C844 /* sp_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28B8501B1E8F6273004EA556 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FABRIC_APIKEY=$(cat ${SRCROOT}/fabric.apikey)\nFABRIC_BUILDSECRET=$(cat ${SRCROOT}/fabric.buildsecret)\n${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}";
+		};
+		28B850201E8F65A7004EA556 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FABRIC_APIKEY=$(cat ${SRCROOT}/fabric.apikey)\nFABRIC_BUILDSECRET=$(cat ${SRCROOT}/fabric.buildsecret)\n${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2833B14B1DF4A0E4005F05F2 /* Sources */ = {
@@ -561,6 +610,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -576,6 +629,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
