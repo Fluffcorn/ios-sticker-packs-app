@@ -40,13 +40,13 @@
 		2833B1C81DF5079D005F05F2 /* fc_10.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BC1DF5079D005F05F2 /* fc_10.png */; };
 		2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BD1DF5079D005F05F2 /* fc_11.png */; };
 		2833B1CA1DF5079D005F05F2 /* fc_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833B1BE1DF5079D005F05F2 /* fc_12.png */; };
+		287494BD1E901FE9009D2230 /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287494BC1E901FE9009D2230 /* Answers.framework */; };
 		28AE8DD51DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE8DD41DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m */; };
 		28AE8DD81DFDA422002CB4A3 /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD71DFDA422002CB4A3 /* about.txt */; };
 		28AE8DDA1DFDA4E7002CB4A3 /* openSourceCredit.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */; };
 		28B850181E8F625B004EA556 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850171E8F625B004EA556 /* Crashlytics.framework */; };
 		28B8501A1E8F6261004EA556 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850191E8F6261004EA556 /* Fabric.framework */; };
 		28B8501E1E8F6537004EA556 /* fabric.apikey in Resources */ = {isa = PBXBuildFile; fileRef = 28B8501C1E8F6537004EA556 /* fabric.apikey */; };
-		28B850221E8F6632004EA556 /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850211E8F6632004EA556 /* Answers.framework */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
 		AE513BCB1E70D24F005FE8F1 /* sp_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE513BCA1E70D24F005FE8F1 /* sp_1.png */; };
 		AE907E0C1E0DDC6600AB9B33 /* wta_1_anim_opt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE907E0A1E0DDC6600AB9B33 /* wta_1_anim_opt.png */; };
@@ -123,6 +123,7 @@
 		2833B1BC1DF5079D005F05F2 /* fc_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_10.png; sourceTree = "<group>"; };
 		2833B1BD1DF5079D005F05F2 /* fc_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_11.png; sourceTree = "<group>"; };
 		2833B1BE1DF5079D005F05F2 /* fc_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc_12.png; sourceTree = "<group>"; };
+		287494BC1E901FE9009D2230 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		28AE8DD31DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackTextFieldDelegate.h; sourceTree = "<group>"; };
 		28AE8DD41DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackTextFieldDelegate.m; sourceTree = "<group>"; };
 		28AE8DD71DFDA422002CB4A3 /* about.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
@@ -131,7 +132,6 @@
 		28B850191E8F6261004EA556 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		28B8501C1E8F6537004EA556 /* fabric.apikey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fabric.apikey; sourceTree = "<group>"; };
 		28B8501D1E8F6537004EA556 /* fabric.buildsecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fabric.buildsecret; sourceTree = "<group>"; };
-		28B850211E8F6632004EA556 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
 		28F115CF1E088BED00C62F8E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B850221E8F6632004EA556 /* Answers.framework in Frameworks */,
+				287494BD1E901FE9009D2230 /* Answers.framework in Frameworks */,
 				28B850181E8F625B004EA556 /* Crashlytics.framework in Frameworks */,
 				2833B1551DF4A0E4005F05F2 /* Messages.framework in Frameworks */,
 				28B8501A1E8F6261004EA556 /* Fabric.framework in Frameworks */,
@@ -174,9 +174,9 @@
 		2833B13E1DF4A0E3005F05F2 = {
 			isa = PBXGroup;
 			children = (
-				28B850211E8F6632004EA556 /* Answers.framework */,
 				28B850191E8F6261004EA556 /* Fabric.framework */,
 				28B850171E8F625B004EA556 /* Crashlytics.framework */,
+				287494BC1E901FE9009D2230 /* Answers.framework */,
 				2833B1471DF4A0E3005F05F2 /* Fluffcorn */,
 				2833B1561DF4A0E4005F05F2 /* MessagesExtension */,
 				2833B1531DF4A0E4005F05F2 /* Frameworks */,
@@ -324,7 +324,6 @@
 			buildPhases = (
 				2833B1431DF4A0E3005F05F2 /* Resources */,
 				2833B1651DF4A0E4005F05F2 /* Embed App Extensions */,
-				28B8501B1E8F6273004EA556 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -453,19 +452,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		28B8501B1E8F6273004EA556 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "FABRIC_APIKEY=$(cat ${SRCROOT}/fabric.apikey)\nFABRIC_BUILDSECRET=$(cat ${SRCROOT}/fabric.buildsecret)\n${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}";
-		};
 		28B850201E8F65A7004EA556 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -13,6 +13,8 @@
   - Persistence for:
      - Last selected category
      - Adjusted sticker size
+  - Analytics integration.
+     - [Fabric](https://fabric.io/) Crashlytics/Answers enabled.
 
 This code is used in **Fluffcorn stickers**, a iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages). 
 
@@ -26,7 +28,8 @@ How to use for your own stickers
 6. Set the sticker size slider visibility. See [Configuring Sticker Size Slider Visibility](#configuring-sticker-size-slider-visibility).
 7. Edit `about.txt` to include your app information.
 8. Edit App Name, Bundle ID, Version, Build data.
-9. Submit to App Store. 
+9. Setup or disable Fabric integration. See [Configuring Fabric Integration](#configuring-fabric-integration)
+10. Submit to App Store. 
 
 
 ####How to edit `stickerPacks.json`
@@ -55,6 +58,27 @@ Each pack is a dictionary with a `order` key which is an array containing a dict
 - **If you want Feedback submission**, set `kFeedbackAction` in `Constants.h` to `YES`.  Follow [this post](http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c) and edit `sendFeedbackAction:` in `MessagesViewController.h` with the appropriate values for your Google Form.
 - **If you do NOT want Feedback submission**, set `kFeedbackAction` in `Constants.h` to `NO`. 
 
+####Configuring Fabric Integration
+
+- **If you want Fabric integration**, set `kFabricEnabled` in `Constants.h` to `YES`. 
+- Create files named `fabric.apikey` and `fabric.buildsecret` in the `$SRCROOT` directory (usually the project directory). Include your API key and build secret in the files respectively. 
+- Add the below lines to your `.gitignore` file if you intend on making the source code public.
+```
+fabric.apikey
+fabric.buildsecret
+```
+- Verify that *Run Script* located under the *MessagesExtension* > *Build Phases* matches the below bash code.
+
+```
+FABRIC_APIKEY=$(cat ${SRCROOT}/fabric.apikey)
+FABRIC_BUILDSECRET=$(cat ${SRCROOT}/fabric.buildsecret)
+${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}
+```
+
+- **If you do NOT want Fabric integration**, set `kFabricEnabled` in `Constants.h` to `NO`. 
+- Remove *Run Script* located under the *MessagesExtension* > *Build Phases*. 
+- Remove files `fabric.apikey` and `fabric.buildsecret` from Xcode.
+
 
 ####Using APNG stickers
 
@@ -78,6 +102,6 @@ All art assets in this repository (any images including PNG and APNG) are © 201
 
 Everything else (the code and text assets) in this repository is made available under MIT License. 
 
-*Visible attribution to ios-sticker-packs-app by Anson Liu, Alisha Liu required if used publicly or commercially.*
+*Visible attribution to ios-sticker-packs-app by [Anson Liu](ansonliu.com), [Alisha Liu](alishaliu.com) required if used publicly or commercially.*
 
 Issues, feature requests, and contributions welcome!

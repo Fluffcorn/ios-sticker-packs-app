@@ -395,6 +395,25 @@
         [self hideInfoButton];
         [self hideStickerSizeSlider];
     }
+    
+    if (kFabricEnabled) {
+        NSString *presentationStyleTitle;
+        switch (presentationStyle) {
+            case MSMessagesAppPresentationStyleCompact:
+                presentationStyleTitle = @"Compact";
+                break;
+            case MSMessagesAppPresentationStyleExpanded:
+                presentationStyleTitle = @"Expanded";
+                break;
+            default:
+                presentationStyleTitle = @"Unknown";
+                break;
+        }
+        //Fabric Answers activity logging for detecting when user expands or compacts view
+        [Answers logCustomEventWithName:@"Changed Presentation Style"
+                       customAttributes:@{
+                                          @"PresentationStyle" : presentationStyleTitle}];
+    }
 }
 
 - (void)willBecomeActiveWithConversation:(MSConversation *)conversation {
@@ -418,19 +437,21 @@
         return nil;
     }
     
- 
-    //Crashlytics, comment out if you do not use Crashlytics
-    NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
-    NSStringEncoding usedEncoding;
-    NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
-    
-    // The string that results from reading the bundle resource contains a trailing
-    // newline character, which we must remove now because Fabric/Crashlytics
-    // can't handle extraneous whitespace.
-    NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-    NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
-    
-    [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
+    if (kFabricEnabled) {
+        //From http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project and https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6
+        //Get API key from fabric.apikey file in mainBundle
+        NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
+        NSStringEncoding usedEncoding;
+        NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
+        
+        // The string that results from reading the bundle resource contains a trailing
+        // newline character, which we must remove now because Fabric/Crashlytics
+        // can't handle extraneous whitespace.
+        NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+        NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
+        
+        [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
+    }
     
     return self;
 }
