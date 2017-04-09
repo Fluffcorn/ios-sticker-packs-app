@@ -14,6 +14,10 @@
 #import "FluffcornStickerBrowserViewController.h"
 #import "FeedbackTextFieldDelegate.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+#import <Answers/Answers.h>
+
 @interface MessagesViewController ()
 
 @property (nonatomic) NSArray<NSLayoutConstraint *> *permanentConstraints;
@@ -108,7 +112,7 @@
 
     
     UIAlertController *infoAlert = [UIAlertController
-                                alertControllerWithTitle:[NSString stringWithFormat:@"Fluffcorn v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
+                                alertControllerWithTitle:[NSString stringWithFormat:@"%@ v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
                                     message:error ? error.localizedDescription : [NSString stringWithFormat:@"%@\n\n%@", aboutText, creditText]
                                 preferredStyle:UIAlertControllerStyleAlert];
     
@@ -391,6 +395,25 @@
         [self hideInfoButton];
         [self hideStickerSizeSlider];
     }
+    
+    if (kFabricEnabled) {
+        NSString *presentationStyleTitle;
+        switch (presentationStyle) {
+            case MSMessagesAppPresentationStyleCompact:
+                presentationStyleTitle = @"Compact";
+                break;
+            case MSMessagesAppPresentationStyleExpanded:
+                presentationStyleTitle = @"Expanded";
+                break;
+            default:
+                presentationStyleTitle = @"Unknown";
+                break;
+        }
+        //Fabric Answers activity logging for detecting when user expands or compacts view
+        [Answers logCustomEventWithName:@"Changed Presentation Style"
+                       customAttributes:@{
+                                          @"PresentationStyle" : presentationStyleTitle}];
+    }
 }
 
 - (void)willBecomeActiveWithConversation:(MSConversation *)conversation {
@@ -406,6 +429,31 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self saveSelectedCategory];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super initWithCoder:decoder];
+    if (!self) {
+        return nil;
+    }
+    
+    if (kFabricEnabled) {
+        //From http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project and https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6
+        //Get API key from fabric.apikey file in mainBundle
+        NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
+        NSStringEncoding usedEncoding;
+        NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
+        
+        // The string that results from reading the bundle resource contains a trailing
+        // newline character, which we must remove now because Fabric/Crashlytics
+        // can't handle extraneous whitespace.
+        NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+        NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
+        
+        [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
+    }
+    
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -470,14 +518,21 @@
     //Apply constraints for autolayout
     [self applyPermanentConstraints];
     
-    UISwipeGestureRecognizer *swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
-    [swipeUpRecognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
-    [_browserViewController.stickerBrowserView addGestureRecognizer:swipeUpRecognizer];
-    swipeUpRecognizer.delegate = self;
+    //Only show the segmented control if number of categories is > 1
+    if (_segmentedControl.numberOfSegments > 1) {
+        UISwipeGestureRecognizer *swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
+        [swipeUpRecognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
+        [_browserViewController.stickerBrowserView addGestureRecognizer:swipeUpRecognizer];
+        swipeUpRecognizer.delegate = self;
+        
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+        [_browserViewController.stickerBrowserView addGestureRecognizer:panRecognizer];
+        panRecognizer.delegate = self;
+    } else {
+        _segmentedControl.hidden = YES;
+    }
     
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    [_browserViewController.stickerBrowserView addGestureRecognizer:panRecognizer];
-    panRecognizer.delegate = self;
+    
     
     /*
      //Replaced by UIPanGestureRecognizer because we need to detect the second movement if user scrolls down and then up in one continuous movement.
