@@ -48,6 +48,9 @@
 		28B8501A1E8F6261004EA556 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850191E8F6261004EA556 /* Fabric.framework */; };
 		28B8501E1E8F6537004EA556 /* fabric.apikey in Resources */ = {isa = PBXBuildFile; fileRef = 28B8501C1E8F6537004EA556 /* fabric.apikey */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
+		AE4915751E9A2B7F00BDEE5E /* ea_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915721E9A2B7F00BDEE5E /* ea_1.png */; };
+		AE4915761E9A2B7F00BDEE5E /* ea_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915731E9A2B7F00BDEE5E /* ea_2.png */; };
+		AE4915771E9A2B7F00BDEE5E /* ea_3.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915741E9A2B7F00BDEE5E /* ea_3.png */; };
 		AE513BCB1E70D24F005FE8F1 /* sp_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE513BCA1E70D24F005FE8F1 /* sp_1.png */; };
 		AE907E0C1E0DDC6600AB9B33 /* wta_1_anim_opt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE907E0A1E0DDC6600AB9B33 /* wta_1_anim_opt.png */; };
 		AE907E0D1E0DDC6600AB9B33 /* wta_2_anim_opt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE907E0B1E0DDC6600AB9B33 /* wta_2_anim_opt.png */; };
@@ -135,6 +138,9 @@
 		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
 		28F115CF1E088BED00C62F8E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		AE4915721E9A2B7F00BDEE5E /* ea_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_1.png; sourceTree = "<group>"; };
+		AE4915731E9A2B7F00BDEE5E /* ea_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_2.png; sourceTree = "<group>"; };
+		AE4915741E9A2B7F00BDEE5E /* ea_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_3.png; sourceTree = "<group>"; };
 		AE513BCA1E70D24F005FE8F1 /* sp_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp_1.png; sourceTree = "<group>"; };
 		AE907E0A1E0DDC6600AB9B33 /* wta_1_anim_opt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wta_1_anim_opt.png; sourceTree = "<group>"; };
 		AE907E0B1E0DDC6600AB9B33 /* wta_2_anim_opt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wta_2_anim_opt.png; sourceTree = "<group>"; };
@@ -288,6 +294,7 @@
 		2833B1B21DF505DA005F05F2 /* Holiday */ = {
 			isa = PBXGroup;
 			children = (
+				AE49156B1E9A281300BDEE5E /* Easter */,
 				AEDC171B1E6EC4260058C844 /* St. Patrick's */,
 				282E775B1E494F8D001D60B3 /* Valentines */,
 				2833B1B01DF505A0005F05F2 /* Thanksgiving */,
@@ -303,6 +310,16 @@
 				2833B1B21DF505DA005F05F2 /* Holiday */,
 			);
 			name = "Art Assets";
+			sourceTree = "<group>";
+		};
+		AE49156B1E9A281300BDEE5E /* Easter */ = {
+			isa = PBXGroup;
+			children = (
+				AE4915721E9A2B7F00BDEE5E /* ea_1.png */,
+				AE4915731E9A2B7F00BDEE5E /* ea_2.png */,
+				AE4915741E9A2B7F00BDEE5E /* ea_3.png */,
+			);
+			name = Easter;
 			sourceTree = "<group>";
 		};
 		AEDC171B1E6EC4260058C844 /* St. Patrick's */ = {
@@ -407,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2833B1C01DF5079D005F05F2 /* fc_2.png in Resources */,
+				AE4915751E9A2B7F00BDEE5E /* ea_1.png in Resources */,
 				2833B15E1DF4A0E4005F05F2 /* Assets.xcassets in Resources */,
 				AE513BCB1E70D24F005FE8F1 /* sp_1.png in Resources */,
 				28AE8DD81DFDA422002CB4A3 /* about.txt in Resources */,
@@ -422,6 +440,7 @@
 				2833B1C91DF5079D005F05F2 /* fc_11.png in Resources */,
 				2833B1C41DF5079D005F05F2 /* fc_6.png in Resources */,
 				AEA87FFB1E18E368003971B0 /* wta_4_anim_opt.png in Resources */,
+				AE4915771E9A2B7F00BDEE5E /* ea_3.png in Resources */,
 				2833B1881DF4AE7F005F05F2 /* tg_3.png in Resources */,
 				2833B18C1DF4AE7F005F05F2 /* wt_1.png in Resources */,
 				2833B1791DF4AC8F005F05F2 /* stickerPacks.json in Resources */,
@@ -443,7 +462,7 @@
 				2833B15C1DF4A0E4005F05F2 /* MainInterface.storyboard in Resources */,
 				28C8E0E41DFB93C200769784 /* newPacks.json in Resources */,
 				2833B1901DF4AE7F005F05F2 /* wt_5.png in Resources */,
-				28B8501E1E8F6537004EA556 /* fabric.apikey in Resources */,
+				AE4915761E9A2B7F00BDEE5E /* ea_2.png in Resources */,
 				2833B18D1DF4AE7F005F05F2 /* wt_2.png in Resources */,
 				AEDC171A1E6EC4230058C844 /* sp_3.png in Resources */,
 			);
