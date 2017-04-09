@@ -45,6 +45,15 @@
         },
         "Holiday": {
             "order": [{
+                      "filename": "ea_1",
+                      "description": "Easter Bunny and Carrot"
+                      },{
+                      "filename": "ea_2",
+                      "description": "Happy Easter"
+                      },{
+                      "filename": "ea_3",
+                      "description": "Rainy Day"
+                      },{
                       "filename": "sp_1",
                       "description": "Good Luck"
                       },{
