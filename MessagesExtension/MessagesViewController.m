@@ -428,6 +428,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self saveSelectedCategory];
 }
 
@@ -457,6 +458,8 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     //Register settings defaults
     BOOL stickerSizeVisibility = kStickerSizeSliderVisibility;
     MSStickerSize defaultStickerSize = kDefaultStickerSize;
@@ -544,6 +547,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     //iOS currently returns the wrong presentationStyle when switching from another expanded app to fluffcorn
     _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
     _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
