@@ -119,9 +119,10 @@
     NSString *stickerPath = [[NSBundle mainBundle] pathForResource:asset ofType:extension];
     //NSLog(@"%@", stickerPath);
     
-    if (!stickerPath)
+    if (!stickerPath) {
         NSLog(@"Couldn't create the sticker path for %@", asset);
-    
+        return;
+    }
     NSURL *stickerURL = [NSURL fileURLWithPath:stickerPath];
     
     MSSticker *sticker;

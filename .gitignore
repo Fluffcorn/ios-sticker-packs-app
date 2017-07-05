@@ -1,2 +1,9 @@
 fabric.apikey
 fabric.buildsecret
+
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
