@@ -48,6 +48,9 @@
 		28B850181E8F625B004EA556 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850171E8F625B004EA556 /* Crashlytics.framework */; };
 		28B8501A1E8F6261004EA556 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B850191E8F6261004EA556 /* Fabric.framework */; };
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
+		AE422F7A1F0CC7540042A8F0 /* sm_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE422F771F0CC7540042A8F0 /* sm_1.png */; };
+		AE422F7B1F0CC7540042A8F0 /* sm_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE422F781F0CC7540042A8F0 /* sm_2.png */; };
+		AE422F7C1F0CC7540042A8F0 /* sm_3.png in Resources */ = {isa = PBXBuildFile; fileRef = AE422F791F0CC7540042A8F0 /* sm_3.png */; };
 		AE4915751E9A2B7F00BDEE5E /* ea_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915721E9A2B7F00BDEE5E /* ea_1.png */; };
 		AE4915761E9A2B7F00BDEE5E /* ea_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915731E9A2B7F00BDEE5E /* ea_2.png */; };
 		AE4915771E9A2B7F00BDEE5E /* ea_3.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915741E9A2B7F00BDEE5E /* ea_3.png */; };
@@ -138,6 +141,9 @@
 		28C8E0E31DFB93C200769784 /* newPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newPacks.json; sourceTree = "<group>"; };
 		28F115CF1E088BED00C62F8E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		AE422F771F0CC7540042A8F0 /* sm_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm_1.png; sourceTree = "<group>"; };
+		AE422F781F0CC7540042A8F0 /* sm_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm_2.png; sourceTree = "<group>"; };
+		AE422F791F0CC7540042A8F0 /* sm_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm_3.png; sourceTree = "<group>"; };
 		AE4915721E9A2B7F00BDEE5E /* ea_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_1.png; sourceTree = "<group>"; };
 		AE4915731E9A2B7F00BDEE5E /* ea_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_2.png; sourceTree = "<group>"; };
 		AE4915741E9A2B7F00BDEE5E /* ea_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_3.png; sourceTree = "<group>"; };
@@ -246,6 +252,9 @@
 		2833B1AF1DF50588005F05F2 /* Original */ = {
 			isa = PBXGroup;
 			children = (
+				AE422F771F0CC7540042A8F0 /* sm_1.png */,
+				AE422F781F0CC7540042A8F0 /* sm_2.png */,
+				AE422F791F0CC7540042A8F0 /* sm_3.png */,
 				2833B1B31DF5079D005F05F2 /* fc_1.png */,
 				2833B1B41DF5079D005F05F2 /* fc_2.png */,
 				2833B1B51DF5079D005F05F2 /* fc_3.png */,
@@ -434,6 +443,7 @@
 				28AE8DDA1DFDA4E7002CB4A3 /* openSourceCredit.txt in Resources */,
 				2833B18B1DF4AE7F005F05F2 /* tg_6.png in Resources */,
 				2833B18A1DF4AE7F005F05F2 /* tg_5.png in Resources */,
+				AE422F7B1F0CC7540042A8F0 /* sm_2.png in Resources */,
 				2833B1BF1DF5079D005F05F2 /* fc_1.png in Resources */,
 				2833B1871DF4AE7F005F05F2 /* tg_2.png in Resources */,
 				AEB9ADE21E4AEA310094EC46 /* vd_3.png in Resources */,
@@ -443,9 +453,11 @@
 				AEA87FFB1E18E368003971B0 /* wta_4_anim_opt.png in Resources */,
 				AE4915771E9A2B7F00BDEE5E /* ea_3.png in Resources */,
 				2833B1881DF4AE7F005F05F2 /* tg_3.png in Resources */,
+				AE422F7C1F0CC7540042A8F0 /* sm_3.png in Resources */,
 				2833B18C1DF4AE7F005F05F2 /* wt_1.png in Resources */,
 				2833B1791DF4AC8F005F05F2 /* stickerPacks.json in Resources */,
 				2833B18F1DF4AE7F005F05F2 /* wt_4.png in Resources */,
+				AE422F7A1F0CC7540042A8F0 /* sm_1.png in Resources */,
 				2833B1C21DF5079D005F05F2 /* fc_4.png in Resources */,
 				2833B18E1DF4AE7F005F05F2 /* wt_3.png in Resources */,
 				2833B1C81DF5079D005F05F2 /* fc_10.png in Resources */,
