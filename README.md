@@ -1,6 +1,6 @@
 **ios-sticker-packs-app**
 ===================
-###A customizable sticker iMessage App with tabbed category switcher and sticker size slider.
+### A customizable sticker iMessage App with tabbed category switcher and sticker size slider.
 
 [![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 
@@ -48,17 +48,17 @@ Each pack is a dictionary with a `order` key which is an array containing a dict
 - Set `kDefaultStickerSize` in `Constants.h` to `0`,`1`, `2` for `MSStickerSizeSmall`, `MSStickerSizeRegular`,`MSStickerSizeLarge` respectively.
 - [`MSStickerSize` reference](https://developer.apple.com/reference/messages/msstickersize?language=objc). 
 
-####Configuring Sticker Size Slider Visibility
+#### Configuring Sticker Size Slider Visibility
 
 - **If you want the sticker size slider to be visible**, set `kStickerSizeSliderVisibility` in `Constants.h` to `YES`.
 - **If you want the sticker size slider to NOT be visible**, set `kStickerSizeSliderVisibility` in `Constants.h` to `NO`.
 
-####Configuring Feedback Submission
+#### Configuring Feedback Submission
 
 - **If you want Feedback submission**, set `kFeedbackAction` in `Constants.h` to `YES`.  Follow [this post](http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c) and edit `sendFeedbackAction:` in `MessagesViewController.h` with the appropriate values for your Google Form.
 - **If you do NOT want Feedback submission**, set `kFeedbackAction` in `Constants.h` to `NO`. 
 
-####Configuring Fabric Integration
+#### Configuring Fabric Integration
 
 - **If you want Fabric integration**, set `kFabricEnabled` in `Constants.h` to `YES`. 
 - Create files named `fabric.apikey` and `fabric.buildsecret` in the `$SRCROOT` directory (usually the project directory). Include your API key and build secret in the files respectively. 
