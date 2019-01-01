@@ -1,5 +1,7 @@
 fabric.apikey
 fabric.buildsecret
+**/GoogleService-Info.plist
+**/*.framework/*
 
 .DS_Store
 .DS_Store?

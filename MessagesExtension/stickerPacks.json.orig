@@ -1,0 +1,96 @@
+{
+    "packOrder": [
+                  "Original",
+                  "Holiday"
+                  ],
+    "allPacks": {
+        "Original": {
+            "order": [{
+                      "filename": "fc_1",
+                      "description": "Sparkle"
+                      }, {
+                      "filename": "fc_2",
+                      "description": "Eating"
+                      }, {
+                      "filename": "fc_3",
+                      "description": "Sad"
+                      }, {
+                      "filename": "fc_4",
+                      "description": "OMG"
+                      }, {
+                      "filename": "fc_5",
+                      "description": "Love"
+                      }, {
+                      "filename": "fc_6",
+                      "description": "OK"
+                      }, {
+                      "filename": "fc_7",
+                      "description": "What?"
+                      }, {
+                      "filename": "fc_8",
+                      "description": "Thank you"
+                      }, {
+                      "filename": "fc_9",
+                      "description": "Typing"
+                      }, {
+                      "filename": "fc_10",
+                      "description": "Angry 🔥"
+                      }, {
+                      "filename": "fc_11",
+                      "description": "Sleeping"
+                      }, {
+                      "filename": "fc_12",
+                      "description": "Poot 💨"
+                      }]
+        },
+        "Holiday": {
+            "order": [{
+                      "filename": "tg_1",
+                      "description": "Playing in leaves"
+                      }, {
+                      "filename": "tg_2",
+                      "description": "Pilgrims"
+                      }, {
+                      "filename": "tg_3",
+                      "description": "Delicious"
+                      }, {
+                      "filename": "tg_4",
+                      "description": "Pie"
+                      }, {
+                      "filename": "tg_5",
+                      "description": "I'm thankful for you. ❤️"
+                      }, {
+                      "filename": "tg_6",
+                      "description": "Cornucopia"
+                      }, {
+                      "filename": "wt_1",
+                      "description": "Reindeer"
+                      }, {
+                      "filename": "wt_2",
+                      "description": "Tasting Snowflakes"
+                      }, {
+                      "filename": "wt_3",
+                      "description": "Warm scarf"
+                      }, {
+                      "filename": "wt_4",
+                      "description": "Wrapped in Christmas lights"
+                      }, {
+                      "filename": "wt_5",
+                      "description": "Hot Cocoa"
+                      }, {
+                      "filename": "wt_6",
+                      "description": "Celebrate New Years 2017 🎉"
+                      }, {
+<<<<<<< HEAD
+                      "filename": "test_comp",
+                      "animated": true,
+                      "description": "Celebrat"
+=======
+                      "filename": "anim_test1",
+                      "description": "Blinking Christmas Lights"
+                
+>>>>>>> 8bfa9c8f45025ae2d30f181b0fbbcb327818fa1f
+                      }]
+        }
+    }
+}

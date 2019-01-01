@@ -43,6 +43,12 @@
       "scale" : "2x"
     },
     {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "lc_icon.png",
+      "scale" : "1x"
+    },
+    {
       "size" : "27x20",
       "idiom" : "universal",
       "filename" : "icon-messages-app-27x20@2x.png",
