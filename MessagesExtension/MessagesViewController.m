@@ -400,7 +400,7 @@
         [self hideStickerSizeSlider];
     }
     
-    if (kFirebaseEnabled) {
+    if (kFirebaseEnabled && [FIRApp defaultApp]) {
         NSString *presentationStyleTitle;
         switch (presentationStyle) {
             case MSMessagesAppPresentationStyleCompact:
@@ -447,9 +447,10 @@
         return nil;
     }
     
-    if (kFirebaseEnabled) {
+    if (kFirebaseEnabled && !FIRApp.allApps) {
         //Firebase initialization
         [FIRApp configure];
+        [[FIRConfiguration sharedInstance] setLoggerLevel:FIRLoggerLevelMin];
         
         /*
         //From http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project and https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6
@@ -549,7 +550,11 @@
         _segmentedControl.hidden = YES;
     }
     
-    
+    //Set background color to named color asset with light/dark colors for iOS 13
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = [UIColor colorNamed:@"backgroundColor"];
+        self.segmentedControl.backgroundColor = [UIColor systemBackgroundColor];
+    }
     
     /*
      //Replaced by UIPanGestureRecognizer because we need to detect the second movement if user scrolls down and then up in one continuous movement.
