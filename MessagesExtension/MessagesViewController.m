@@ -41,6 +41,10 @@
 
 @implementation MessagesViewController
 
+//Keep track if Firebase SDK has been configured already due to how app extensions are initialized
+//https://stackoverflow.com/a/40390083/761902
+static BOOL firAppConfigured = NO;
+
 #pragma mark - UIGestureRecognizerDelegate methods
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -447,10 +451,11 @@
         return nil;
     }
     
-    if (kFirebaseEnabled && !FIRApp.allApps) {
+    if (kFirebaseEnabled && !firAppConfigured) {
         //Firebase initialization
         [FIRApp configure];
         [[FIRConfiguration sharedInstance] setLoggerLevel:FIRLoggerLevelMin];
+        firAppConfigured = YES;
         
         /*
         //From http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project and https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6
