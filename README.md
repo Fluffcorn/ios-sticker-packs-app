@@ -58,7 +58,15 @@ Each pack is a dictionary with a `order` key which is an array containing a dict
 - **If you want Feedback submission**, set `kFeedbackAction` in `Constants.h` to `YES`.  Follow [this post](http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c) and edit `sendFeedbackAction:` in `MessagesViewController.h` with the appropriate values for your Google Form.
 - **If you do NOT want Feedback submission**, set `kFeedbackAction` in `Constants.h` to `NO`. 
 
+#### Configuring Firebase Analytics Integration
+
+***Fabric Integration has been deprecated and replaced with Firebase Analytics & Performance Integration. The recommended way to keep your Firebase API key private is to add `GoogleService-Info.plist` to the `.gitignore` file.***
+
+***`kFabricEnabled` has been replaced with `kFirebaseEnabled`***
+
 #### Configuring Fabric Integration
+
+**See previous section!**
 
 - **If you want Fabric integration**, set `kFabricEnabled` in `Constants.h` to `YES`. 
 - Create files named `fabric.apikey` and `fabric.buildsecret` in the `$SRCROOT` directory (usually the project directory). Include your API key and build secret in the files respectively. 
