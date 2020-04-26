@@ -65,8 +65,6 @@
 		28545010244F544100C0ECED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2854500D244F544000C0ECED /* Localizable.strings */; };
 		28545012244F634800C0ECED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28545011244F634800C0ECED /* GoogleService-Info.plist */; };
 		28545013244F634800C0ECED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28545011244F634800C0ECED /* GoogleService-Info.plist */; };
-		28545018244F7ED700C0ECED /* wa_fluffcorn2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28545017244F7ED700C0ECED /* wa_fluffcorn2.txt */; };
-		28545019244F7ED700C0ECED /* wa_fluffcorn2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28545017244F7ED700C0ECED /* wa_fluffcorn2.txt */; };
 		289208F723288C25005AC554 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 289208F623288C25005AC554 /* Colors.xcassets */; };
 		289D4958244FCEB300448FEC /* hm_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D494F244FCEB200448FEC /* hm_5.png */; };
 		289D4959244FCEB300448FEC /* hm_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D494F244FCEB200448FEC /* hm_5.png */; };
@@ -194,7 +192,6 @@
 		28545008244F51D200C0ECED /* localization-notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "localization-notes.txt"; sourceTree = "<group>"; };
 		28545011244F634800C0ECED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28545015244F65CD00C0ECED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		28545017244F7ED700C0ECED /* wa_fluffcorn2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wa_fluffcorn2.txt; sourceTree = "<group>"; };
 		289208F623288C25005AC554 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		289D494F244FCEB200448FEC /* hm_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hm_5.png; sourceTree = "<group>"; };
 		289D4950244FCEB200448FEC /* hm_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hm_3.png; sourceTree = "<group>"; };
@@ -327,7 +324,6 @@
 				2833B1781DF4AC8F005F05F2 /* stickerPacks.json */,
 				28C8E0E31DFB93C200769784 /* newPacks.json */,
 				28AE8DD71DFDA422002CB4A3 /* about.txt */,
-				28545017244F7ED700C0ECED /* wa_fluffcorn2.txt */,
 				28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */,
 				28545008244F51D200C0ECED /* localization-notes.txt */,
 				2854500D244F544000C0ECED /* Localizable.strings */,
@@ -577,7 +573,6 @@
 				28545012244F634800C0ECED /* GoogleService-Info.plist in Resources */,
 				289D4960244FCEB300448FEC /* hm_2.png in Resources */,
 				289D4968244FCEB300448FEC /* hm_7.png in Resources */,
-				28545018244F7ED700C0ECED /* wa_fluffcorn2.txt in Resources */,
 				28545009244F51D200C0ECED /* localization-notes.txt in Resources */,
 				289D4962244FCEB300448FEC /* hm_8.png in Resources */,
 			);
@@ -619,7 +614,6 @@
 				2833B18F1DF4AE7F005F05F2 /* wt_4.png in Resources */,
 				AE422F7A1F0CC7540042A8F0 /* sm_1.png in Resources */,
 				2833B1C21DF5079D005F05F2 /* fc_4.png in Resources */,
-				28545019244F7ED700C0ECED /* wa_fluffcorn2.txt in Resources */,
 				2833B18E1DF4AE7F005F05F2 /* wt_3.png in Resources */,
 				2833B1C81DF5079D005F05F2 /* fc_10.png in Resources */,
 				AEB9ADE11E4AEA310094EC46 /* vd_2.png in Resources */,
