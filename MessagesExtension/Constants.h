@@ -8,7 +8,7 @@
 
 #ifndef Constants_h
 
-//Developer customization
+//Developer Analytics
 #define kFirebaseEnabled YES
 
 #define kStickerSizeSliderVisibility NO

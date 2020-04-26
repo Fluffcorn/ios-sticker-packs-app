@@ -1,7 +1,8 @@
 {
     "packOrder": [
                   "Original",
-                  "Holiday"
+                  "Holiday",
+                  "Stuck at Home"
                   ],
     "allPacks": {
         "Original": {
@@ -73,10 +74,10 @@
                       "description": "Happy St. Patrick's"
                       },{
                       "filename": "vd_1",
-                      "description": "Holding a rose."
+                      "description": "Holding a rose"
                       },{
                       "filename": "vd_2",
-                      "description": "I ❤️ U. Kissing."
+                      "description": "I ❤️ U. Kissing"
                       },{
                       "filename": "vd_3",
                       "description": "Riding in a heart shaped balloon together."
@@ -98,6 +99,36 @@
                       }, {
                       "filename": "tg_6",
                       "description": "Cornucopia"
+                      }]
+        },
+        "Stuck at Home": {
+            "order": [{
+                      "filename": "hm_1",
+                      "description": "Looking out the window"
+                      },{
+                      "filename": "hm_2",
+                      "description": "Video chat"
+                      },{
+                      "filename": "hm_3",
+                      "description": "Toilet paper rationing"
+                      },{
+                      "filename": "hm_4",
+                      "description": "Watching 3D movie"
+                      },{
+                      "filename": "hm_5",
+                      "description": "Stirring cooking batter"
+                      },{
+                      "filename": "hm_6",
+                      "description": "Staying in bed"
+                      },{
+                      "filename": "hm_7",
+                      "description": "Playing games"
+                      },{
+                      "filename": "hm_8",
+                      "description": "Bubble bath"
+                      },{
+                      "filename": "hm_9",
+                      "description": "i miss you..."
                       }]
         }
     }

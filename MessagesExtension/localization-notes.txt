@@ -1,0 +1,20 @@
+Localization instructions for Fluffcorn Sticker Pack app
+
+To generate initial localization strings file in xx.lproj directory (If you define your own localization keys as literal strings in code.):
+Navigate to MessagesExtension folder.
+Backup existing Localizable.strings file if exists.
+Run find . -name '*.m' | xargs genstrings -o .
+Merge new localization file with backed up localization file.
+Drag new Localization base file into Xcode project organizer.
+
+Then add all sticker filename assets as localization keys into the base Localizable.strings file.
+
+Add new localizations in Xcode project interface to automatically copy localization file.
+
+TODO: Create script to automatically format stickerPacks.json descriptions to Localizable.strings.
+
+Example Localizable.strings lines:
+"alert.action.dismiss" = "Dismiss";
+"fc_1" = "Sparkle";
+
+TODO: Create script to create WhatsApp sticker payload

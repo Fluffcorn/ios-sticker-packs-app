@@ -16,10 +16,10 @@
 
 #import "Firebase.h"
 /*
-//Old Fabric integration
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
-#import <Answers/Answers.h>
+ //Old Fabric integration
+ #import <Fabric/Fabric.h>
+ #import <Crashlytics/Crashlytics.h>
+ #import <Answers/Answers.h>
  */
 
 @interface MessagesViewController ()
@@ -48,534 +48,540 @@ static BOOL firAppConfigured = NO;
 #pragma mark - UIGestureRecognizerDelegate methods
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
+  return YES;
 }
 
 #pragma mark - UIGestureRecognizer action methods
 
 - (void)handleSwipeUp:(UISwipeGestureRecognizer *)gestureRecognizer {
-    NSLog(@"swipe up");
-    if (self.presentationStyle == MSMessagesAppPresentationStyleCompact)
-        [self hideSegmentedControl];
+  NSLog(@"swipe up");
+  if (self.presentationStyle == MSMessagesAppPresentationStyleCompact)
+    [self hideSegmentedControl];
 }
 
 - (void)handleSwipeDown:(UISwipeGestureRecognizer *)gestureRecognizer {
-    NSLog(@"swipe down");
-    if (self.presentationStyle == MSMessagesAppPresentationStyleCompact)
-        [self showSegmentedControl];
+  NSLog(@"swipe down");
+  if (self.presentationStyle == MSMessagesAppPresentationStyleCompact)
+    [self showSegmentedControl];
 }
 
 - (void)panGesture:(UIPanGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        CGPoint translation = [gesture translationInView:_browserViewController.stickerBrowserView];
-        //CGPoint velocity = [gesture velocityInView:_browserViewController.stickerBrowserView];
-        //NSLog(@"pan translation %@",NSStringFromCGPoint(translation));
-        //NSLog(@"pan velocity %@",NSStringFromCGPoint(velocity));
-        
-        if (self.presentationStyle == MSMessagesAppPresentationStyleCompact)
-            if (translation.y > 0) //if pan down by 0pixels or more, it's a net "up" scroll
-                [self showSegmentedControl];
-    }
+  if (gesture.state == UIGestureRecognizerStateEnded) {
+    CGPoint translation = [gesture translationInView:_browserViewController.stickerBrowserView];
+    //CGPoint velocity = [gesture velocityInView:_browserViewController.stickerBrowserView];
+    //NSLog(@"pan translation %@",NSStringFromCGPoint(translation));
+    //NSLog(@"pan velocity %@",NSStringFromCGPoint(velocity));
+    
+    if (self.presentationStyle == MSMessagesAppPresentationStyleCompact)
+      if (translation.y > 0) //if pan down by 0pixels or more, it's a net "up" scroll
+        [self showSegmentedControl];
+  }
 }
 
 #pragma mark - Logic/Model methods
 
 /*
  //Unneeded because MSSticker is already typedef enum of NSInteger
-- (MSStickerSize)stickerSizeForIntValue:(NSInteger)value {
-    MSStickerSize stickerSize;
-    switch ((int)value) {
-        case 0:
-            stickerSize = MSStickerSizeSmall;
-            break;
-        case 1:
-            stickerSize = MSStickerSizeRegular;
-            break;
-        case 2:
-            stickerSize = MSStickerSizeLarge;
-            break;
-            
-        default:
-            NSLog(@"Unknown slider value %ld", (long)value);
-            stickerSize = MSStickerSizeRegular;
-            break;
-    }
-    return stickerSize;
-}
+ - (MSStickerSize)stickerSizeForIntValue:(NSInteger)value {
+ MSStickerSize stickerSize;
+ switch ((int)value) {
+ case 0:
+ stickerSize = MSStickerSizeSmall;
+ break;
+ case 1:
+ stickerSize = MSStickerSizeRegular;
+ break;
+ case 2:
+ stickerSize = MSStickerSizeLarge;
+ break;
+ 
+ default:
+ NSLog(@"Unknown slider value %ld", (long)value);
+ stickerSize = MSStickerSizeRegular;
+ break;
+ }
+ return stickerSize;
+ }
  */
 
 #pragma mark - UI action methods
 
 - (IBAction)segmentSwitch:(UISegmentedControl *)sender {
-    NSInteger selectedSegment = sender.selectedSegmentIndex;
-    
-    [_browserViewController loadStickerPackAtIndex:selectedSegment];
-    [_browserViewController.stickerBrowserView reloadData];
+  NSInteger selectedSegment = sender.selectedSegmentIndex;
+  
+  [_browserViewController loadStickerPackAtIndex:selectedSegment];
+  [_browserViewController.stickerBrowserView reloadData];
 }
 
 - (IBAction)infoButtonTapped:(id)sender {
-    NSError *error;
-    NSString *aboutText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error];
-    NSString *creditText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"openSourceCredit" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error];
-
+  NSError *error;
+  NSString *aboutText = [[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+  NSString *creditText = [[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"openSourceCredit" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+  
+  
+  UIAlertController *infoAlert = [UIAlertController
+                                  alertControllerWithTitle:[NSString stringWithFormat:@"%@ v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
+                                  message:error ? error.localizedDescription : [NSString stringWithFormat:@"%@\n\n%@", aboutText, creditText]
+                                  preferredStyle:UIAlertControllerStyleAlert];
+  
+  UIAlertAction *sendFeedbackAction = [UIAlertAction
+                                       actionWithTitle:@"Idea and Suggestion Box"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action)
+                                       {
+    [self displayFeedbackAlert];
     
-    UIAlertController *infoAlert = [UIAlertController
-                                alertControllerWithTitle:[NSString stringWithFormat:@"%@ v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
-                                    message:error ? error.localizedDescription : [NSString stringWithFormat:@"%@\n\n%@", aboutText, creditText]
-                                preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *sendFeedbackAction = [UIAlertAction
-                              actionWithTitle:@"Idea and Suggestion Box"
-                              style:UIAlertActionStyleDefault
-                              handler:^(UIAlertAction * action)
-                              {
-                                  [self displayFeedbackAlert];
-                                  
-                              }];
-    
-    UIAlertAction *dismissAction = [UIAlertAction
-                                         actionWithTitle:@"Dismiss"
-                                         style:UIAlertActionStyleCancel
-                                         handler:nil];
-    
-    //If developer has enabled feedback
-    if (kFeedbackAction)
-        [infoAlert addAction:sendFeedbackAction];
-    
-    [infoAlert addAction:dismissAction];
-    [self presentViewController:infoAlert animated:YES completion:nil];
-
+    /*
+     //Whatsapp In development
+    NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"wa_fluffcorn2" withExtension:@"txt"];
+    NSString*stringPath = [imgPath absoluteString]; //this is correct
+    NSData *waf = [NSData dataWithContentsOfURL:[NSURL URLWithString:stringPath]];
+    [UIPasteboard.generalPasteboard setData:waf forPasteboardType:@"net.whatsapp.third-party.sticker-pack"];
+    //[UIPasteboard.generalPasteboard setURL:[NSURL URLWithString:@"whatsapp://stickerPack"]];
+     */
+  }];
+  
+  UIAlertAction *dismissAction = [UIAlertAction
+                                  actionWithTitle:NSLocalizedString(@"alert.action.dismiss", nil)
+                                  style:UIAlertActionStyleCancel
+                                  handler:nil];
+  
+  //If developer has enabled feedback
+  if (kFeedbackAction)
+    [infoAlert addAction:sendFeedbackAction];
+  
+  [infoAlert addAction:dismissAction];
+  [self presentViewController:infoAlert animated:YES completion:nil];
+  
 }
 
 - (IBAction)sizeSliderValueChanged:(UISlider *)sender {
-    //Remove existing browserViewController view from view
-    MSStickerBrowserViewController *oldStickerBrowserViewController = _browserViewController;
-    
-    MSStickerSize stickerSize = (NSInteger)lroundf(sender.value);
-    
-    _browserViewController = [[FluffcornStickerBrowserViewController alloc] initWithStickerSize:stickerSize withPackInfo:_packInfo];
-    
-    _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view insertSubview:_browserViewController.view belowSubview:oldStickerBrowserViewController.view];
-    [oldStickerBrowserViewController.view removeFromSuperview];
-    
-    [self applyPermanentConstraints];
-    _constraintsReapplied = YES;
-    
-    [self setupStickerBrowserView];
-    
-    //Set browserViewController to currently selected segment
-    [_browserViewController loadStickerPackAtIndex:_segmentedControl.selectedSegmentIndex];
-    [_browserViewController.stickerBrowserView reloadData];
-    
-    //Save last selected sticker size to disk
-    [self saveStickerSize];
+  //Remove existing browserViewController view from view
+  MSStickerBrowserViewController *oldStickerBrowserViewController = _browserViewController;
+  
+  MSStickerSize stickerSize = (NSInteger)lroundf(sender.value);
+  
+  _browserViewController = [[FluffcornStickerBrowserViewController alloc] initWithStickerSize:stickerSize withPackInfo:_packInfo];
+  
+  _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.view insertSubview:_browserViewController.view belowSubview:oldStickerBrowserViewController.view];
+  [oldStickerBrowserViewController.view removeFromSuperview];
+  
+  [self applyPermanentConstraints];
+  _constraintsReapplied = YES;
+  
+  [self setupStickerBrowserView];
+  
+  //Set browserViewController to currently selected segment
+  [_browserViewController loadStickerPackAtIndex:_segmentedControl.selectedSegmentIndex];
+  [_browserViewController.stickerBrowserView reloadData];
+  
+  //Save last selected sticker size to disk
+  [self saveStickerSize];
 }
 
 - (IBAction)sliderSnapToIntValue:(UISlider *)sender {
-    //http://stackoverflow.com/a/9695118
-    [sender setValue:lroundf(sender.value) animated:YES];
+  //http://stackoverflow.com/a/9695118
+  [sender setValue:lroundf(sender.value) animated:YES];
 }
 
 #pragma mark - UI display
 
 - (void)applyPermanentConstraints {
-    [self.view removeConstraints:_permanentConstraints];
-    
-    id topGuide = [self topLayoutGuide];
-    id bottomGuide = [self bottomLayoutGuide];
-    NSMutableArray<NSLayoutConstraint *> *messageViewConstraints = [[NSMutableArray alloc] init];
-    //@{@"topGuide": topGuide, @"bottomGuide": bottomGuide, @"segment": _segmentedControl, @"browser": _browserViewController.view};
-    UIView *browserView = _browserViewController.view;
-    NSDictionary *bindings = NSDictionaryOfVariableBindings(topGuide, bottomGuide, _segmentedControl, browserView, _infoButton, _sizeSlider);
-    
-    //Vertical constraints
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-[_segmentedControl(==20)]" options:0 metrics:nil views:bindings]];
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[browserView]|" options:0 metrics:nil views:bindings]];
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_infoButton]-[bottomGuide]" options:0 metrics:nil views:bindings]];
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_sizeSlider]-[bottomGuide]" options:0 metrics:nil views:bindings]];
-    
-    //Horizontal constraints
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_segmentedControl]-|" options:0 metrics:nil views:bindings]];
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[browserView]|" options:0 metrics:nil views:bindings]];
-    [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_sizeSlider]-16-[_infoButton]-|" options:0 metrics:nil views:bindings]];
-    
-    //Create global constraints array
-    _permanentConstraints = [NSArray arrayWithArray:messageViewConstraints];
-    [self.view addConstraints:messageViewConstraints];
-
+  [self.view removeConstraints:_permanentConstraints];
+  
+  id topGuide = [self topLayoutGuide];
+  id bottomGuide = [self bottomLayoutGuide];
+  NSMutableArray<NSLayoutConstraint *> *messageViewConstraints = [[NSMutableArray alloc] init];
+  //@{@"topGuide": topGuide, @"bottomGuide": bottomGuide, @"segment": _segmentedControl, @"browser": _browserViewController.view};
+  UIView *browserView = _browserViewController.view;
+  NSDictionary *bindings = NSDictionaryOfVariableBindings(topGuide, bottomGuide, _segmentedControl, browserView, _infoButton, _sizeSlider);
+  
+  //Vertical constraints
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-[_segmentedControl(==20)]" options:0 metrics:nil views:bindings]];
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[browserView]|" options:0 metrics:nil views:bindings]];
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_infoButton]-[bottomGuide]" options:0 metrics:nil views:bindings]];
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_sizeSlider]-[bottomGuide]" options:0 metrics:nil views:bindings]];
+  
+  //Horizontal constraints
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_segmentedControl]-|" options:0 metrics:nil views:bindings]];
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[browserView]|" options:0 metrics:nil views:bindings]];
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_sizeSlider]-16-[_infoButton]-|" options:0 metrics:nil views:bindings]];
+  
+  //Create global constraints array
+  _permanentConstraints = [NSArray arrayWithArray:messageViewConstraints];
+  [self.view addConstraints:messageViewConstraints];
+  
 }
 
 - (void)loadLastSelectedCategoryToBrowserAndSegment {
-    NSString *lastSelectedCategory = [self readLastSelectedCategory];
-    if (lastSelectedCategory.length > 0) {
-        [_browserViewController loadStickersInPack:lastSelectedCategory];
-        [_segmentedControl setSelectedSegmentIndex:[((NSArray<NSString *> *)[_packInfo objectForKey:kPackOrderKey]) indexOfObject:lastSelectedCategory]];
-    } else if (((NSArray<NSString *> *)[_packInfo objectForKey:kPackOrderKey]).count > 0) {
-        [_browserViewController loadStickerPackAtIndex:0];
-    } else {
-        UIAlertController *alert = [UIAlertController
-                                    alertControllerWithTitle:@"No stickers setup."
-                                    message:nil
-                                    preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *dismiss = [UIAlertAction
-                                  actionWithTitle:@"Dismiss"
-                                  style:UIAlertActionStyleCancel
-                                  handler:^(UIAlertAction * action)
-                                  {
-                                      [alert dismissViewControllerAnimated:YES completion:nil];
-                                      
-                                  }];
-        [alert addAction:dismiss];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-    }
-    [_browserViewController.stickerBrowserView reloadData];
+  NSString *lastSelectedCategory = [self readLastSelectedCategory];
+  if (lastSelectedCategory.length > 0) {
+    [_browserViewController loadStickersInPack:lastSelectedCategory];
+    [_segmentedControl setSelectedSegmentIndex:[((NSArray<NSString *> *)[_packInfo objectForKey:kPackOrderKey]) indexOfObject:lastSelectedCategory]];
+  } else if (((NSArray<NSString *> *)[_packInfo objectForKey:kPackOrderKey]).count > 0) {
+    [_browserViewController loadStickerPackAtIndex:0];
+  } else {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"No stickers setup."
+                                message:nil
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismiss = [UIAlertAction
+                              actionWithTitle:NSLocalizedString(@"alert.action.dismiss", nil)
+                              style:UIAlertActionStyleCancel
+                              handler:^(UIAlertAction * action)
+                              {
+      [alert dismissViewControllerAnimated:YES completion:nil];
+      
+    }];
+    [alert addAction:dismiss];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+  }
+  [_browserViewController.stickerBrowserView reloadData];
 }
 
 - (void)setupStickerBrowserView {
-    
-    //Multiply top inset by two when reapplying constraints due to new browserStickerView added to view. Autolayout places new browserViewController view too far up on reapplication of constraints.
-    _browserViewController.stickerBrowserView.contentInset = UIEdgeInsetsMake(_segmentedControl.frame.size.height * (_constraintsReapplied ? 2 : 1), 0, 0, 0);
+  
+  //Multiply top inset by two when reapplying constraints due to new browserStickerView added to view. Autolayout places new browserViewController view too far up on reapplication of constraints.
+  _browserViewController.stickerBrowserView.contentInset = UIEdgeInsetsMake(_segmentedControl.frame.size.height * (_constraintsReapplied ? 2 : 1), 0, 0, 0);
 }
 
 - (void)hideSegmentedControl {
-    [UIView animateWithDuration:0.2 animations:^() {
-        self->_segmentedControl.alpha = 0.0f;
-    }];
+  [UIView animateWithDuration:0.2 animations:^() {
+    self->_segmentedControl.alpha = 0.0f;
+  }];
 }
 
 - (void)showSegmentedControl {
-    [UIView animateWithDuration:0.7 animations:^() {
-        self->_segmentedControl.alpha = 1.0f;
-    }];
+  [UIView animateWithDuration:0.7 animations:^() {
+    self->_segmentedControl.alpha = 1.0f;
+  }];
 }
 
 - (void)hideInfoButton {
-    [UIView animateWithDuration:0.2 animations:^() {
-        self->_infoButton.alpha = 0.0f;
-    }];
+  [UIView animateWithDuration:0.2 animations:^() {
+    self->_infoButton.alpha = 0.0f;
+  }];
 }
 
 - (void)showInfoButton {
-    [UIView animateWithDuration:0.7 animations:^() {
-        self->_infoButton.alpha = 1.0f;
-    }];
+  [UIView animateWithDuration:0.7 animations:^() {
+    self->_infoButton.alpha = 1.0f;
+  }];
 }
 
 - (void)hideStickerSizeSlider {
-    [UIView animateWithDuration:0.2 animations:^() {
-        self->_sizeSlider.alpha = 0.0f;
-    }];
+  [UIView animateWithDuration:0.2 animations:^() {
+    self->_sizeSlider.alpha = 0.0f;
+  }];
 }
 
 - (void)showStickerSizeSlider {
-    if ([self readStickerSizeSliderVisibility]) {
-        [UIView animateWithDuration:0.7 animations:^() {
-            self->_sizeSlider.alpha = 1.0f;
-        }];
-    }
+  if ([self readStickerSizeSliderVisibility]) {
+    [UIView animateWithDuration:0.7 animations:^() {
+      self->_sizeSlider.alpha = 1.0f;
+    }];
+  }
 }
 
 - (void)displayFeedbackAlert {
-    UIAlertController *feedbackAlert = [UIAlertController
-                                    alertControllerWithTitle:@"Ideas and Suggestion Box"
-                                    message:nil
-                                    preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *sendAction = [UIAlertAction
-                                         actionWithTitle:@"Send"
-                                         style:UIAlertActionStyleDefault
-                                         handler:^(UIAlertAction * action)
-                                         {
-                                             [self sendFeedbackAction:feedbackAlert.textFields.firstObject.text];
-                                         }];
-    
-    UIAlertAction *cancelAction = [UIAlertAction
-                                 actionWithTitle:@"Cancel"
+  UIAlertController *feedbackAlert = [UIAlertController
+                                      alertControllerWithTitle:NSLocalizedString(@"feedback.alert.title", @"Ideas and Suggestion Box")
+                                      message:nil
+                                      preferredStyle:UIAlertControllerStyleAlert];
+  
+  UIAlertAction *sendAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"alert.action.send", nil)
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+    [self sendFeedbackAction:feedbackAlert.textFields.firstObject.text];
+  }];
+  
+  UIAlertAction *cancelAction = [UIAlertAction
+                                 actionWithTitle:NSLocalizedString(@"alert.action.cancel", nil)
                                  style:UIAlertActionStyleCancel
                                  handler:^(UIAlertAction * action)
                                  {
-                                     [feedbackAlert dismissViewControllerAnimated:YES completion:nil];
-                                 }];
-    
-    [feedbackAlert addTextFieldWithConfigurationHandler:^(UITextField *textfield) {
-        self->_feedbackTextFieldDelegate = [[FeedbackTextFieldDelegate alloc] init];
-        self->_feedbackTextFieldDelegate.createAction = sendAction;
-        textfield.delegate = self->_feedbackTextFieldDelegate;
-        textfield.placeholder = @"Your suggestion here.";
-        textfield.autocorrectionType = UITextAutocorrectionTypeDefault;
-        textfield.autocapitalizationType = UITextAutocapitalizationTypeWords;
-        textfield.keyboardAppearance = UIKeyboardAppearanceAlert;
-        sendAction.enabled = NO;
-    }];
-    
-    [feedbackAlert addAction:sendAction];
-    [feedbackAlert addAction:cancelAction];
-    
-    [self presentViewController:feedbackAlert animated:YES completion:nil];
+    [feedbackAlert dismissViewControllerAnimated:YES completion:nil];
+  }];
+  
+  [feedbackAlert addTextFieldWithConfigurationHandler:^(UITextField *textfield) {
+    self->_feedbackTextFieldDelegate = [[FeedbackTextFieldDelegate alloc] init];
+    self->_feedbackTextFieldDelegate.createAction = sendAction;
+    textfield.delegate = self->_feedbackTextFieldDelegate;
+    textfield.placeholder = NSLocalizedString(@"feedback.textfield.placeholder", @"Your suggestion here.");
+    textfield.autocorrectionType = UITextAutocorrectionTypeDefault;
+    textfield.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    textfield.keyboardAppearance = UIKeyboardAppearanceAlert;
+    sendAction.enabled = NO;
+  }];
+  
+  [feedbackAlert addAction:sendAction];
+  [feedbackAlert addAction:cancelAction];
+  
+  [self presentViewController:feedbackAlert animated:YES completion:nil];
 }
 
 - (void)sendFeedbackAction:(NSString *)feedback {
-    //NSURLSession version of
-    //http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c
-    
-    //initialize url that is going to be fetched.
-    NSURL *url = [NSURL URLWithString:@"https://docs.google.com/forms/d/e/1FAIpQLSe9ONAbDW-HbaYqtAAl3iBtDThtddFHM5sXCpRequrxi2esmg/formResponse"];
-    
-    //initialize a request from url
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
-    
-    //set http method
-    [request setHTTPMethod:@"POST"];
-    //initialize a post data
-    NSString *postData = [NSString stringWithFormat:@"entry.262066721=%@", feedback];
-    //set request content type we MUST set this value.
-    
-    [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    //set post data of request
-    [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    //initialize a connection from request
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
-    
-    _sendingAlertController = [UIAlertController
-                               alertControllerWithTitle:@"Sending"
-                               message:nil
-                               preferredStyle:UIAlertControllerStyleAlert];
-    [self presentViewController:_sendingAlertController animated:YES completion:nil];
-    
-    NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [self->_sendingAlertController dismissViewControllerAnimated:YES completion:^() {
-            UIAlertController *sentAlert = [UIAlertController
-                                            alertControllerWithTitle:error ? @"Unable to send. Please try later." : @"Sent successfully!"
-                                            message:error ? error.localizedDescription : nil
-                                            preferredStyle:UIAlertControllerStyleAlert];
-            [sentAlert addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:sentAlert animated:YES completion:nil];
-        }];
+  //NSURLSession version of
+  //http://stackoverflow.com/questions/12358002/submit-data-to-google-spreadsheet-form-from-objective-c
+  
+  //initialize url that is going to be fetched.
+  NSURL *url = [NSURL URLWithString:@"https://docs.google.com/forms/d/e/1FAIpQLSe9ONAbDW-HbaYqtAAl3iBtDThtddFHM5sXCpRequrxi2esmg/formResponse"];
+  
+  //initialize a request from url
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
+  
+  //set http method
+  [request setHTTPMethod:@"POST"];
+  //initialize a post data
+  NSString *postData = [NSString stringWithFormat:@"entry.262066721=%@", feedback];
+  //set request content type we MUST set this value.
+  
+  [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+  
+  //set post data of request
+  [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
+  
+  //initialize a connection from request
+  NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
+  
+  _sendingAlertController = [UIAlertController
+                             alertControllerWithTitle:NSLocalizedString(@"feedback.alert.sending", @"Sending")
+                             message:nil
+                             preferredStyle:UIAlertControllerStyleAlert];
+  [self presentViewController:_sendingAlertController animated:YES completion:nil];
+  
+  NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [self->_sendingAlertController dismissViewControllerAnimated:YES completion:^() {
+      UIAlertController *sentAlert = [UIAlertController
+                                      alertControllerWithTitle:error ? NSLocalizedString(@"feedback.alert.send-result-fail", @"Unable to send. Please try later.") : NSLocalizedString(@"feedback.alert.send-result-success", @"Sent successfully!")
+                                      message:error ? error.localizedDescription : nil
+                                      preferredStyle:UIAlertControllerStyleAlert];
+      [sentAlert addAction:[UIAlertAction
+                            actionWithTitle:NSLocalizedString(@"alert.action.dismiss", nil)
+                            style:UIAlertActionStyleCancel
+                            handler:nil]
+       ];
+      [self presentViewController:sentAlert animated:YES completion:nil];
     }];
-    
-    [uploadTask resume];
+  }];
+  
+  [uploadTask resume];
 }
 
 #pragma mark - Read/Save last selected category
 
 - (NSString *)readLastSelectedCategory {
-    NSString *lastSelectedCategory = [[NSUserDefaults standardUserDefaults] stringForKey:kLastSelectedCategoryKey];
-    return lastSelectedCategory;
+  NSString *lastSelectedCategory = [[NSUserDefaults standardUserDefaults] stringForKey:kLastSelectedCategoryKey];
+  return lastSelectedCategory;
 }
 
 - (void)saveSelectedCategory {
-    if (_browserViewController.currentPack) {
-        [[NSUserDefaults standardUserDefaults] setObject:_browserViewController.currentPack forKey:kLastSelectedCategoryKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+  if (_browserViewController.currentPack) {
+    [[NSUserDefaults standardUserDefaults] setObject:_browserViewController.currentPack forKey:kLastSelectedCategoryKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+  }
 }
 
 #pragma mark - Read/Save sticker size
 
 - (NSInteger)readSavedStickerSize {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:kStickerSizeSliderPreferenceKey];
+  return [[NSUserDefaults standardUserDefaults] integerForKey:kStickerSizeSliderPreferenceKey];
 }
 
 - (void)saveStickerSize {
-    [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)lroundf(_sizeSlider.value) forKey:kStickerSizeSliderPreferenceKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+  [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)lroundf(_sizeSlider.value) forKey:kStickerSizeSliderPreferenceKey];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Read/Save sticker size
 
 - (BOOL)readStickerSizeSliderVisibility {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kStickerSizeSliderVisibilityPreferenceKey];
+  return [[NSUserDefaults standardUserDefaults] boolForKey:kStickerSizeSliderVisibilityPreferenceKey];
 }
 
 #pragma mark - VC lifecycle
 
 -(void)willTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
-    if (presentationStyle == MSMessagesAppPresentationStyleExpanded) {
-        [self showSegmentedControl];
-        [self showInfoButton];
-        [self showStickerSizeSlider];
-    } else {
-        [self hideInfoButton];
-        [self hideStickerSizeSlider];
+  if (presentationStyle == MSMessagesAppPresentationStyleExpanded) {
+    [self showSegmentedControl];
+    [self showInfoButton];
+    [self showStickerSizeSlider];
+  } else {
+    [self hideInfoButton];
+    [self hideStickerSizeSlider];
+  }
+  
+  if (kFirebaseEnabled && [FIRApp defaultApp]) {
+    NSString *presentationStyleTitle;
+    switch (presentationStyle) {
+      case MSMessagesAppPresentationStyleCompact:
+        presentationStyleTitle = @"Compact";
+        break;
+      case MSMessagesAppPresentationStyleExpanded:
+        presentationStyleTitle = @"Expanded";
+        break;
+      default:
+        presentationStyleTitle = @"Unknown";
+        break;
     }
-    
-    if (kFirebaseEnabled && [FIRApp defaultApp]) {
-        NSString *presentationStyleTitle;
-        switch (presentationStyle) {
-            case MSMessagesAppPresentationStyleCompact:
-                presentationStyleTitle = @"Compact";
-                break;
-            case MSMessagesAppPresentationStyleExpanded:
-                presentationStyleTitle = @"Expanded";
-                break;
-            default:
-                presentationStyleTitle = @"Unknown";
-                break;
-        }
-        if ([FIRApp defaultApp])
-            [FIRAnalytics logEventWithName:@"ChangedPresentationStyle"
-                            parameters:@{@"PresentationStyle" : presentationStyleTitle}];
-        /*
-        //Fabric Answers activity logging for detecting when user expands or compacts view
-        [Answers logCustomEventWithName:@"Changed Presentation Style"
-                       customAttributes:@{
-                                          @"PresentationStyle" : presentationStyleTitle}];
-         */
-    }
+    if ([FIRApp defaultApp])
+      [FIRAnalytics logEventWithName:@"ChangedPresentationStyle"
+                          parameters:@{@"PresentationStyle" : presentationStyleTitle}];
+  }
 }
 
 - (void)willBecomeActiveWithConversation:(MSConversation *)conversation {
-    [self setupStickerBrowserView];
-    [self loadLastSelectedCategoryToBrowserAndSegment];
+  [self setupStickerBrowserView];
+  [self loadLastSelectedCategoryToBrowserAndSegment];
 }
 
 
 - (void)willResignActiveWithConversation:(MSConversation *)conversation {
-    //Called less frequently than viewWillDisappear, called after the user has switched a few apps away
-    //[self saveSelectedCategory];
+  //Called less frequently than viewWillDisappear, called after the user has switched a few apps away
+  //[self saveSelectedCategory];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self saveSelectedCategory];
+  [super viewWillDisappear:animated];
+  [self saveSelectedCategory];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (!self) {
-        return nil;
-    }
+  self = [super initWithCoder:decoder];
+  if (!self) {
+    return nil;
+  }
+  
+  if (kFirebaseEnabled && !firAppConfigured) {
+    //Firebase initialization
+    [FIRApp configure];
+    [[FIRConfiguration sharedInstance] setLoggerLevel:FIRLoggerLevelMin];
+    firAppConfigured = YES;
     
-    if (kFirebaseEnabled && !firAppConfigured) {
-        //Firebase initialization
-        [FIRApp configure];
-        [[FIRConfiguration sharedInstance] setLoggerLevel:FIRLoggerLevelMin];
-        firAppConfigured = YES;
-        
-        /*
-        //From http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project and https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6
-        //Get API key from fabric.apikey file in mainBundle
-        NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
-        NSStringEncoding usedEncoding;
-        NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
-        
-        // The string that results from reading the bundle resource contains a trailing
-        // newline character, which we must remove now because Fabric/Crashlytics
-        // can't handle extraneous whitespace.
-        NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-        NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
-        
-        [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
-         */
-    }
-    
-    return self;
+    /*
+     //From http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project and https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6
+     //Get API key from fabric.apikey file in mainBundle
+     NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
+     NSStringEncoding usedEncoding;
+     NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
+     
+     // The string that results from reading the bundle resource contains a trailing
+     // newline character, which we must remove now because Fabric/Crashlytics
+     // can't handle extraneous whitespace.
+     NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+     NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
+     
+     [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
+     */
+  }
+  
+  return self;
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    //Register settings defaults
-    BOOL stickerSizeVisibility = kStickerSizeSliderVisibility;
-    MSStickerSize defaultStickerSize = kDefaultStickerSize;
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{kLastSelectedCategoryKey:@"",kStickerSizeSliderPreferenceKey:[NSNumber numberWithInteger:defaultStickerSize],kStickerSizeSliderVisibilityPreferenceKey:[NSNumber numberWithBool:stickerSizeVisibility]}];
-    
-    //Read saved sticker size for use in alloc sticker browser view controller and sticker size slider
-    NSInteger savedStickerSize = [self readSavedStickerSize];
-    
-    //Load sticker pack info from bundle
-    _packInfo = [StickerPackInfo loadPackInfo];
-    
-    //Alloc segmented control and load sticker packs into segment control
-    _segmentedControl = [[UISegmentedControl alloc] init];
-    [_segmentedControl setBackgroundColor:[UIColor whiteColor]];
-    [_segmentedControl addTarget:self
-                          action:@selector(segmentSwitch:)
-                forControlEvents:UIControlEventValueChanged];
-    if (_packInfo) {
-        NSArray<NSString *> *packOrder = [_packInfo objectForKey:kPackOrderKey];
-        for (NSString *pack in packOrder) {
-            [_segmentedControl insertSegmentWithTitle:pack atIndex:_segmentedControl.numberOfSegments animated:YES];
-        }
+  [super viewDidLoad];
+  
+  //Register settings defaults
+  BOOL stickerSizeVisibility = kStickerSizeSliderVisibility;
+  MSStickerSize defaultStickerSize = kDefaultStickerSize;
+  [[NSUserDefaults standardUserDefaults] registerDefaults:@{kLastSelectedCategoryKey:@"",kStickerSizeSliderPreferenceKey:[NSNumber numberWithInteger:defaultStickerSize],kStickerSizeSliderVisibilityPreferenceKey:[NSNumber numberWithBool:stickerSizeVisibility]}];
+  
+  //Read saved sticker size for use in alloc sticker browser view controller and sticker size slider
+  NSInteger savedStickerSize = [self readSavedStickerSize];
+  
+  //Load sticker pack info from bundle
+  _packInfo = [StickerPackInfo loadPackInfo];
+  
+  //Alloc segmented control and load sticker packs into segment control
+  _segmentedControl = [[UISegmentedControl alloc] init];
+  [_segmentedControl setBackgroundColor:[UIColor whiteColor]];
+  [_segmentedControl addTarget:self
+                        action:@selector(segmentSwitch:)
+              forControlEvents:UIControlEventValueChanged];
+  if (_packInfo) {
+    NSArray<NSString *> *packOrder = [_packInfo objectForKey:kPackOrderKey];
+    for (NSString *pack in packOrder) {
+      [_segmentedControl insertSegmentWithTitle:NSLocalizedString(pack, @"Sticker Pack title") atIndex:_segmentedControl.numberOfSegments animated:YES];
     }
-    if (_segmentedControl.numberOfSegments > 0)
-        _segmentedControl.selectedSegmentIndex = 0;
+  }
+  if (_segmentedControl.numberOfSegments > 0)
+    _segmentedControl.selectedSegmentIndex = 0;
+  
+  //Alloc sticker browser view controller
+  _browserViewController = [[FluffcornStickerBrowserViewController alloc] initWithStickerSize:savedStickerSize withPackInfo:_packInfo];
+  
+  //Alloc and hide info button
+  _infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+  _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
+  [_infoButton addTarget:self action:@selector(infoButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+  
+  //Alloc slider and set min/max values and actions
+  _sizeSlider = [[UISlider alloc] init];
+  _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
+  _sizeSlider.minimumValue = 0;
+  _sizeSlider.maximumValue = 2;
+  _sizeSlider.value = savedStickerSize;
+  _sizeSlider.minimumTrackTintColor = [UIColor lightGrayColor];
+  [_sizeSlider addTarget:self action:@selector(sizeSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+  [_sizeSlider addTarget:self action:@selector(sliderSnapToIntValue:) forControlEvents:UIControlEventTouchUpInside];
+  [_sizeSlider addTarget:self action:@selector(sliderSnapToIntValue:) forControlEvents:UIControlEventTouchUpOutside];
+  
+  //Remove auto resizing masks
+  _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
+  _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+  _infoButton.translatesAutoresizingMaskIntoConstraints = NO;
+  _sizeSlider.translatesAutoresizingMaskIntoConstraints = NO;
+  
+  [self.view addSubview:_browserViewController.view];
+  [self.view addSubview:_segmentedControl];
+  [self.view addSubview:_infoButton];
+  [self.view addSubview:_sizeSlider];
+  [self addChildViewController:_browserViewController];
+  [_browserViewController didMoveToParentViewController:self];
+  
+  //Apply constraints for autolayout
+  [self applyPermanentConstraints];
+  
+  //Only show the segmented control if number of categories is > 1
+  if (_segmentedControl.numberOfSegments > 1) {
+    UISwipeGestureRecognizer *swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
+    [swipeUpRecognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
+    [_browserViewController.stickerBrowserView addGestureRecognizer:swipeUpRecognizer];
+    swipeUpRecognizer.delegate = self;
     
-    //Alloc sticker browser view controller
-    _browserViewController = [[FluffcornStickerBrowserViewController alloc] initWithStickerSize:savedStickerSize withPackInfo:_packInfo];
-    
-    //Alloc and hide info button
-    _infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
-    [_infoButton addTarget:self action:@selector(infoButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //Alloc slider and set min/max values and actions
-    _sizeSlider = [[UISlider alloc] init];
-    _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
-    _sizeSlider.minimumValue = 0;
-    _sizeSlider.maximumValue = 2;
-    _sizeSlider.value = savedStickerSize;
-    _sizeSlider.minimumTrackTintColor = [UIColor lightGrayColor];
-    [_sizeSlider addTarget:self action:@selector(sizeSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [_sizeSlider addTarget:self action:@selector(sliderSnapToIntValue:) forControlEvents:UIControlEventTouchUpInside];
-    [_sizeSlider addTarget:self action:@selector(sliderSnapToIntValue:) forControlEvents:UIControlEventTouchUpOutside];
-    
-    //Remove auto resizing masks
-    _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
-    _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-    _infoButton.translatesAutoresizingMaskIntoConstraints = NO;
-    _sizeSlider.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self.view addSubview:_browserViewController.view];
-    [self.view addSubview:_segmentedControl];
-    [self.view addSubview:_infoButton];
-    [self.view addSubview:_sizeSlider];
-    [self addChildViewController:_browserViewController];
-    [_browserViewController didMoveToParentViewController:self];
-    
-    //Apply constraints for autolayout
-    [self applyPermanentConstraints];
-    
-    //Only show the segmented control if number of categories is > 1
-    if (_segmentedControl.numberOfSegments > 1) {
-        UISwipeGestureRecognizer *swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
-        [swipeUpRecognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
-        [_browserViewController.stickerBrowserView addGestureRecognizer:swipeUpRecognizer];
-        swipeUpRecognizer.delegate = self;
-        
-        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-        [_browserViewController.stickerBrowserView addGestureRecognizer:panRecognizer];
-        panRecognizer.delegate = self;
-    } else {
-        _segmentedControl.hidden = YES;
-    }
-    
-    //Set background color to named color asset with light/dark colors for iOS 13
-    if (@available(iOS 13.0, *)) {
-        self.view.backgroundColor = [UIColor colorNamed:@"backgroundColor"];
-        self.segmentedControl.backgroundColor = [UIColor systemBackgroundColor];
-    }
-    
-    /*
-     //Replaced by UIPanGestureRecognizer because we need to detect the second movement if user scrolls down and then up in one continuous movement.
-     UISwipeGestureRecognizer *swipeDownRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
-     [swipeDownRecognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
-     [_browserViewController.stickerBrowserView addGestureRecognizer:swipeDownRecognizer];
-     swipeDownRecognizer.delegate = self;
-     */
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+    [_browserViewController.stickerBrowserView addGestureRecognizer:panRecognizer];
+    panRecognizer.delegate = self;
+  } else {
+    _segmentedControl.hidden = YES;
+  }
+  
+  //Set background color to named color asset with light/dark colors for iOS 13
+  if (@available(iOS 13.0, *)) {
+    self.view.backgroundColor = [UIColor colorNamed:@"backgroundColor"];
+    self.segmentedControl.backgroundColor = [UIColor systemBackgroundColor];
+  }
+  
+  /*
+   //Replaced by UIPanGestureRecognizer because we need to detect the second movement if user scrolls down and then up in one continuous movement.
+   UISwipeGestureRecognizer *swipeDownRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
+   [swipeDownRecognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
+   [_browserViewController.stickerBrowserView addGestureRecognizer:swipeDownRecognizer];
+   swipeDownRecognizer.delegate = self;
+   */
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    //iOS currently returns the wrong presentationStyle when switching from another expanded app to fluffcorn
-    _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
-    _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
-
+  [super viewWillAppear:animated];
+  //iOS currently returns the wrong presentationStyle when switching from another expanded app to fluffcorn
+  _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
+  _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
+  
 }
 
 @end
