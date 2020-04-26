@@ -110,6 +110,6 @@ All art assets in this repository (any images including PNG and APNG) are © 201
 
 Everything else (the code and text assets) in this repository is made available under MIT License. 
 
-*Visible attribution to ios-sticker-packs-app by [Anson Liu](ansonliu.com), [Alisha Liu](alishaliu.com) required if used publicly or commercially.*
+*Visible attribution to ios-sticker-packs-app by [Anson Liu](http://ansonliu.com), [Alisha Liu](http://alishaliu.com) required if used publicly or commercially.*
 
 Issues, feature requests, and contributions welcome!
