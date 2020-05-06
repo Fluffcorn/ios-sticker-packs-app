@@ -22,6 +22,8 @@
  #import <Answers/Answers.h>
  */
 
+#import "MessagesExtension-Swift.h"
+
 @interface MessagesViewController ()
 
 @property (nonatomic) NSArray<NSLayoutConstraint *> *permanentConstraints;
@@ -186,49 +188,94 @@ static BOOL firAppConfigured = NO;
 }
 
 - (IBAction)waStickerButtonTapped:(id)sender {
-  BOOL openResult;
-  NSString *exceptionReason;
-  NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
-  @try {
-    UIResponder *responder = self;
-    SEL openSel = @selector(openURL:);
-    //NSDictionary *openURLOptions = @{};
-    //void (^completion)(BOOL success) = ^void(BOOL success) {};
-    while (responder) {
-      if ([responder respondsToSelector:openSel]) {
-        //https://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
-        IMP imp = [responder methodForSelector:openSel];
-        BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
-        //openResult = func(responder, openSel, waStickerLaunchURL);
-        break;
-      } else {
-        responder = [responder nextResponder];
+  __block NSError *generateStickerPackError;
+  
+  //Get currently selected sticker pack non-localized name
+  NSString *packName = [[_packInfo objectForKey:kPackOrderKey] objectAtIndex:_segmentedControl.selectedSegmentIndex];
+  NSDictionary *allPacks = [_packInfo objectForKey:kAllPacksKey];
+  NSDictionary *targetPack = [allPacks objectForKey:packName];
+  NSArray<NSDictionary *> *stickerOrder = [targetPack objectForKey:kPackStickerOrderKey];
+  
+  //Get the WA tray icon image file for the selected sticker pack
+  NSString *packTrayIcon = [targetPack objectForKey:kFilenameKey];
+  packTrayIcon = [NSString stringWithFormat:@"%@%@", kWAStickerFilenamePrefix, packTrayIcon ? packTrayIcon : kWADefaultTrayLogo];
+  
+  StickerPack *waStickerPack = [[StickerPack alloc] initWithIdentifier:@"com.ansonliu.fluffcorn" name:[NSString stringWithFormat:@"Fluffcorn %@", NSLocalizedString(packName, @"Sticker Pack title")] publisher:@"Alisha Liu" trayImageFileName:packTrayIcon publisherWebsite:@"https://fluffcorn.com" privacyPolicyWebsite:@"https://fluffcorn.github.io/privacy.html" licenseAgreementWebsite:@"https://fluffcorn.github.io/privacy.html" error:&generateStickerPackError];
+  
+  for (NSDictionary *sticker in stickerOrder) {
+    NSString *waStickerFilename = [NSString stringWithFormat:@"%@%@.png", kWAStickerFilenamePrefix, [sticker valueForKey:kFilenameKey]];
+    [waStickerPack addStickerWithContentsOfFile:waStickerFilename emojis:@[] error:&generateStickerPackError];
+    
+    //Non-localized method
+    //Use description key value in stickerPacks.json.
+    //[self createSticker:[sticker valueForKey:kFilenameKey] fromPack:packName localizedDescription:[sticker valueForKey:kDescriptionKey]];
+    
+    if (generateStickerPackError)
+      NSLog(@"error adding sticker %@", waStickerFilename);
+  }
+  
+  
+  
+  [waStickerPack sendToWhatsAppWithCompletionHandler:^(BOOL success) {
+    BOOL openResult;
+    NSString *exceptionReason;
+    NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
+    @try {
+      //Open URL method of WAStickers code has been commented out.
+      //If the WAStickers code was unable to create the sticker pack data successfully, continue to @finally block of code.
+      if (!success) {
+        generateStickerPackError = [NSError errorWithDomain:@"WAStickerError"
+                                                       code:-1
+                                                   userInfo:@{
+                                                     NSLocalizedDescriptionKey: @"WASticker framework error."
+                                                   }] ;
+        return;
+      }
+      
+      
+      UIResponder *responder = self;
+      SEL openSel = @selector(openURL:);
+      //NSDictionary *openURLOptions = @{};
+      //void (^completion)(BOOL success) = ^void(BOOL success) {};
+      while (responder) {
+        if ([responder respondsToSelector:openSel]) {
+          //https://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
+          IMP imp = [responder methodForSelector:openSel];
+          BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
+          openResult = func(responder, openSel, waStickerLaunchURL);
+          break;
+        } else {
+          responder = [responder nextResponder];
+        }
       }
     }
-  }
-  @catch (NSException *exception) {
-    NSLog(@"%@", exception.reason);
-    exceptionReason = exceptionReason;
-  }
-  @finally {
-    //Make sticker pack
-    
-    NSError *generateStickerPackError;
-    NSString *waInstructions = [NSString stringWithFormat:@"Almost there! Finish sticker pack installation by visiting the exact URL\n\n%@\n\nin Safari to launch WhatsApp.\nWe've copied the URL to your device clipboard for you.", waStickerLaunchURL.absoluteString];
-    NSString *generateStickerPackErrorInstructions = [NSString stringWithFormat:@"Unable to generate WhatsApp Sticker Pack\n%@\nPlease let us know at support@ansonliu.com", generateStickerPackError.localizedDescription];
-    
-    UIAlertController *waAlert = [UIAlertController
+    @catch (NSException *exception) {
+      NSLog(@"%@", exception.reason);
+      exceptionReason = exceptionReason;
+    }
+    @finally {
+      if (openResult)
+        return;
+      
+      //Prefill user accessible general paste board with whatsapp launch URL
+      [UIPasteboard.generalPasteboard setURL:waStickerLaunchURL];
+      
+      NSString *waInstructions = [NSString stringWithFormat:@"Almost there! Finish sticker pack installation by visiting the exact URL\n\n%@\n\nin Safari to launch WhatsApp.\nWe've copied the URL to your device clipboard for you.", waStickerLaunchURL.absoluteString];
+      NSString *generateStickerPackErrorInstructions = [NSString stringWithFormat:@"Unable to generate WhatsApp Sticker Pack\n%@\nPlease let us know at support@ansonliu.com", generateStickerPackError.localizedDescription];
+      
+      UIAlertController *waAlert = [UIAlertController
                                     alertControllerWithTitle:[NSString stringWithFormat:@"%@ WhatsApp Stickers", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]]
-                                  message:generateStickerPackError ? generateStickerPackErrorInstructions : [NSString stringWithFormat:@"%@%@", waInstructions, exceptionReason ? [NSString stringWithFormat:@"\n\n%@", exceptionReason] : [NSString new]]
+                                    message:generateStickerPackError ? generateStickerPackErrorInstructions : [NSString stringWithFormat:@"%@%@", waInstructions, exceptionReason ? [NSString stringWithFormat:@"\n\n%@", exceptionReason] : [NSString new]]
                                     preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *dismissAction = [UIAlertAction
-                                    actionWithTitle:generateStickerPackError ? @"Dismiss" : @"OK"
-                                         style:UIAlertActionStyleDefault
-                                         handler:nil];
-    [waAlert addAction:dismissAction];
-    [self presentViewController:waAlert animated:YES completion:nil];
-  }
+      
+      UIAlertAction *dismissAction = [UIAlertAction
+                                      actionWithTitle:generateStickerPackError ? @"Dismiss" : @"OK"
+                                      style:UIAlertActionStyleDefault
+                                      handler:nil];
+      [waAlert addAction:dismissAction];
+      [self presentViewController:waAlert animated:YES completion:nil];
+    }
+  }];
 }
 
 - (IBAction)sizeSliderValueChanged:(UISlider *)sender {

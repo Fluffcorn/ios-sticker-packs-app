@@ -27,8 +27,13 @@
 #define kStickerPackInfoFile @"stickerPacks.json"
 #define kAllPacksKey @"allPacks"
 #define kPackOrderKey @"packOrder"
+#define kPackStickerOrderKey @"order"
 #define kFilenameKey @"filename"
 #define kDescriptionKey @"description"
+
+//WAStickers specific keys
+#define kWAStickerFilenamePrefix @"wa_"
+#define kWADefaultTrayLogo @"tray_icon.png"
 
 #define Constants_h
 

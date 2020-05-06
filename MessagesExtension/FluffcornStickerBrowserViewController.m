@@ -82,7 +82,7 @@
     }
   }
   
-  NSArray<NSDictionary *> *stickerOrder = [targetPack objectForKey:@"order"];
+  NSArray<NSDictionary *> *stickerOrder = [targetPack objectForKey:kPackStickerOrderKey];
   
   for (NSDictionary *sticker in stickerOrder) {
     [self createSticker:[sticker valueForKey:kFilenameKey] fromPack:packName localizedDescription:NSLocalizedString([sticker valueForKey:kFilenameKey],nil)];

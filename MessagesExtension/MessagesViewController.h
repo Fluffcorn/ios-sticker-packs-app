@@ -8,6 +8,8 @@
 
 #import <Messages/Messages.h>
 
+//@class StickerPack;
+
 @interface MessagesViewController : MSMessagesAppViewController <UIGestureRecognizerDelegate>
 
 @end

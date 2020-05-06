@@ -5,7 +5,7 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree.
 //
-
+import Foundation
 import UIKit
 
 /**
@@ -26,7 +26,7 @@ enum StickerPackError: Error {
 /**
  *  Main class that handles sticker packs, a set of stickers.
  */
-class StickerPack {
+class StickerPack: NSObject {
 
     let identifier: String
     let name: String
@@ -66,7 +66,7 @@ class StickerPack {
      - .incorrectImageSize if the tray image is not within the allowed size
      - .animatedImagesNotSupported if the tray image is animated
      */
-    init(identifier: String, name: String, publisher: String, trayImageFileName: String, publisherWebsite: String?, privacyPolicyWebsite: String?, licenseAgreementWebsite: String?) throws {
+    @objc init(identifier: String, name: String, publisher: String, trayImageFileName: String, publisherWebsite: String?, privacyPolicyWebsite: String?, licenseAgreementWebsite: String?) throws {
         guard !name.isEmpty && !publisher.isEmpty && !identifier.isEmpty else {
             throw StickerPackError.emptyString
         }
@@ -140,7 +140,7 @@ class StickerPack {
      - .stickersNumOutsideAllowableRange if current number of stickers is not withing limits
      - All exceptions from Sticker(contentsOfFile:emojis:)
      */
-    func addSticker(contentsOfFile filename: String, emojis: [String]?) throws {
+    @objc func addSticker(contentsOfFile filename: String, emojis: [String]?) throws {
         guard stickers.count <= Limits.MaxStickersPerPack else {
             throw StickerPackError.stickersNumOutsideAllowableRange
         }
@@ -178,7 +178,7 @@ class StickerPack {
      *    into a format that WhatsApp can read and WhatsApp is about to open. Called on the main
      *    queue.
      */
-    func sendToWhatsApp(completionHandler: @escaping (Bool) -> Void) {
+    @objc func sendToWhatsApp(completionHandler: @escaping (Bool) -> Void) {
         StickerPackManager.queue.async {
             var json: [String: Any] = [:]
             json["identifier"] = self.identifier

@@ -30,7 +30,7 @@ struct Interoperability {
         let pasteboard = UIPasteboard.general
 
         var jsonWithAppStoreLink: [String: Any] = json
-        jsonWithAppStoreLink["ios_app_store_link"] = iOSAppStoreLink
+        jsonWithAppStoreLink["ios_app_store_link"] = "http://itunes.apple.com/app/id1171532447"
         jsonWithAppStoreLink["android_play_store_link"] = AndroidStoreLink
 
         guard let dataToSend = try? JSONSerialization.data(withJSONObject: jsonWithAppStoreLink, options: []) else {
