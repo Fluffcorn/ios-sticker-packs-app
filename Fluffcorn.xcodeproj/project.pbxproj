@@ -63,8 +63,21 @@
 		2854500A244F51D200C0ECED /* localization-notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28545008244F51D200C0ECED /* localization-notes.txt */; };
 		2854500F244F544100C0ECED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2854500D244F544000C0ECED /* Localizable.strings */; };
 		28545010244F544100C0ECED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2854500D244F544000C0ECED /* Localizable.strings */; };
-		28545012244F634800C0ECED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28545011244F634800C0ECED /* GoogleService-Info.plist */; };
-		28545013244F634800C0ECED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28545011244F634800C0ECED /* GoogleService-Info.plist */; };
+		2870046624621F3300478191 /* Limits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870045524621F3000478191 /* Limits.swift */; };
+		2870046724621F3300478191 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870045624621F3000478191 /* ImageData.swift */; };
+		2870046824621F3300478191 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870045724621F3000478191 /* Sticker.swift */; };
+		2870046924621F3300478191 /* Interoperability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870045B24621F3100478191 /* Interoperability.swift */; };
+		2870046A24621F3300478191 /* YYSpriteSheetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870045D24621F3100478191 /* YYSpriteSheetImage.m */; };
+		2870046B24621F3300478191 /* YYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870045E24621F3100478191 /* YYImage.m */; };
+		2870046C24621F3300478191 /* YYFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870045F24621F3100478191 /* YYFrameImage.m */; };
+		2870046D24621F3300478191 /* YYAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870046024621F3100478191 /* YYAnimatedImageView.m */; };
+		2870046E24621F3300478191 /* WebPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870046124621F3200478191 /* WebPManager.swift */; };
+		2870046F24621F3300478191 /* StickerPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870046224621F3200478191 /* StickerPack.swift */; };
+		2870047024621F3300478191 /* YYImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870046324621F3200478191 /* YYImageCoder.m */; };
+		2870047124621F3300478191 /* StickerPackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870046424621F3200478191 /* StickerPackManager.swift */; };
+		2870047424621FCC00478191 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2870047324621FCC00478191 /* WebP.framework */; };
+		2870047724622B3900478191 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2870047624622B3900478191 /* GoogleService-Info.plist */; };
+		2870047824622B3900478191 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2870047624622B3900478191 /* GoogleService-Info.plist */; };
 		289208F723288C25005AC554 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 289208F623288C25005AC554 /* Colors.xcassets */; };
 		289D4958244FCEB300448FEC /* hm_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D494F244FCEB200448FEC /* hm_5.png */; };
 		289D4959244FCEB300448FEC /* hm_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D494F244FCEB200448FEC /* hm_5.png */; };
@@ -190,8 +203,28 @@
 		28544FFF244F3EE000C0ECED /* FirebaseInstanceID.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseInstanceID.xcframework; sourceTree = "<group>"; };
 		28545000244F3EE000C0ECED /* GTMSessionFetcher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GTMSessionFetcher.xcframework; sourceTree = "<group>"; };
 		28545008244F51D200C0ECED /* localization-notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "localization-notes.txt"; sourceTree = "<group>"; };
-		28545011244F634800C0ECED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28545015244F65CD00C0ECED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2870045324621F2F00478191 /* Fluffcorn-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fluffcorn-Bridging-Header.h"; sourceTree = "<group>"; };
+		2870045424621F2F00478191 /* MessagesExtension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessagesExtension-Bridging-Header.h"; sourceTree = "<group>"; };
+		2870045524621F3000478191 /* Limits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Limits.swift; sourceTree = "<group>"; };
+		2870045624621F3000478191 /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		2870045724621F3000478191 /* Sticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		2870045824621F3000478191 /* YYImageCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImageCoder.h; sourceTree = "<group>"; };
+		2870045924621F3000478191 /* YYFrameImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFrameImage.h; sourceTree = "<group>"; };
+		2870045A24621F3100478191 /* YYSpriteSheetImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYSpriteSheetImage.h; sourceTree = "<group>"; };
+		2870045B24621F3100478191 /* Interoperability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interoperability.swift; sourceTree = "<group>"; };
+		2870045C24621F3100478191 /* YYImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImage.h; sourceTree = "<group>"; };
+		2870045D24621F3100478191 /* YYSpriteSheetImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYSpriteSheetImage.m; sourceTree = "<group>"; };
+		2870045E24621F3100478191 /* YYImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImage.m; sourceTree = "<group>"; };
+		2870045F24621F3100478191 /* YYFrameImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFrameImage.m; sourceTree = "<group>"; };
+		2870046024621F3100478191 /* YYAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAnimatedImageView.m; sourceTree = "<group>"; };
+		2870046124621F3200478191 /* WebPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPManager.swift; sourceTree = "<group>"; };
+		2870046224621F3200478191 /* StickerPack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerPack.swift; sourceTree = "<group>"; };
+		2870046324621F3200478191 /* YYImageCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImageCoder.m; sourceTree = "<group>"; };
+		2870046424621F3200478191 /* StickerPackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerPackManager.swift; sourceTree = "<group>"; };
+		2870046524621F3200478191 /* YYAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAnimatedImageView.h; sourceTree = "<group>"; };
+		2870047324621FCC00478191 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebP.framework; sourceTree = "<group>"; };
+		2870047624622B3900478191 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		289208F623288C25005AC554 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		289D494F244FCEB200448FEC /* hm_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hm_5.png; sourceTree = "<group>"; };
 		289D4950244FCEB200448FEC /* hm_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hm_3.png; sourceTree = "<group>"; };
@@ -232,8 +265,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28544FF3244F3EC800C0ECED /* FirebaseAnalytics.framework in Frameworks */,
 				2833B1551DF4A0E4005F05F2 /* Messages.framework in Frameworks */,
+				2870047424621FCC00478191 /* WebP.framework in Frameworks */,
+				28544FF3244F3EC800C0ECED /* FirebaseAnalytics.framework in Frameworks */,
 				28544FF9244F3ED200C0ECED /* FirebaseCrashlytics.xcframework in Frameworks */,
 				28544FF0244F3EC800C0ECED /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
 				28544FF4244F3EC800C0ECED /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
@@ -300,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				289208F523288B26005AC554 /* Firebase frameworks */,
+				2870047524621FE500478191 /* WAStickers frameworks */,
 				2833B1541DF4A0E4005F05F2 /* Messages.framework */,
 			);
 			name = Frameworks;
@@ -327,9 +362,12 @@
 				28AE8DD91DFDA4E7002CB4A3 /* openSourceCredit.txt */,
 				28545008244F51D200C0ECED /* localization-notes.txt */,
 				2854500D244F544000C0ECED /* Localizable.strings */,
+				2870047224621F6C00478191 /* WAStickers files */,
 				28AE8DD61DFD8CCE002CB4A3 /* Art Assets */,
 				28F115CF1E088BED00C62F8E /* Settings.bundle */,
 				2865B81E21DAF85E00354AF1 /* Firebase resources */,
+				2870045324621F2F00478191 /* Fluffcorn-Bridging-Header.h */,
+				2870045424621F2F00478191 /* MessagesExtension-Bridging-Header.h */,
 			);
 			path = MessagesExtension;
 			sourceTree = "<group>";
@@ -417,10 +455,42 @@
 			isa = PBXGroup;
 			children = (
 				28544FE1244F3EB200C0ECED /* Firebase.h */,
-				28545011244F634800C0ECED /* GoogleService-Info.plist */,
+				2870047624622B3900478191 /* GoogleService-Info.plist */,
 			);
 			name = "Firebase resources";
 			path = ..;
+			sourceTree = "<group>";
+		};
+		2870047224621F6C00478191 /* WAStickers files */ = {
+			isa = PBXGroup;
+			children = (
+				2870045524621F3000478191 /* Limits.swift */,
+				2870046424621F3200478191 /* StickerPackManager.swift */,
+				2870046224621F3200478191 /* StickerPack.swift */,
+				2870045724621F3000478191 /* Sticker.swift */,
+				2870045624621F3000478191 /* ImageData.swift */,
+				2870045B24621F3100478191 /* Interoperability.swift */,
+				2870046124621F3200478191 /* WebPManager.swift */,
+				2870046524621F3200478191 /* YYAnimatedImageView.h */,
+				2870046024621F3100478191 /* YYAnimatedImageView.m */,
+				2870045924621F3000478191 /* YYFrameImage.h */,
+				2870045F24621F3100478191 /* YYFrameImage.m */,
+				2870045C24621F3100478191 /* YYImage.h */,
+				2870045E24621F3100478191 /* YYImage.m */,
+				2870045824621F3000478191 /* YYImageCoder.h */,
+				2870046324621F3200478191 /* YYImageCoder.m */,
+				2870045A24621F3100478191 /* YYSpriteSheetImage.h */,
+				2870045D24621F3100478191 /* YYSpriteSheetImage.m */,
+			);
+			path = "WAStickers files";
+			sourceTree = "<group>";
+		};
+		2870047524621FE500478191 /* WAStickers frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2870047324621FCC00478191 /* WebP.framework */,
+			);
+			path = "WAStickers frameworks";
 			sourceTree = "<group>";
 		};
 		289208F523288B26005AC554 /* Firebase frameworks */ = {
@@ -528,11 +598,13 @@
 					2833B1441DF4A0E3005F05F2 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 3E2UWZ76C2;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 					2833B14E1DF4A0E4005F05F2 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 3E2UWZ76C2;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -567,10 +639,10 @@
 				289D495C244FCEB300448FEC /* hm_6.png in Resources */,
 				289D495A244FCEB300448FEC /* hm_3.png in Resources */,
 				289D4966244FCEB300448FEC /* hm_4.png in Resources */,
+				2870047724622B3900478191 /* GoogleService-Info.plist in Resources */,
 				289D4958244FCEB300448FEC /* hm_5.png in Resources */,
 				2854500F244F544100C0ECED /* Localizable.strings in Resources */,
 				289D495E244FCEB300448FEC /* hm_1.png in Resources */,
-				28545012244F634800C0ECED /* GoogleService-Info.plist in Resources */,
 				289D4960244FCEB300448FEC /* hm_2.png in Resources */,
 				289D4968244FCEB300448FEC /* hm_7.png in Resources */,
 				28545009244F51D200C0ECED /* localization-notes.txt in Resources */,
@@ -585,6 +657,7 @@
 				289D495F244FCEB300448FEC /* hm_1.png in Resources */,
 				2833B1C01DF5079D005F05F2 /* fc_2.png in Resources */,
 				AE4915751E9A2B7F00BDEE5E /* ea_1.png in Resources */,
+				2870047824622B3900478191 /* GoogleService-Info.plist in Resources */,
 				289D495B244FCEB300448FEC /* hm_3.png in Resources */,
 				2833B15E1DF4A0E4005F05F2 /* Assets.xcassets in Resources */,
 				AE513BCB1E70D24F005FE8F1 /* sp_1.png in Resources */,
@@ -638,7 +711,6 @@
 				289D4965244FCEB300448FEC /* hm_9.png in Resources */,
 				289208F723288C25005AC554 /* Colors.xcassets in Resources */,
 				2833B18D1DF4AE7F005F05F2 /* wt_2.png in Resources */,
-				28545013244F634800C0ECED /* GoogleService-Info.plist in Resources */,
 				AEDC171A1E6EC4230058C844 /* sp_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,10 +722,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2870046624621F3300478191 /* Limits.swift in Sources */,
 				2833B1961DF4C0E0005F05F2 /* StickerPackInfo.m in Sources */,
+				2870047124621F3300478191 /* StickerPackManager.swift in Sources */,
 				2833B1591DF4A0E4005F05F2 /* MessagesViewController.m in Sources */,
+				2870046E24621F3300478191 /* WebPManager.swift in Sources */,
+				2870046D24621F3300478191 /* YYAnimatedImageView.m in Sources */,
+				2870046A24621F3300478191 /* YYSpriteSheetImage.m in Sources */,
 				28AE8DD51DFD1BBD002CB4A3 /* FeedbackTextFieldDelegate.m in Sources */,
 				2833B16B1DF4A277005F05F2 /* FluffcornStickerBrowserViewController.m in Sources */,
+				2870046824621F3300478191 /* Sticker.swift in Sources */,
+				2870047024621F3300478191 /* YYImageCoder.m in Sources */,
+				2870046724621F3300478191 /* ImageData.swift in Sources */,
+				2870046F24621F3300478191 /* StickerPack.swift in Sources */,
+				2870046C24621F3300478191 /* YYFrameImage.m in Sources */,
+				2870046924621F3300478191 /* Interoperability.swift in Sources */,
+				2870046B24621F3300478191 /* YYImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,12 +883,15 @@
 		2833B1631DF4A0E4005F05F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/WAStickers\\ frameworks",
 				);
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -812,6 +899,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(inherited)",
 				);
 				MARKETING_VERSION = 1.4.1;
 				OTHER_LDFLAGS = (
@@ -821,6 +912,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.llamacorn.StickerPackExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MessagesExtension/MessagesExtension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -828,12 +922,15 @@
 		2833B1641DF4A0E4005F05F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/WAStickers\\ frameworks",
 				);
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -841,6 +938,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(inherited)",
 				);
 				MARKETING_VERSION = 1.4.1;
 				OTHER_LDFLAGS = (
@@ -850,6 +951,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.llamacorn.StickerPackExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MessagesExtension/MessagesExtension-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -857,14 +960,24 @@
 		2833B1671DF4A0E4005F05F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = Fluffcorn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.llamacorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MessagesExtension/Fluffcorn-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -872,14 +985,23 @@
 		2833B1681DF4A0E4005F05F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = Fluffcorn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.llamacorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MessagesExtension/Fluffcorn-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

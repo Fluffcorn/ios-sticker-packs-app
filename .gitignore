@@ -1,5 +1,6 @@
 fabric.apikey
 fabric.buildsecret
+GoogleService-Info.plist
 **/GoogleService-Info.plist
 **/*.framework/*
 

@@ -34,6 +34,8 @@
 @property (nonatomic) UIButton *infoButton;
 @property (nonatomic) UISlider *sizeSlider;
 
+@property (nonatomic) UIButton *waStickerButton;
+
 @property (nonatomic) FeedbackTextFieldDelegate *feedbackTextFieldDelegate;
 @property (nonatomic) UIAlertController *sendingAlertController;
 
@@ -129,16 +131,44 @@ static BOOL firAppConfigured = NO;
                                        style:UIAlertActionStyleDefault
                                        handler:^(UIAlertAction * action)
                                        {
-    [self displayFeedbackAlert];
+    //[self displayFeedbackAlert];
     
     /*
      //Whatsapp In development
-    NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"wa_fluffcorn2" withExtension:@"txt"];
-    NSString*stringPath = [imgPath absoluteString]; //this is correct
-    NSData *waf = [NSData dataWithContentsOfURL:[NSURL URLWithString:stringPath]];
-    [UIPasteboard.generalPasteboard setData:waf forPasteboardType:@"net.whatsapp.third-party.sticker-pack"];
-    //[UIPasteboard.generalPasteboard setURL:[NSURL URLWithString:@"whatsapp://stickerPack"]];
+     NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"wa_fluffcorn2" withExtension:@"txt"];
+     NSString*stringPath = [imgPath absoluteString]; //this is correct
+     NSData *waf = [NSData dataWithContentsOfURL:[NSURL URLWithString:stringPath]];
+     [UIPasteboard.generalPasteboard setData:waf forPasteboardType:@"net.whatsapp.third-party.sticker-pack"];
+     //[UIPasteboard.generalPasteboard setURL:[NSURL URLWithString:@"whatsapp://stickerPack"]];
      */
+    
+    UIResponder *responder = self;
+    SEL canOpenSel = @selector(canOpenURL:);
+    SEL openSel = @selector(openURL:);
+    NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
+    //NSDictionary *openURLOptions = @{};
+    //void (^completion)(BOOL success) = ^void(BOOL success) {};
+    while (responder) {
+      if ([responder respondsToSelector:openSel]) {
+        
+        //https://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
+        if ([responder respondsToSelector:canOpenSel]) {
+          IMP imp = [responder methodForSelector:canOpenSel];
+          BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
+          BOOL canOpenResult = func(responder, canOpenSel, waStickerLaunchURL);
+        }
+        
+        
+        IMP imp = [responder methodForSelector:openSel];
+        BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
+        BOOL openResult = func(responder, openSel, waStickerLaunchURL);
+        
+        //[responder performSelector:openSel withObject:waStickerLaunchURL];
+        return;
+      } else {
+        responder = [responder nextResponder];
+      }
+    }
   }];
   
   UIAlertAction *dismissAction = [UIAlertAction
@@ -153,6 +183,52 @@ static BOOL firAppConfigured = NO;
   [infoAlert addAction:dismissAction];
   [self presentViewController:infoAlert animated:YES completion:nil];
   
+}
+
+- (IBAction)waStickerButtonTapped:(id)sender {
+  BOOL openResult;
+  NSString *exceptionReason;
+  NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
+  @try {
+    UIResponder *responder = self;
+    SEL openSel = @selector(openURL:);
+    //NSDictionary *openURLOptions = @{};
+    //void (^completion)(BOOL success) = ^void(BOOL success) {};
+    while (responder) {
+      if ([responder respondsToSelector:openSel]) {
+        //https://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
+        IMP imp = [responder methodForSelector:openSel];
+        BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
+        //openResult = func(responder, openSel, waStickerLaunchURL);
+        break;
+      } else {
+        responder = [responder nextResponder];
+      }
+    }
+  }
+  @catch (NSException *exception) {
+    NSLog(@"%@", exception.reason);
+    exceptionReason = exceptionReason;
+  }
+  @finally {
+    //Make sticker pack
+    
+    NSError *generateStickerPackError;
+    NSString *waInstructions = [NSString stringWithFormat:@"Almost there! Finish sticker pack installation by visiting the exact URL\n\n%@\n\nin Safari to launch WhatsApp.\nWe've copied the URL to your device clipboard for you.", waStickerLaunchURL.absoluteString];
+    NSString *generateStickerPackErrorInstructions = [NSString stringWithFormat:@"Unable to generate WhatsApp Sticker Pack\n%@\nPlease let us know at support@ansonliu.com", generateStickerPackError.localizedDescription];
+    
+    UIAlertController *waAlert = [UIAlertController
+                                    alertControllerWithTitle:[NSString stringWithFormat:@"%@ WhatsApp Stickers", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]]
+                                  message:generateStickerPackError ? generateStickerPackErrorInstructions : [NSString stringWithFormat:@"%@%@", waInstructions, exceptionReason ? [NSString stringWithFormat:@"\n\n%@", exceptionReason] : [NSString new]]
+                                    preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction
+                                    actionWithTitle:generateStickerPackError ? @"Dismiss" : @"OK"
+                                         style:UIAlertActionStyleDefault
+                                         handler:nil];
+    [waAlert addAction:dismissAction];
+    [self presentViewController:waAlert animated:YES completion:nil];
+  }
 }
 
 - (IBAction)sizeSliderValueChanged:(UISlider *)sender {
@@ -195,18 +271,20 @@ static BOOL firAppConfigured = NO;
   NSMutableArray<NSLayoutConstraint *> *messageViewConstraints = [[NSMutableArray alloc] init];
   //@{@"topGuide": topGuide, @"bottomGuide": bottomGuide, @"segment": _segmentedControl, @"browser": _browserViewController.view};
   UIView *browserView = _browserViewController.view;
-  NSDictionary *bindings = NSDictionaryOfVariableBindings(topGuide, bottomGuide, _segmentedControl, browserView, _infoButton, _sizeSlider);
+  NSDictionary *bindings = NSDictionaryOfVariableBindings(topGuide, bottomGuide, _segmentedControl, browserView, _infoButton, _waStickerButton, _sizeSlider);
   
   //Vertical constraints
   [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-[_segmentedControl(==20)]" options:0 metrics:nil views:bindings]];
   [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[browserView]|" options:0 metrics:nil views:bindings]];
   [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_infoButton]-[bottomGuide]" options:0 metrics:nil views:bindings]];
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_waStickerButton]-[_infoButton]" options:0 metrics:nil views:bindings]];
   [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_sizeSlider]-[bottomGuide]" options:0 metrics:nil views:bindings]];
   
   //Horizontal constraints
   [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_segmentedControl]-|" options:0 metrics:nil views:bindings]];
   [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[browserView]|" options:0 metrics:nil views:bindings]];
   [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_sizeSlider]-16-[_infoButton]-|" options:0 metrics:nil views:bindings]];
+  [messageViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_waStickerButton]-|" options:0 metrics:nil views:bindings]];
   
   //Create global constraints array
   _permanentConstraints = [NSArray arrayWithArray:messageViewConstraints];
@@ -269,6 +347,18 @@ static BOOL firAppConfigured = NO;
 - (void)showInfoButton {
   [UIView animateWithDuration:0.7 animations:^() {
     self->_infoButton.alpha = 1.0f;
+  }];
+}
+
+- (void)hideWAStickerButton {
+  [UIView animateWithDuration:0.2 animations:^() {
+    self->_waStickerButton.alpha = 0.0f;
+  }];
+}
+
+- (void)showWAStickerButton {
+  [UIView animateWithDuration:0.7 animations:^() {
+    self->_waStickerButton.alpha = 1.0f;
   }];
 }
 
@@ -410,9 +500,11 @@ static BOOL firAppConfigured = NO;
   if (presentationStyle == MSMessagesAppPresentationStyleExpanded) {
     [self showSegmentedControl];
     [self showInfoButton];
+    [self showWAStickerButton];
     [self showStickerSizeSlider];
   } else {
     [self hideInfoButton];
+    [self hideWAStickerButton];
     [self hideStickerSizeSlider];
   }
   
@@ -520,6 +612,14 @@ static BOOL firAppConfigured = NO;
   _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
   [_infoButton addTarget:self action:@selector(infoButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
   
+  //Alloc and hide WASticker install button
+  _waStickerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  UIImage *waLogo = [UIImage imageNamed:@"WALogoIconColor"];
+  //UIImage *waLogo = [[UIImage imageNamed:@"WALogoIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+  [_waStickerButton setImage:waLogo forState:UIControlStateNormal];
+  _waStickerButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
+  [_waStickerButton addTarget:self action:@selector(waStickerButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+  
   //Alloc slider and set min/max values and actions
   _sizeSlider = [[UISlider alloc] init];
   _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
@@ -535,11 +635,13 @@ static BOOL firAppConfigured = NO;
   _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
   _browserViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
   _infoButton.translatesAutoresizingMaskIntoConstraints = NO;
+  _waStickerButton.translatesAutoresizingMaskIntoConstraints = NO;
   _sizeSlider.translatesAutoresizingMaskIntoConstraints = NO;
   
   [self.view addSubview:_browserViewController.view];
   [self.view addSubview:_segmentedControl];
   [self.view addSubview:_infoButton];
+  [self.view addSubview:_waStickerButton];
   [self.view addSubview:_sizeSlider];
   [self addChildViewController:_browserViewController];
   [_browserViewController didMoveToParentViewController:self];
@@ -580,8 +682,8 @@ static BOOL firAppConfigured = NO;
   [super viewWillAppear:animated];
   //iOS currently returns the wrong presentationStyle when switching from another expanded app to fluffcorn
   _infoButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
+  _waStickerButton.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
   _sizeSlider.alpha = self.presentationStyle == MSMessagesAppPresentationStyleCompact ? 0.0f : 1.0f;
-  
 }
 
 @end
