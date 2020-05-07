@@ -33,7 +33,10 @@
 
 //WAStickers specific keys
 #define kWAStickerFilenamePrefix @"wa_"
-#define kWADefaultTrayLogo @"tray_icon.png"
+#define kWADefaultTrayLogo @"tray_icon"
+#define kWAStickerPackPublisher @"Alisha Liu"
+#define kWAStickerPackPublisherWebsite @"https://fluffcorn.com"
+#define kWAStickerPackPrivacyWebsite @"https://fluffcorn.github.io/privacy.html"
 
 #define Constants_h
 

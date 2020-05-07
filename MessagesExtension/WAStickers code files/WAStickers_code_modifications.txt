@@ -4,6 +4,8 @@ Add @objc attribute to init, addSticker, sendToWhatsApp methods in StickerPack.s
 
 Commented out UIApplication open URL methods in Interoperability.swift because they do not compile in a MessagesExtension.
 
+Remove pasteboard expiration date from Interoperatbility.swift. 
+
 Set iOS App Store link in Interoperability.swift to this format http://itunes.apple.com/app/id1171532447.
 
 Add #import "MessagesExtension-Swift.h" to MessagesViewController.m to access exposed @objc Swift methods. Command-Alt click on the filename in import statement to jump to definition and see the adapted Swift methods.

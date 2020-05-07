@@ -38,7 +38,7 @@ struct Interoperability {
         }
 
         if #available(iOS 10.0, *) {
-            pasteboard.setItems([[PasteboardStickerPackDataType: dataToSend]], options: [UIPasteboard.OptionsKey.localOnly: true, UIPasteboard.OptionsKey.expirationDate: NSDate(timeIntervalSinceNow: PasteboardExpirationSeconds)])
+            pasteboard.setItems([[PasteboardStickerPackDataType: dataToSend]], options: [UIPasteboard.OptionsKey.localOnly: true])
         } else {
             pasteboard.setData(dataToSend, forPasteboardType: PasteboardStickerPackDataType)
         }

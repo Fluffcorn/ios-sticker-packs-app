@@ -128,12 +128,61 @@ static BOOL firAppConfigured = NO;
                                   message:error ? error.localizedDescription : [NSString stringWithFormat:@"%@\n\n%@", aboutText, creditText]
                                   preferredStyle:UIAlertControllerStyleAlert];
   
+  @try {
+    UIResponder *responder = self;
+    SEL canOpenSel = @selector(canOpenURL:);
+    SEL openSel = @selector(openURL:);
+    NSURL *reviewStoreURL = [NSURL URLWithString:@"itms-apps://apps.apple.com/gb/app/id1171532447?action=write-review"];
+    while (responder) {
+      if ([responder respondsToSelector:canOpenSel] && [responder respondsToSelector:openSel]) {
+        IMP imp = [responder methodForSelector:canOpenSel];
+        BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
+        if(func(responder, canOpenSel, reviewStoreURL)) {
+          UIAlertAction *reviewStoreAction = [UIAlertAction
+                                              actionWithTitle:@"Rate Fluffcorn"
+                                              style:UIAlertActionStyleDefault
+                                              handler:^(UIAlertAction * action)
+                                              {
+            IMP imp = [responder methodForSelector:openSel];
+            BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
+            BOOL openResult = func(responder, openSel, reviewStoreURL);
+            
+            if (!openResult) {
+              UIAlertController *errorAlert = [UIAlertController
+                                               alertControllerWithTitle:@"Unable to launch App Store."
+                                               message:@"Please find Fluffcorn on the App Store! Thank you!"
+                                               preferredStyle:UIAlertControllerStyleAlert];
+              UIAlertAction *dismissAction = [UIAlertAction
+                                              actionWithTitle:NSLocalizedString(@"alert.action.dismiss", nil)
+                                              style:UIAlertActionStyleCancel
+                                              handler:nil];
+              [infoAlert addAction:dismissAction];
+              [self presentViewController:errorAlert animated:YES completion:nil];
+            }
+          }];
+          
+          [infoAlert addAction:reviewStoreAction];
+        }
+        //[responder performSelector:openSel withObject:waStickerLaunchURL];
+        break;
+      } else {
+        responder = [responder nextResponder];
+      }
+    }
+    
+  }
+  @catch (NSException *exception) {
+    NSLog(@"%@", exception.reason);
+  }
+  @finally {
+  }
+  
   UIAlertAction *sendFeedbackAction = [UIAlertAction
                                        actionWithTitle:@"Idea and Suggestion Box"
                                        style:UIAlertActionStyleDefault
                                        handler:^(UIAlertAction * action)
                                        {
-    //[self displayFeedbackAlert];
+    [self displayFeedbackAlert];
     
     /*
      //Whatsapp In development
@@ -144,39 +193,43 @@ static BOOL firAppConfigured = NO;
      //[UIPasteboard.generalPasteboard setURL:[NSURL URLWithString:@"whatsapp://stickerPack"]];
      */
     
-    UIResponder *responder = self;
-    SEL canOpenSel = @selector(canOpenURL:);
-    SEL openSel = @selector(openURL:);
-    NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
-    //NSDictionary *openURLOptions = @{};
-    //void (^completion)(BOOL success) = ^void(BOOL success) {};
-    while (responder) {
-      if ([responder respondsToSelector:openSel]) {
-        
-        //https://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
-        if ([responder respondsToSelector:canOpenSel]) {
-          IMP imp = [responder methodForSelector:canOpenSel];
-          BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
-          BOOL canOpenResult = func(responder, canOpenSel, waStickerLaunchURL);
-        }
-        
-        
-        IMP imp = [responder methodForSelector:openSel];
-        BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
-        BOOL openResult = func(responder, openSel, waStickerLaunchURL);
-        
-        //[responder performSelector:openSel withObject:waStickerLaunchURL];
-        return;
-      } else {
-        responder = [responder nextResponder];
-      }
-    }
+    /*
+     UIResponder *responder = self;
+     SEL canOpenSel = @selector(canOpenURL:);
+     SEL openSel = @selector(openURL:);
+     NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
+     //NSDictionary *openURLOptions = @{};
+     //void (^completion)(BOOL success) = ^void(BOOL success) {};
+     while (responder) {
+     if ([responder respondsToSelector:openSel]) {
+     
+     //https://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
+     if ([responder respondsToSelector:canOpenSel]) {
+     IMP imp = [responder methodForSelector:canOpenSel];
+     BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
+     BOOL canOpenResult = func(responder, canOpenSel, waStickerLaunchURL);
+     }
+     
+     
+     IMP imp = [responder methodForSelector:openSel];
+     BOOL (*func)(id, SEL, NSURL *) = (void *)imp;
+     BOOL openResult = func(responder, openSel, waStickerLaunchURL);
+     
+     //[responder performSelector:openSel withObject:waStickerLaunchURL];
+     return;
+     } else {
+     responder = [responder nextResponder];
+     }
+     }
+     */
   }];
   
   UIAlertAction *dismissAction = [UIAlertAction
                                   actionWithTitle:NSLocalizedString(@"alert.action.dismiss", nil)
                                   style:UIAlertActionStyleCancel
                                   handler:nil];
+  
+  
   
   //If developer has enabled feedback
   if (kFeedbackAction)
@@ -196,11 +249,15 @@ static BOOL firAppConfigured = NO;
   NSDictionary *targetPack = [allPacks objectForKey:packName];
   NSArray<NSDictionary *> *stickerOrder = [targetPack objectForKey:kPackStickerOrderKey];
   
+  NSString *packIdentifier = [NSString stringWithFormat:@"com.ansonliu.fluffcorn.%@", [packName stringByReplacingOccurrencesOfString:@" " withString:@""]];
+  
+  NSString *packTitle = [NSString stringWithFormat:@"Fluffcorn %@", NSLocalizedString(packName, @"Sticker Pack title")];
+  
   //Get the WA tray icon image file for the selected sticker pack
   NSString *packTrayIcon = [targetPack objectForKey:kFilenameKey];
-  packTrayIcon = [NSString stringWithFormat:@"%@%@", kWAStickerFilenamePrefix, packTrayIcon ? packTrayIcon : kWADefaultTrayLogo];
+  packTrayIcon = [NSString stringWithFormat:@"%@%@.png", kWAStickerFilenamePrefix, packTrayIcon ? packTrayIcon : kWADefaultTrayLogo];
   
-  StickerPack *waStickerPack = [[StickerPack alloc] initWithIdentifier:@"com.ansonliu.fluffcorn" name:[NSString stringWithFormat:@"Fluffcorn %@", NSLocalizedString(packName, @"Sticker Pack title")] publisher:@"Alisha Liu" trayImageFileName:packTrayIcon publisherWebsite:@"https://fluffcorn.com" privacyPolicyWebsite:@"https://fluffcorn.github.io/privacy.html" licenseAgreementWebsite:@"https://fluffcorn.github.io/privacy.html" error:&generateStickerPackError];
+  StickerPack *waStickerPack = [[StickerPack alloc] initWithIdentifier:packIdentifier name:packTitle publisher:kWAStickerPackPublisher trayImageFileName:packTrayIcon publisherWebsite:kWAStickerPackPublisherWebsite privacyPolicyWebsite:kWAStickerPackPrivacyWebsite licenseAgreementWebsite:kWAStickerPackPrivacyWebsite error:&generateStickerPackError];
   
   for (NSDictionary *sticker in stickerOrder) {
     NSString *waStickerFilename = [NSString stringWithFormat:@"%@%@.png", kWAStickerFilenamePrefix, [sticker valueForKey:kFilenameKey]];
@@ -210,8 +267,12 @@ static BOOL firAppConfigured = NO;
     //Use description key value in stickerPacks.json.
     //[self createSticker:[sticker valueForKey:kFilenameKey] fromPack:packName localizedDescription:[sticker valueForKey:kDescriptionKey]];
     
-    if (generateStickerPackError)
-      NSLog(@"error adding sticker %@", waStickerFilename);
+    if (generateStickerPackError) {
+      NSLog(@"Error adding to WASticker %@ %@", waStickerFilename, generateStickerPackError);
+      generateStickerPackError = nil;
+    } else {
+      NSLog(@"Added to WASticker %@", waStickerFilename);
+    }
   }
   
   
@@ -257,7 +318,7 @@ static BOOL firAppConfigured = NO;
       if (openResult)
         return;
       
-      //Prefill user accessible general paste board with whatsapp launch URL
+      //Prefill user accessible general pasteboard with whatsapp launch URL
       [UIPasteboard.generalPasteboard setURL:waStickerLaunchURL];
       
       NSString *waInstructions = [NSString stringWithFormat:@"Almost there! Finish sticker pack installation by visiting the exact URL\n\n%@\n\nin Safari to launch WhatsApp.\nWe've copied the URL to your device clipboard for you.", waStickerLaunchURL.absoluteString];
