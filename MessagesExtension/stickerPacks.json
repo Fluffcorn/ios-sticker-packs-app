@@ -8,129 +8,168 @@
         "Original": {
             "order": [{
                       "filename": "fc_1",
-                      "description": "Sparkle"
+                      "description": "Sparkle",
+                      "emojis": ["✨"]
                       }, {
                       "filename": "fc_2",
-                      "description": "Eating"
+                      "description": "Eating",
+                      "emojis": ["🥯"]
                       }, {
                       "filename": "fc_3",
-                      "description": "Sad"
+                      "description": "Sad",
+                      "emojis": ["😭","💧"]
                       }, {
                       "filename": "fc_4",
-                      "description": "OMG"
+                      "description": "OMG",
+                      "emojis": ["😲"]
                       }, {
                       "filename": "fc_5",
-                      "description": "Love"
+                      "description": "Love",
+                      "emojis": ["😍","♥"]
                       }, {
                       "filename": "fc_6",
-                      "description": "OK"
+                      "description": "OK",
+                      "emojis": ["👌"]
                       }, {
                       "filename": "fc_7",
-                      "description": "What?"
+                      "description": "What?",
+                      "emojis": ["❓"]
                       }, {
                       "filename": "fc_8",
-                      "description": "Thank you"
+                      "description": "Thank you",
+                      "emojis": ["🙏"]
                       }, {
                       "filename": "fc_9",
-                      "description": "Typing"
+                      "description": "Typing",
+                      "emojis": ["💻","⌨️","🖥️"]
                       }, {
                       "filename": "fc_10",
-                      "description": "Angry 🔥"
+                      "description": "Angry 🔥",
+                      "emojis": ["😠","😡","💢"]
                       }, {
                       "filename": "fc_11",
-                      "description": "Sleeping"
+                      "description": "Sleeping",
+                      "emojis": ["😴","💤"]
                       }, {
                       "filename": "fc_12",
-                      "description": "Poot 💨"
+                      "description": "Poot 💨",
+                      "emojis": ["💨"]
                       }, {
                       "filename": "sm_1",
-                      "description": "Yes"
+                      "description": "Yes",
+                      "emojis": ["👍"]
                       }, {
                       "filename": "sm_2",
-                      "description": "No"
+                      "description": "No",
+                      "emojis": ["👎"]
                       }, {
                       "filename": "sm_3",
-                      "description": "Happy Birthday!"
+                      "description": "Happy Birthday!",
+                      "emojis": ["🎂"]
                       }]
         },
         "Holiday": {
           "filename": "holiday_tray_icon",
             "order": [{
                       "filename": "ea_1",
-                      "description": "Easter Bunny and Carrot"
+                      "description": "Easter Bunny and Carrot",
+                      "emojis": ["🐰","🥕"]
                       },{
                       "filename": "ea_2",
-                      "description": "Happy Easter"
+                      "description": "Happy Easter",
+                      "emojis": ["🥚","🐣","🐤"]
                       },{
                       "filename": "ea_3",
-                      "description": "Rainy Day"
+                      "description": "Rainy Day",
+                      "emojis": ["🙁","🌧"]
                       },{
                       "filename": "sp_1",
-                      "description": "Good Luck"
+                      "description": "Good Luck",
+                      "emojis": ["🤞"]
                       },{
                       "filename": "sp_2",
-                      "description": "Jumping through a Rainbow"
+                      "description": "Jumping through a Rainbow",
+                      "emojis": ["🌈","☺️"]
                       },{
                       "filename": "sp_3",
-                      "description": "Happy St. Patrick's"
+                      "description": "Happy St. Patrick's",
+                      "emojis": ["🍀","☘️"]
                       },{
                       "filename": "vd_1",
-                      "description": "Holding a rose"
+                      "description": "Holding a rose",
+                      "emojis": ["♥","🌹"]
                       },{
                       "filename": "vd_2",
-                      "description": "I ❤️ U. Kissing"
+                      "description": "I ❤️ U. Kissing",
+                      "emojis": ["♥","💑"]
                       },{
                       "filename": "vd_3",
-                      "description": "Riding in a heart shaped balloon together."
+                      "description": "Riding in a heart shaped balloon together.",
+                      "emojis": ["♥"]
                       },{
                       "filename": "wta_1_anim_opt",
-                      "description": "Scarf Blowing in the Wind"
+                      "description": "Scarf Blowing in the Wind",
+                      "emojis": ["🌬️","🍃","💨"]
                       }, {
                       "filename": "wta_4_anim_opt",
-                      "description": "Tasting the Snowflakes"
+                      "description": "Tasting the Snowflakes",
+                      "emojis": ["❄️","🌨️"]
                       }, {
                       "filename": "wt_5",
-                      "description": "Hot Cocoa"
+                      "description": "Hot Cocoa",
+                      "emojis": ["☕"]
                       }, {
                       "filename": "tg_1",
-                      "description": "Playing in Leaves"
+                      "description": "Playing in Leaves",
+                      "emojis": ["🍂","🍃"]
                       }, {
                       "filename": "tg_5",
-                      "description": "I'm thankful for you. ❤️"
+                      "description": "I'm thankful for you. ❤️",
+                      "emojis": ["♥","💑"]
                       }, {
                       "filename": "tg_6",
-                      "description": "Cornucopia"
+                      "description": "Cornucopia",
+                      "emojis": ["🍲","🥘"]
                       }]
         },
         "Stuck at Home": {
           "filename": "stuck_at_home_tray_icon",
             "order": [{
                       "filename": "hm_1",
-                      "description": "Looking out the window"
+                      "description": "Looking out the window",
+                      "emojis": ["🏠","🪟","🥺"]
                       },{
                       "filename": "hm_2",
-                      "description": "Video chat"
+                      "description": "Video chat",
+                      "emojis": ["💬","📹","📷"]
                       },{
                       "filename": "hm_3",
-                      "description": "Toilet paper rationing"
+                      "description": "Toilet paper rationing",
+                      "emojis": ["🚽","🧻"]
                       },{
                       "filename": "hm_4",
-                      "description": "Watching 3D movie"
+                      "description": "Watching 3D movie",
+                      "emojis": ["🍿","📺","🎦"]
                       },{
                       "filename": "hm_5",
-                      "description": "Stirring cooking batter"
+                      "description": "Stirring cooking batter",
+                      "emojis": ["🍲","🥘","😋"]
                       },{
                       "filename": "hm_6",
-                      "description": "Staying in bed"
+                      "description": "Staying in bed",
+                      "emojis": ["🛌","💤","😴"]
                       },{
                       "filename": "hm_7",
-                      "description": "Playing games"
+                      "description": "Playing games",
+                      "emojis": ["🎲","🎮","🕹️"]
                       },{
                       "filename": "hm_8",
-                      "description": "Bubble bath"
+                      "description": "Bubble bath",
+                      "emojis": ["🛀","🧼"]
                       },{
                       "filename": "hm_9",
-                      "description": "i miss you..."
+                      "description": "i miss you...",
+                      "emojis": ["♥"]
                       }]
         }
     }

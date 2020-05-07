@@ -261,7 +261,9 @@ static BOOL firAppConfigured = NO;
   
   for (NSDictionary *sticker in stickerOrder) {
     NSString *waStickerFilename = [NSString stringWithFormat:@"%@%@.png", kWAStickerFilenamePrefix, [sticker valueForKey:kFilenameKey]];
-    [waStickerPack addStickerWithContentsOfFile:waStickerFilename emojis:@[] error:&generateStickerPackError];
+    
+    NSArray<NSString *> *allWAStickerEmojis = [sticker valueForKey:kWAStickerEmojisKey];
+    [waStickerPack addStickerWithContentsOfFile:waStickerFilename emojis:allWAStickerEmojis error:&generateStickerPackError];
     
     //Non-localized method
     //Use description key value in stickerPacks.json.

@@ -34,6 +34,7 @@
 //WAStickers specific keys
 #define kWAStickerFilenamePrefix @"wa_"
 #define kWADefaultTrayLogo @"tray_icon"
+#define kWAStickerEmojisKey @"emojis"
 #define kWAStickerPackPublisher @"Alisha Liu"
 #define kWAStickerPackPublisherWebsite @"https://fluffcorn.com"
 #define kWAStickerPackPrivacyWebsite @"https://fluffcorn.github.io/privacy.html"

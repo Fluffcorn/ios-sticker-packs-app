@@ -464,6 +464,7 @@
 			children = (
 				2833B1481DF4A0E3005F05F2 /* Assets.xcassets */,
 				2833B14A1DF4A0E3005F05F2 /* Info.plist */,
+				2870045324621F2F00478191 /* Fluffcorn-Bridging-Header.h */,
 			);
 			path = Fluffcorn;
 			sourceTree = "<group>";
@@ -504,7 +505,6 @@
 				28AE8DD61DFD8CCE002CB4A3 /* Art Assets */,
 				28F115CF1E088BED00C62F8E /* Settings.bundle */,
 				2865B81E21DAF85E00354AF1 /* Firebase resources */,
-				2870045324621F2F00478191 /* Fluffcorn-Bridging-Header.h */,
 				2870045424621F2F00478191 /* MessagesExtension-Bridging-Header.h */,
 			);
 			path = MessagesExtension;
