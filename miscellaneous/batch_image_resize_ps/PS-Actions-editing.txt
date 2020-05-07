@@ -1,0 +1,7 @@
+Photoshop actions only save the values that you actually change when recording and not any untouched values so getting the desired action values is difficult to save. 
+To edit Photoshop actions:
+1. Save actions from Photoshop by using actions palette
+2. Run ActionFileToXML.jsx in Photoshop and use the saved .atn file.
+3. Edit the xml with the desired values.
+4. Run ActionFileFromXML.jsx in Photoshop and use the saved .xml file. It might crash photoshop but it will output a .atn file.
+5. Load the .atn file as actions in Photoshop. 

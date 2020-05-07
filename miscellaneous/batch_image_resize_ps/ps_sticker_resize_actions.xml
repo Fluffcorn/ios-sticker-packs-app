@@ -1,0 +1,37 @@
+<ActionFile key="ps_sticker_resize_actions.atn" file="~/development/Fluffcorn/ps_sticker_resize_actions.atn">
+  <ActionSet version="16" name="sticker resizing action" expanded="true" count="2">
+    <Action key="1" name="resize 618x618 72dpi" expanded="true" count="1">
+      <ActionItem key="TEXT" expanded="true" enabled="true" withDialog="false" dialogOptions="0" identifier="TEXT" event="imageSize" name="Image Size" hasDescriptor="true">
+        <ActionDescriptor key="imageSize" count="5">
+          <DescValueType.UNITDOUBLE key="1466201192" id="1466201192" symname="Width" sym="Wdth" unitDoubleTypeString="Pixels" unitDoubleType="#Pxl" unitDoubleValue="618"/>
+          <DescValueType.UNITDOUBLE key="1383296116" id="1383296116" symname="Resolution" sym="Rslt" unitDoubleTypeString="Density" unitDoubleType="#Rsl" unitDoubleValue="72"/>
+          <DescValueType.BOOLEANTYPE key="208" id="208" symname="scaleStyles" sym="scaleStyles" boolean="true"/>
+          <DescValueType.BOOLEANTYPE key="1131311952" id="1131311952" symname="ConstrainProportions" sym="CnsP" boolean="true"/>
+          <DescValueType.ENUMERATEDTYPE key="1231975538" id="1231975538" symname="Intersect" sym="Intr" enumeratedTypeString="Interpolation" enumeratedType="Intp" enumeratedValueString="Bicubic" enumeratedValue="Bcbc"/>
+        </ActionDescriptor>
+      </ActionItem>
+    </Action>
+    <Action key="1" name="resize 408x408 72dpi" expanded="true" count="1">
+      <ActionItem key="TEXT" expanded="true" enabled="true" withDialog="false" dialogOptions="0" identifier="TEXT" event="imageSize" name="Image Size" hasDescriptor="true">
+        <ActionDescriptor key="imageSize" count="5">
+          <DescValueType.UNITDOUBLE key="1466201192" id="1466201192" symname="Width" sym="Wdth" unitDoubleTypeString="Pixels" unitDoubleType="#Pxl" unitDoubleValue="408"/>
+          <DescValueType.UNITDOUBLE key="1383296116" id="1383296116" symname="Resolution" sym="Rslt" unitDoubleTypeString="Density" unitDoubleType="#Rsl" unitDoubleValue="72"/>
+          <DescValueType.BOOLEANTYPE key="208" id="208" symname="scaleStyles" sym="scaleStyles" boolean="true"/>
+          <DescValueType.BOOLEANTYPE key="1131311952" id="1131311952" symname="ConstrainProportions" sym="CnsP" boolean="true"/>
+          <DescValueType.ENUMERATEDTYPE key="1231975538" id="1231975538" symname="Intersect" sym="Intr" enumeratedTypeString="Interpolation" enumeratedType="Intp" enumeratedValueString="Bicubic" enumeratedValue="Bcbc"/>
+        </ActionDescriptor>
+      </ActionItem>
+    </Action>
+    <Action key="2" name="resize 512x512 72dpi" expanded="true" count="1">
+      <ActionItem key="TEXT" expanded="true" enabled="true" withDialog="false" dialogOptions="0" identifier="TEXT" event="imageSize" name="Image Size" hasDescriptor="true">
+        <ActionDescriptor key="imageSize" count="5">
+          <DescValueType.UNITDOUBLE key="1466201192" id="1466201192" symname="Width" sym="Wdth" unitDoubleTypeString="Pixels" unitDoubleType="#Pxl" unitDoubleValue="512"/>
+          <DescValueType.UNITDOUBLE key="1383296116" id="1383296116" symname="Resolution" sym="Rslt" unitDoubleTypeString="Density" unitDoubleType="#Rsl" unitDoubleValue="72"/>
+          <DescValueType.BOOLEANTYPE key="208" id="208" symname="scaleStyles" sym="scaleStyles" boolean="true"/>
+          <DescValueType.BOOLEANTYPE key="1131311952" id="1131311952" symname="ConstrainProportions" sym="CnsP" boolean="true"/>
+          <DescValueType.ENUMERATEDTYPE key="1231975538" id="1231975538" symname="Intersect" sym="Intr" enumeratedTypeString="Interpolation" enumeratedType="Intp" enumeratedValueString="Bicubic" enumeratedValue="Bcbc"/>
+        </ActionDescriptor>
+      </ActionItem>
+    </Action>
+  </ActionSet>
+</ActionFile>
