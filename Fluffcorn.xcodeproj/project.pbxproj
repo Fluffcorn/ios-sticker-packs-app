@@ -171,6 +171,12 @@
 		287005382463987C00478191 /* FirebasePerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287005322463987C00478191 /* FirebasePerformance.framework */; };
 		287005392463987C00478191 /* FirebaseABTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287005332463987C00478191 /* FirebaseABTesting.xcframework */; };
 		2870053A2463987C00478191 /* Protobuf.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287005342463987C00478191 /* Protobuf.xcframework */; };
+		2870053C246495A600478191 /* sm_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2870053B246495A500478191 /* sm_3.png */; };
+		2870053D246495A600478191 /* sm_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2870053B246495A500478191 /* sm_3.png */; };
+		2870053F246495BE00478191 /* wa_sm_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2870053E246495BD00478191 /* wa_sm_3.png */; };
+		28700540246495BE00478191 /* wa_sm_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2870053E246495BD00478191 /* wa_sm_3.png */; };
+		28700542246495C400478191 /* wa_original_tray_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28700541246495C400478191 /* wa_original_tray_icon.png */; };
+		28700543246495C400478191 /* wa_original_tray_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28700541246495C400478191 /* wa_original_tray_icon.png */; };
 		289208F723288C25005AC554 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 289208F623288C25005AC554 /* Colors.xcassets */; };
 		289D4958244FCEB300448FEC /* hm_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D494F244FCEB200448FEC /* hm_5.png */; };
 		289D4959244FCEB300448FEC /* hm_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D494F244FCEB200448FEC /* hm_5.png */; };
@@ -196,7 +202,6 @@
 		28C8E0E41DFB93C200769784 /* newPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8E0E31DFB93C200769784 /* newPacks.json */; };
 		AE422F7A1F0CC7540042A8F0 /* sm_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE422F771F0CC7540042A8F0 /* sm_1.png */; };
 		AE422F7B1F0CC7540042A8F0 /* sm_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE422F781F0CC7540042A8F0 /* sm_2.png */; };
-		AE422F7C1F0CC7540042A8F0 /* sm_3.png in Resources */ = {isa = PBXBuildFile; fileRef = AE422F791F0CC7540042A8F0 /* sm_3.png */; };
 		AE4915751E9A2B7F00BDEE5E /* ea_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915721E9A2B7F00BDEE5E /* ea_1.png */; };
 		AE4915761E9A2B7F00BDEE5E /* ea_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915731E9A2B7F00BDEE5E /* ea_2.png */; };
 		AE4915771E9A2B7F00BDEE5E /* ea_3.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4915741E9A2B7F00BDEE5E /* ea_3.png */; };
@@ -364,6 +369,9 @@
 		287005322463987C00478191 /* FirebasePerformance.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebasePerformance.framework; sourceTree = "<group>"; };
 		287005332463987C00478191 /* FirebaseABTesting.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseABTesting.xcframework; sourceTree = "<group>"; };
 		287005342463987C00478191 /* Protobuf.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Protobuf.xcframework; sourceTree = "<group>"; };
+		2870053B246495A500478191 /* sm_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm_3.png; sourceTree = "<group>"; };
+		2870053E246495BD00478191 /* wa_sm_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wa_sm_3.png; sourceTree = "<group>"; };
+		28700541246495C400478191 /* wa_original_tray_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wa_original_tray_icon.png; sourceTree = "<group>"; };
 		289208F623288C25005AC554 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		289D494F244FCEB200448FEC /* hm_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hm_5.png; sourceTree = "<group>"; };
 		289D4950244FCEB200448FEC /* hm_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hm_3.png; sourceTree = "<group>"; };
@@ -384,7 +392,6 @@
 		28F618671DF7C1160052E4A2 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AE422F771F0CC7540042A8F0 /* sm_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm_1.png; sourceTree = "<group>"; };
 		AE422F781F0CC7540042A8F0 /* sm_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm_2.png; sourceTree = "<group>"; };
-		AE422F791F0CC7540042A8F0 /* sm_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm_3.png; sourceTree = "<group>"; };
 		AE4915721E9A2B7F00BDEE5E /* ea_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_1.png; sourceTree = "<group>"; };
 		AE4915731E9A2B7F00BDEE5E /* ea_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_2.png; sourceTree = "<group>"; };
 		AE4915741E9A2B7F00BDEE5E /* ea_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ea_3.png; sourceTree = "<group>"; };
@@ -445,7 +452,7 @@
 			children = (
 				2833B1471DF4A0E3005F05F2 /* Fluffcorn */,
 				2833B1561DF4A0E4005F05F2 /* MessagesExtension */,
-				2833B1531DF4A0E4005F05F2 /* Frameworks */,
+				2833B1531DF4A0E4005F05F2 /* frameworks */,
 				2833B1461DF4A0E3005F05F2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -469,14 +476,14 @@
 			path = Fluffcorn;
 			sourceTree = "<group>";
 		};
-		2833B1531DF4A0E4005F05F2 /* Frameworks */ = {
+		2833B1531DF4A0E4005F05F2 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				289208F523288B26005AC554 /* Firebase frameworks */,
 				2870047524621FE500478191 /* WAStickers frameworks */,
 				2833B1541DF4A0E4005F05F2 /* Messages.framework */,
 			);
-			name = Frameworks;
+			name = frameworks;
 			sourceTree = "<group>";
 		};
 		2833B1561DF4A0E4005F05F2 /* MessagesExtension */ = {
@@ -515,7 +522,7 @@
 			children = (
 				AE422F771F0CC7540042A8F0 /* sm_1.png */,
 				AE422F781F0CC7540042A8F0 /* sm_2.png */,
-				AE422F791F0CC7540042A8F0 /* sm_3.png */,
+				2870053B246495A500478191 /* sm_3.png */,
 				2833B1B31DF5079D005F05F2 /* fc_1.png */,
 				2833B1B41DF5079D005F05F2 /* fc_2.png */,
 				2833B1B51DF5079D005F05F2 /* fc_3.png */,
@@ -636,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				2870047924633E3B00478191 /* wa_tray_icon.png */,
+				28700541246495C400478191 /* wa_original_tray_icon.png */,
 				28700501246374AD00478191 /* wa_holiday_tray_icon.png */,
 				28700504246374E700478191 /* wa_stuck_at_home_tray_icon.png */,
 				2870049B2463644400478191 /* wa_ea_1.png */,
@@ -664,6 +672,7 @@
 				287004942463644200478191 /* wa_fc_12.png */,
 				287004A12463644500478191 /* wa_sm_1.png */,
 				2870047E2463642A00478191 /* wa_sm_2.png */,
+				2870053E246495BD00478191 /* wa_sm_3.png */,
 				287004A42463644600478191 /* wa_sp_1.png */,
 				287004A52463644600478191 /* wa_sp_2.png */,
 				2870047F2463642B00478191 /* wa_sp_3.png */,
@@ -784,7 +793,7 @@
 		2833B13F1DF4A0E3005F05F2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Anson Liu";
 				TargetAttributes = {
 					2833B1441DF4A0E3005F05F2 = {
@@ -830,6 +839,7 @@
 				287004F72463644700478191 /* wa_sp_1.png in Resources */,
 				287004BD2463644600478191 /* wa_fc_3.png in Resources */,
 				287004C12463644700478191 /* wa_tg_6.png in Resources */,
+				28700542246495C400478191 /* wa_original_tray_icon.png in Resources */,
 				287004CF2463644700478191 /* wa_wt_3.png in Resources */,
 				287004E72463644700478191 /* wa_wta_2_anim_opt.png in Resources */,
 				287004C92463644700478191 /* wa_tg_4.png in Resources */,
@@ -867,6 +877,8 @@
 				287004D52463644700478191 /* wa_hm_4.png in Resources */,
 				287004E12463644700478191 /* wa_fc_7.png in Resources */,
 				2854500F244F544100C0ECED /* Localizable.strings in Resources */,
+				2870053F246495BE00478191 /* wa_sm_3.png in Resources */,
+				2870053C246495A600478191 /* sm_3.png in Resources */,
 				289D495E244FCEB300448FEC /* hm_1.png in Resources */,
 				289D4960244FCEB300448FEC /* hm_2.png in Resources */,
 				287004F12463644700478191 /* wa_sm_1.png in Resources */,
@@ -932,8 +944,10 @@
 				287004BE2463644600478191 /* wa_fc_3.png in Resources */,
 				28545010244F544100C0ECED /* Localizable.strings in Resources */,
 				2833B1BF1DF5079D005F05F2 /* fc_1.png in Resources */,
+				28700540246495BE00478191 /* wa_sm_3.png in Resources */,
 				289D4969244FCEB300448FEC /* hm_7.png in Resources */,
 				287004E02463644700478191 /* wa_hm_6.png in Resources */,
+				2870053D246495A600478191 /* sm_3.png in Resources */,
 				2833B1871DF4AE7F005F05F2 /* tg_2.png in Resources */,
 				287004A82463644600478191 /* wa_fc_11.png in Resources */,
 				AEB9ADE21E4AEA310094EC46 /* vd_3.png in Resources */,
@@ -944,12 +958,12 @@
 				AE4915771E9A2B7F00BDEE5E /* ea_3.png in Resources */,
 				2833B1881DF4AE7F005F05F2 /* tg_3.png in Resources */,
 				287004B22463644600478191 /* wa_fc_9.png in Resources */,
-				AE422F7C1F0CC7540042A8F0 /* sm_3.png in Resources */,
 				287004D22463644700478191 /* wa_vd_2.png in Resources */,
 				28700506246374E800478191 /* wa_stuck_at_home_tray_icon.png in Resources */,
 				287004AC2463644600478191 /* wa_sm_2.png in Resources */,
 				2833B18C1DF4AE7F005F05F2 /* wt_1.png in Resources */,
 				2833B1791DF4AC8F005F05F2 /* stickerPacks.json in Resources */,
+				28700543246495C400478191 /* wa_original_tray_icon.png in Resources */,
 				287004D82463644700478191 /* wa_fc_12.png in Resources */,
 				287004C22463644700478191 /* wa_tg_6.png in Resources */,
 				2833B18F1DF4AE7F005F05F2 /* wt_4.png in Resources */,
@@ -1162,6 +1176,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1169,10 +1184,10 @@
 		2833B1631DF4A0E4005F05F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1187,8 +1202,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
-					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)/**",
+					"$(inherited)/**",
 				);
 				MARKETING_VERSION = 1.4.1;
 				OTHER_LDFLAGS = (
@@ -1208,10 +1223,10 @@
 		2833B1641DF4A0E4005F05F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1226,8 +1241,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
-					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)/**",
+					"$(inherited)/**",
 				);
 				MARKETING_VERSION = 1.4.1;
 				OTHER_LDFLAGS = (
@@ -1249,7 +1264,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = Fluffcorn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1274,7 +1289,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
 				INFOPLIST_FILE = Fluffcorn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

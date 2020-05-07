@@ -2,10 +2,21 @@ Changes to WAStickers code for compatibility
 
 Add @objc attribute to init, addSticker, sendToWhatsApp methods in StickerPack.swift so that these methods can be called from Objective C.
 
+Add #import "MessagesExtension-Swift.h" to MessagesViewController.m to access exposed @objc Swift methods. Command-Alt click on the filename in import statement to jump to definition and see the adapted Swift methods.
+
+Need to rebuild app to generate the *-Swift.h file.
+
 Commented out UIApplication open URL methods in Interoperability.swift because they do not compile in a MessagesExtension.
 
-Remove pasteboard expiration date from Interoperatbility.swift. 
+Remove pasteboard expiration date from Interoperatbility.swift.
 
-Set iOS App Store link in Interoperability.swift to this format http://itunes.apple.com/app/id1171532447.
+Modify Interoperability.swift send method to return dataToSend.
+Add passing WASticker pack Data (dataToSend) to sendToWhatsApp method completionHandler so that we can add it to the pasteboard ourselves if needed.
+ex: @objc func sendToWhatsApp(completionHandler: @escaping (Bool, Data?) -> Void)
 
-Add #import "MessagesExtension-Swift.h" to MessagesViewController.m to access exposed @objc Swift methods. Command-Alt click on the filename in import statement to jump to definition and see the adapted Swift methods.
+Set sticker pack JSON website keys in StickerPack.swift sendToWhatsApp method.
+
+Set iOS App Store link code in Interoperability.swift send method.
+ex: http://itunes.apple.com/app/id1171532447.
+
+In sendToWhatsApp completionHandler method, set a SINGLE item in the UIPasteboard GeneralPasteboard with WAStickerCUSTOMUTI:DATATOSEND, public.url:whatsapp://stickerPack. The single item is contained in a dictionary with format of datatype:value.

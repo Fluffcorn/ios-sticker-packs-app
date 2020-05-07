@@ -86,7 +86,7 @@
   
   for (NSDictionary *sticker in stickerOrder) {
     [self createSticker:[sticker valueForKey:kFilenameKey] fromPack:packName localizedDescription:NSLocalizedString([sticker valueForKey:kFilenameKey],nil)];
-    NSLog(@"%@", NSLocalizedString([sticker valueForKey:kFilenameKey],nil));
+    //NSLog(@"%@", NSLocalizedString([sticker valueForKey:kFilenameKey],nil));
     
     //Non-localized method
     //Use description key value in stickerPacks.json.

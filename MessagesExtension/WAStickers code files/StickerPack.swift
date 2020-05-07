@@ -178,13 +178,16 @@ class StickerPack: NSObject {
      *    into a format that WhatsApp can read and WhatsApp is about to open. Called on the main
      *    queue.
      */
-    @objc func sendToWhatsApp(completionHandler: @escaping (Bool) -> Void) {
+  @objc func sendToWhatsApp(completionHandler: @escaping (Bool, Data?) -> Void) {
         StickerPackManager.queue.async {
             var json: [String: Any] = [:]
             json["identifier"] = self.identifier
             json["name"] = self.name
             json["publisher"] = self.publisher
             json["tray_image"] = self.trayImage.image!.pngData()?.base64EncodedString()
+          json["publisher_website"] = self.publisherWebsite
+          json["privacy_policy_website"] = self.privacyPolicyWebsite
+          json["license_agreement_website"] = self.licenseAgreementWebsite
 
             var stickersArray: [[String: Any]] = []
             for sticker in self.stickers {
@@ -203,9 +206,9 @@ class StickerPack: NSObject {
             }
             json["stickers"] = stickersArray
 
-            let result = Interoperability.send(json: json)
+            let (result, dataToSend) = Interoperability.send(json: json)
             DispatchQueue.main.async {
-                completionHandler(result)
+                completionHandler(result, dataToSend)
             }
         }
     }

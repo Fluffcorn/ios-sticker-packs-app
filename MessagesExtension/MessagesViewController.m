@@ -277,12 +277,14 @@ static BOOL firAppConfigured = NO;
     }
   }
   
+  NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
+  //Prefill user accessible general pasteboard with whatsapp launch URL
+  //setter method for pasteboard URL replacees all current items in pasteboard
+  [UIPasteboard.generalPasteboard setURL:waStickerLaunchURL];
   
-  
-  [waStickerPack sendToWhatsAppWithCompletionHandler:^(BOOL success) {
+  [waStickerPack sendToWhatsAppWithCompletionHandler:^(BOOL success, NSData *dataToSend) {
     BOOL openResult;
     NSString *exceptionReason;
-    NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
     @try {
       //Open URL method of WAStickers code has been commented out.
       //If the WAStickers code was unable to create the sticker pack data successfully, continue to @finally block of code.
@@ -319,11 +321,10 @@ static BOOL firAppConfigured = NO;
     @finally {
       if (openResult)
         return;
+      [UIPasteboard.generalPasteboard setItems:@[
+        @{@"net.whatsapp.third-party.sticker-pack": dataToSend, @"public.url": waStickerLaunchURL}]];
       
-      //Prefill user accessible general pasteboard with whatsapp launch URL
-      [UIPasteboard.generalPasteboard setURL:waStickerLaunchURL];
-      
-      NSString *waInstructions = [NSString stringWithFormat:@"Almost there! Finish sticker pack installation by visiting the exact URL\n\n%@\n\nin Safari to launch WhatsApp.\nWe've copied the URL to your device clipboard for you.", waStickerLaunchURL.absoluteString];
+      NSString *waInstructions = [NSString stringWithFormat:@"We did not detect WhatsApp on your device.\nInstall WhatsApp and come back!\nIf you do have it, paste the exact URL\n\n%@\n\nin Safari to launch WhatsApp and finish sticker pack installation.\nWe've copied the URL to your device clipboard for you.", waStickerLaunchURL.absoluteString];
       NSString *generateStickerPackErrorInstructions = [NSString stringWithFormat:@"Unable to generate WhatsApp Sticker Pack\n%@\nPlease let us know at support@ansonliu.com", generateStickerPackError.localizedDescription];
       
       UIAlertController *waAlert = [UIAlertController

@@ -22,7 +22,7 @@ struct Interoperability {
       //return UIApplication.shared.canOpenURL(URL(string: "whatsapp://")!)
     }
     
-    static func send(json: [String: Any]) -> Bool {
+    static func send(json: [String: Any]) -> (Bool, Data?) {
         if Bundle.main.bundleIdentifier?.contains(DefaultBundleIdentifier) == true {
           fatalError("Your bundle identifier must not include the default one.")
         }
@@ -34,7 +34,7 @@ struct Interoperability {
         jsonWithAppStoreLink["android_play_store_link"] = AndroidStoreLink
 
         guard let dataToSend = try? JSONSerialization.data(withJSONObject: jsonWithAppStoreLink, options: []) else {
-            return false
+            return (false, nil)
         }
 
         if #available(iOS 10.0, *) {
@@ -52,7 +52,7 @@ struct Interoperability {
                 }
             }
         }
-        return true
+        return (true, dataToSend)
     }
 
     static func copyImageToPasteboard(image: UIImage) {

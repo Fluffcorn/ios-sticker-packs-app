@@ -6,6 +6,7 @@
                   ],
     "allPacks": {
         "Original": {
+          "filename": "original_tray_icon",
             "order": [{
                       "filename": "fc_1",
                       "description": "Sparkle",
@@ -33,7 +34,7 @@
                       }, {
                       "filename": "fc_7",
                       "description": "What?",
-                      "emojis": ["❓"]
+                      "emojis": ["❓","❗️"]
                       }, {
                       "filename": "fc_8",
                       "description": "Thank you",
