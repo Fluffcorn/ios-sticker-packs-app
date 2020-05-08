@@ -2,6 +2,8 @@
 ===================
 ### A customizable sticker iMessage App with tabbed category switcher, sticker size slider, and WhatsApp sticker integration.
 
+![License badge](https://img.shields.io/github/license/fluffcorn/ios-sticker-packs-app?style=for-the-badge)
+
 [![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn WhatsApp Stickers integration](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-whatsapp-stickers-integration.jpeg)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 
 - Features
