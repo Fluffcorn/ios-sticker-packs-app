@@ -2,7 +2,7 @@
 ===================
 ### A customizable sticker iMessage App with tabbed category switcher, sticker size slider, and WhatsApp sticker integration.
 
-[![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
+[![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn WhatsApp Stickers integration](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-whatsapp-stickers-integration.jpeg)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 
 - Features
   - Customizable tabbed category switcher.
@@ -13,7 +13,7 @@
   - Persistence for:
      - Last selected category
      - Adjusted sticker size
-   - [WhatsApp Stickers](https://github.com/WhatsApp/stickers) installation for each sticker category.
+   - [WhatsApp Stickers (WAStickers)](https://github.com/WhatsApp/stickers) installation for each sticker category.
   - Analytics integration.
      - [Firebase](https://firebase.google.com/) Crashlytics/Analytics/Performance enabled.
 
