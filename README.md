@@ -5,6 +5,7 @@
 [![AppStore](https://img.shields.io/badge/App%20Store-v1.4.1-0d96f6?style=flat&logo=app-store)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 [![WhatsApp badge](https://img.shields.io/badge/WhatsApp%20Sticker-✓-25D366?style=flat&logo=whatsapp)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 [![Telegram badge](https://img.shields.io/badge/Telegram%20Sticker-✓-2CA5E0?style=flat&logo=telegram)](https://telegram.me/addstickers/FluffcornStickers)
+[![Facebook badge](https://img.shields.io/badge/-Follow_on_Facebook-white?style=flat&logo=facebook&labelColor=ffffff&color=1877F2)](https://facebook.com/fluffcorn)
 [![Code License badge](https://img.shields.io/badge/code_license-MIT-green?style=flat)](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/LICENSE.txt)
 [![Art License badge](https://img.shields.io/badge/art_license-CC_BY--NC--ND_4.0-green?style=flat)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
