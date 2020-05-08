@@ -2,10 +2,12 @@
 ===================
 ### A customizable sticker iMessage App with tabbed category switcher, sticker size slider, and WhatsApp sticker integration.
 
-![AppStore](https://img.shields.io/badge/App%20Store-v1.4.1-0d96f6?style=flat&logo=app-store)
-![WhatsApp badge](https://img.shields.io/badge/WhatsApp%20Sticker-✓-25D366?style=flat&logo=whatsapp)
-![Telegram badge](https://img.shields.io/badge/Telegram%20Sticker-✓-2CA5E0?style=flat&logo=telegram)
-![License badge](https://img.shields.io/github/license/fluffcorn/ios-sticker-packs-app?style=flat)
+[![AppStore](https://img.shields.io/badge/App%20Store-v1.4.1-0d96f6?style=flat&logo=app-store)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
+[![WhatsApp badge](https://img.shields.io/badge/WhatsApp%20Sticker-✓-25D366?style=flat&logo=whatsapp)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
+[![Telegram badge](https://img.shields.io/badge/Telegram%20Sticker-✓-2CA5E0?style=flat&logo=telegram)](https://telegram.me/addstickers/FluffcornStickers)
+[![Code License badge](https://img.shields.io/badge/code_license-MIT-green?style=flat)](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/LICENSE.txt)
+[![Art License badge](https://img.shields.io/badge/art_license-CC_BY--NC--ND_4.0-green?style=flat)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
 
 
 [![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn WhatsApp Stickers integration](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-whatsapp-stickers-integration.jpeg)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
