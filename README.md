@@ -1,6 +1,6 @@
 **ios-sticker-packs-app**
 ===================
-### A customizable sticker iMessage App with tabbed category switcher and sticker size slider.
+### A customizable sticker iMessage App with tabbed category switcher, sticker size slider, and WhatsApp sticker integration.
 
 [![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 
@@ -13,8 +13,9 @@
   - Persistence for:
      - Last selected category
      - Adjusted sticker size
+   - [WhatsApp Stickers](https://github.com/WhatsApp/stickers) installation for each sticker category.
   - Analytics integration.
-     - [Fabric](https://fabric.io/) Crashlytics/Answers enabled.
+     - [Firebase](https://firebase.google.com/) Crashlytics/Analytics/Performance enabled.
 
 This code is used in **Fluffcorn stickers**, a iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages). 
 
@@ -28,8 +29,8 @@ How to use for your own stickers
 6. Set the sticker size slider visibility. See [Configuring Sticker Size Slider Visibility](#configuring-sticker-size-slider-visibility).
 7. Edit `about.txt` to include your app information.
 8. Edit App Name, Bundle ID, Version, Build data.
-9. Setup or disable Fabric integration. See [Configuring Fabric Integration](#configuring-fabric-integration)
-10. Submit to App Store. 
+9. Setup or disable Firebase integration. See [Configuring Firebase Integration](#configuring-firebase-analytics-integration)
+10. Submit to [App Store](https://developer.apple.com/ios/submit/). 
 
 
 ### How to edit `stickerPacks.json`
@@ -37,16 +38,33 @@ How to use for your own stickers
 `stickerPacks.json` is in JSON format. 
 
 There are two keys in the root dictionary. 
-`packOrder` is an array with order of the "packs" (categories). 
-`allPacks` is a dictionary containing keys for each "pack". 
-Each pack is a dictionary with a `order` key which is an array containing a dictionary for each sticker in that pack. 
-`filename` is the filename of the sticker in your project.
-`description` is the accessibility label for the sticker.
+- `packOrder` is an array with order of the "packs" (categories). 
+- `allPacks` is a dictionary containing keys for each "pack". 
+  - Each pack is a dictionary with two keys, `filename` and `order`.
+  - `filename` key for a pack specifies the category "tray" icon (currently only used for WhatsApp Stickers).
+  - `order` key is an array containing a dictionary for each sticker in that pack. 
+    - `filename` is the filename of the sticker in your project.
+    - `description` is the accessibility label for the sticker for human reference. The actual localized text that is used is located in `Localizable.strings`. The `description` value and localized English string in `Localizable.strings` should be kept the identical consistency.
+    - `emoji` is an array of up to 3 unicode strings of length 1 containing related emojis. (Only used for WhatsApp Stickers).
+
+All images used for WhatsApp needs add a prefix of `wa_` to the filename. A listed filename of `category1_tray_icon` will use the file named `wa_category1_tray_icon.png` for any WhatsApp Sticker needs.
 
 ### Configuring Default Sticker Size
 
 - Set `kDefaultStickerSize` in `Constants.h` to `0`,`1`, `2` for `MSStickerSizeSmall`, `MSStickerSizeRegular`,`MSStickerSizeLarge` respectively.
 - [`MSStickerSize` reference](https://developer.apple.com/reference/messages/msstickersize?language=objc). 
+
+| Sticker Size| Points | @3x Pixels (the image size you want to use) | DPI | Max Size |
+| --- | --- | --- | --- | -- |
+| MSStickerSizeSmall | 100 x 100 | 300 x 300 | 72 | N/A |
+| MSStickerSizeRegular | 136 x 136 | 408 x 408 | 72 | N/A |
+| MSStickerSizeLarge | 206 x 206 | 618 x 618 | 72 | N/A |
+| WhatsApp Sticker Pack Tray Icon | N/A | 96 x 96 | 72 | N/A |
+| WhatsApp Sticker | N/A | 512 x 512 | 72 | 100kb |
+
+You should use the listed image size if you intend to display a single sticker size or else stickers may encounter size issues when used in messages. 
+
+Batch image resizing (Photoshop) and compression (`pngcrush`) scripts are in [`miscellaneous`](https://github.com/Fluffcorn/ios-sticker-packs-app/tree/master/miscellaneous) directory. 
 
 ### Configuring Sticker Size Slider Visibility
 
@@ -60,33 +78,10 @@ Each pack is a dictionary with a `order` key which is an array containing a dict
 
 ### Configuring Firebase Analytics Integration
 
-***Fabric Integration has been deprecated and replaced with Firebase Analytics & Performance Integration. The recommended way to keep your Firebase API key private is to add `GoogleService-Info.plist` to the `.gitignore` file.***
+***Fabric Integration has been deprecated and replaced with Firebase Analytics & Performance Integration. The recommended way to keep your Firebase API key private in a public repository is to add `GoogleService-Info.plist` to the `.gitignore` file.***
 
-***`kFabricEnabled` has been replaced with `kFirebaseEnabled`***
-
-### Configuring Fabric Integration
-
-**See previous section!**
-
-- **If you want Fabric integration**, set `kFabricEnabled` in `Constants.h` to `YES`. 
-- Create files named `fabric.apikey` and `fabric.buildsecret` in the `$SRCROOT` directory (usually the project directory). Include your API key and build secret in the files respectively. 
-- Add the below lines to your `.gitignore` file if you intend on making the source code public.
-```
-fabric.apikey
-fabric.buildsecret
-```
-- Verify that *Run Script* located under the *MessagesExtension* > *Build Phases* matches the below bash code.
-
-```
-FABRIC_APIKEY=$(cat ${SRCROOT}/fabric.apikey)
-FABRIC_BUILDSECRET=$(cat ${SRCROOT}/fabric.buildsecret)
-${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}
-```
-
-- **If you do NOT want Fabric integration**, set `kFabricEnabled` in `Constants.h` to `NO`. 
-- Remove *Run Script* located under the *MessagesExtension* > *Build Phases*. 
-- Remove files `fabric.apikey` and `fabric.buildsecret` from Xcode.
-
+- **If you do NOT want Firebase integration**, set `kFirebaseEnabled` in `Constants.h` to `NO`. 
+- Remove *Firebase resources* and *Firebase frameworks*.
 
 ### Using APNG stickers
 
@@ -106,10 +101,12 @@ Standalone iMessage apps do not currently seem to appear in the Settings app. `S
 
 License and Contributing
 -------------
-All art assets in this repository (any images including PNG and APNG) are © 2016 Alisha Liu under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. [![Creative Commons License](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png "Creative Commons License")](http://creativecommons.org/licenses/by-nc-nd/4.0/)
+All art assets in this repository (any Fluffcorn images including PNG and APNG) are © 2016 Alisha Liu under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. [![Creative Commons License](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png "Creative Commons License")](http://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-Everything else (the code and text assets) in this repository is made available under MIT License. 
+All third party code used by Fluffcorn is copyright of their rightful owners.
 
-*Visible attribution to ios-sticker-packs-app by [Anson Liu](http://ansonliu.com), [Alisha Liu](http://alishaliu.com) required if used publicly or commercially.*
+All original code and text assets in this repository are made available under MIT License. 
 
-Issues, feature requests, and contributions welcome!
+*Visible attribution to [Fluffcorn/ios-sticker-packs-app](https://github.com/Fluffcorn/ios-sticker-packs-app) by [Anson Liu](http://ansonliu.com) and [Alisha Liu](http://alishaliu.com) required if code, text, or art are used in any way in a public or commercial product.*
+
+Issues, feature requests, and contributions welcome! All contributions will be placed under MIT License. 
