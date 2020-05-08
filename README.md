@@ -17,7 +17,7 @@
   - Analytics integration.
      - [Firebase](https://firebase.google.com/) Crashlytics/Analytics/Performance enabled.
 
-This code is used in **Fluffcorn stickers**, a iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages). 
+This code is used in **Fluffcorn stickers**, a iMessage sticker app. If you want to preview its functionality, download Fluffcorn on the App Store for free [HERE](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages). Fluffcorn Stickers are also available on Telegram [here](https://telegram.me/addstickers/FluffcornStickers).
 
 How to use for your own stickers
 -------------
