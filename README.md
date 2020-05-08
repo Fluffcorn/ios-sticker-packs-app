@@ -4,7 +4,7 @@
 
 [![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
 
-- Notable features
+- Features
   - Customizable tabbed category switcher.
   - User adjustable sticker size slider.
      - Adjustable default sticker size.
@@ -78,10 +78,16 @@ Batch image resizing (Photoshop) and compression (`pngcrush`) scripts are in [`m
 
 ### Configuring Firebase Analytics Integration
 
+- Add your application's `GoogleService-Info.plist to the project.
+
 ***Fabric Integration has been deprecated and replaced with Firebase Analytics & Performance Integration. The recommended way to keep your Firebase API key private in a public repository is to add `GoogleService-Info.plist` to the `.gitignore` file.***
 
 - **If you do NOT want Firebase integration**, set `kFirebaseEnabled` in `Constants.h` to `NO`. 
-- Remove *Firebase resources* and *Firebase frameworks*.
+  - Remove *Firebase resources* and *Firebase frameworks*.
+
+### WhatsApp Stickers Integration
+
+See *How to edit `stickerPacks.json`* and *Configuring Default Sticker Size* sections above for WhatsApp Sticker asset information. 
 
 ### Using APNG stickers
 
