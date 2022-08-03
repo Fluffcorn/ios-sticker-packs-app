@@ -85,6 +85,13 @@
   NSArray<NSDictionary *> *stickerOrder = [targetPack objectForKey:kPackStickerOrderKey];
   
   for (NSDictionary *sticker in stickerOrder) {
+
+    //TODO: pass english localized string into value parameter to use as default if no localization found
+    /*
+    NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
+    NSString *locString = [thisBundle localizedStringForKey:[sticker valueForKey:kFilenameKey] value:<#(nullable NSString *)#> table:nil];
+     */
+    
     [self createSticker:[sticker valueForKey:kFilenameKey] fromPack:packName localizedDescription:NSLocalizedString([sticker valueForKey:kFilenameKey],nil)];
     //NSLog(@"%@", NSLocalizedString([sticker valueForKey:kFilenameKey],nil));
     

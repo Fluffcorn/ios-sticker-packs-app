@@ -15,12 +15,6 @@
 #import "FeedbackTextFieldDelegate.h"
 
 #import "Firebase.h"
-/*
- //Old Fabric integration
- #import <Fabric/Fabric.h>
- #import <Crashlytics/Crashlytics.h>
- #import <Answers/Answers.h>
- */
 
 #import "MessagesExtension-Swift.h"
 
@@ -44,10 +38,6 @@
 @end
 
 @implementation MessagesViewController
-
-//Keep track if Firebase SDK has been configured already due to how app extensions are initialized
-//https://stackoverflow.com/a/40390083/761902
-static BOOL firAppConfigured = NO;
 
 #pragma mark - UIGestureRecognizerDelegate methods
 
@@ -279,7 +269,7 @@ static BOOL firAppConfigured = NO;
   
   NSURL *waStickerLaunchURL = [NSURL URLWithString:@"whatsapp://stickerPack"];
   //Prefill user accessible general pasteboard with whatsapp launch URL
-  //setter method for pasteboard URL replacees all current items in pasteboard
+  //setter method for pasteboard URL replaces all current items in pasteboard
   [UIPasteboard.generalPasteboard setURL:waStickerLaunchURL];
   
   [waStickerPack sendToWhatsAppWithCompletionHandler:^(BOOL success, NSData *dataToSend) {
@@ -660,11 +650,16 @@ static BOOL firAppConfigured = NO;
     return nil;
   }
   
-  if (kFirebaseEnabled && !firAppConfigured) {
+  if (kFirebaseEnabled) {
     //Firebase initialization
-    [FIRApp configure];
-    [[FIRConfiguration sharedInstance] setLoggerLevel:FIRLoggerLevelMin];
-    firAppConfigured = YES;
+    if (![FIRApp defaultApp]) {
+      [FIRApp configure];
+      [[FIRConfiguration sharedInstance] setLoggerLevel:FIRLoggerLevelMin];
+    }
+    
+    //Keep track if Firebase SDK has been configured already due to how app extensions are initialized
+    //https://stackoverflow.com/a/40390083/761902
+    //static BOOL firAppConfigured = NO;
     
     /*
      //From http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project and https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6

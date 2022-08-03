@@ -67,6 +67,30 @@
                       "filename": "sm_3",
                       "description": "Happy Birthday!",
                       "emojis": ["🎂"]
+                      }, {
+                      "filename": "og_1",
+                      "description": "Hi",
+                      "emojis": ["👋"]
+                      }, {
+                      "filename": "og_2",
+                      "description": "Peace! V sign",
+                      "emojis": ["✌️"]
+                      }, {
+                      "filename": "og_3",
+                      "description": "Exercise lifting weight",
+                      "emojis": ["🏋️"]
+                      }, {
+                      "filename": "og_4",
+                      "description": "Hehehe...",
+                      "emojis": ["😆"]
+                      }, {
+                      "filename": "og_5",
+                      "description": "On my way!",
+                      "emojis": ["🛹"]
+                      }, {
+                      "filename": "og_6",
+                      "description": "Wow!",
+                      "emojis": ["😲"]
                       }]
         },
         "Holiday": {
@@ -86,7 +110,7 @@
                       },{
                       "filename": "sp_1",
                       "description": "Good Luck",
-                      "emojis": ["🤞"]
+                      "emojis": ["🤞","🍀","☘️"]
                       },{
                       "filename": "sp_2",
                       "description": "Jumping through a Rainbow",
@@ -146,7 +170,7 @@
                       },{
                       "filename": "hm_3",
                       "description": "Toilet paper rationing",
-                      "emojis": ["🚽","🧻"]
+                      "emojis": ["🚽","🧻","😨"]
                       },{
                       "filename": "hm_4",
                       "description": "Watching 3D movie",
@@ -166,7 +190,7 @@
                       },{
                       "filename": "hm_8",
                       "description": "Bubble bath",
-                      "emojis": ["🛀","🧼"]
+                      "emojis": ["🛀","🧼","🦆"]
                       },{
                       "filename": "hm_9",
                       "description": "i miss you...",
