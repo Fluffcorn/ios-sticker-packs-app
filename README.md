@@ -11,7 +11,8 @@
 
 
 
-[![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn WhatsApp Stickers integration](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-whatsapp-stickers-integration.jpeg)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages)
+[![Fluffcorn screenshot](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-winter-16.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn screenshot sticker size slider visible](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-sticker-size-slider-visible.png)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) [![Fluffcorn WhatsApp Stickers integration](https://raw.githubusercontent.com/Fluffcorn/ios-sticker-packs-app/master/images/ios-whatsapp-stickers-integration.jpeg)](https://itunes.apple.com/us/app/fluffcorn-by-alisha-liu/id1171532447?app=messages) <img width="320" height="486" alt="image" src="https://github.com/user-attachments/assets/9e9e8054-6035-4308-ac9a-7cc2c13d7f34" />
+
 
 - Features
   - Customizable tabbed category switcher.
